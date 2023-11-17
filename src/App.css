@@ -5,6 +5,20 @@
   text-align: center;
 }
 
+.blur-overlay{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background-image: url("./assets/images/lenguaAfuera.png");
+  background-position: center;
+  background-repeat: repeat;
+  filter: blur(8px) grayscale(50%);
+  z-index: -1;
+  overflow: hidden;
+}
 .logo {
   height: 6em;
   padding: 1.5em;

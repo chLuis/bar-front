@@ -1,0 +1,8 @@
+.dog-list {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+
+.dog-element-list:hover {
+    background-color: gray;
+}

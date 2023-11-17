@@ -1,0 +1,53 @@
+.form-alta-dog{
+    display: grid;
+    grid-template-columns: 100%;
+    gap: 6px;
+    font-size: 1.2rem !important;
+    > input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    > input, textarea {
+        font-size: 1.2rem;
+    }
+    > input:focus, textarea:focus {
+        background-color: rgb(138, 138, 138);
+    }
+    > input:not(:placeholder-shown) {
+        background-color: rgb(99, 138, 106);
+    }
+    > input:hover, textarea:hover {
+        background-color: grey !important;
+        cursor: pointer;
+    }
+    > button {
+        line-height: 16px;
+    }
+    > select {
+        height: 28px;
+        color: grey;
+    }
+    > h2 {
+        margin-bottom: 0px !important;
+        background-color: red !important;
+    }
+}
+
+.select-option{
+    line-height: 16px !important;
+    color: black !important;
+    text-align: start;
+    > :not(hover) {
+        background-color: rgb(87, 67, 67);
+    }
+}
+
+.title-alta-dog {
+    margin-bottom: 0px;
+}
+
+.subtitle-alta-dog{
+    margin: 0px 0px 5px 0px;
+    color: rgb(182, 182, 182);
+}
