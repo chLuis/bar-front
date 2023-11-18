@@ -21,6 +21,9 @@ export const Home = () => {
             <Link to="searchdog">
                 <button className="btn-opt">🔎 Buscar</button>
             </Link>
+            <Link to="edit">
+                <button className="btn-opt">✏️ Editar</button>
+            </Link>
         </div>
         </>
     );

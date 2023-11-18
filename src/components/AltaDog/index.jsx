@@ -93,7 +93,6 @@ const handleSelectEnemiesChange = (selectedOptions) => {
                     <option value="true">Si</option>
                     <option value="false">No</option>
                 </select>
-                {/* <div><label>Castrado</label><input type="checkbox" name="castrated"/></div> */}
                 <input type="text" placeholder="Tipo de Corte" name="typeOfCut"/>
                 <input type="text" placeholder="Tipo de Shampoo" name="typeOfShampoo"/>
                 <Select name="friends"

@@ -5,6 +5,8 @@ import { AltaDogPage } from "./pages/altaDog";
 import { AgendaPage } from "./pages/agendaDogs";
 import { Home } from "./pages/index";
 import { Routes, Route } from "react-router-dom";
+import { EditDog } from './components';
+
 
 function App() {
     return (
@@ -16,6 +18,7 @@ function App() {
             <Route path="/altadogs" element={<AltaDogPage />} />
             <Route path="/searchdog" element={<SearchDogPage />} />
             <Route path="/agenda" element={<AgendaPage />} />
+            <Route path="/edit" element={<EditDog />} />
         </Routes>
         </div>
     );

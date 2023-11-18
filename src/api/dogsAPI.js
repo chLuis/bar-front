@@ -18,3 +18,7 @@ export const createDog = async (dog) => {
 export const deleteDog = async (id) => {
     dogsApi.delete(`/delete/${id}`)
 }
+
+export const updateDog = async (dog) => {
+    dogsApi.patch(`/patch/${dog.id}`, dog)
+}
