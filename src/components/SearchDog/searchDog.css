@@ -28,3 +28,12 @@
 .dog-filter:hover {
     background-color: rgb(106, 106, 106);
 }
+
+.input-search-dog{
+    height: 24px;
+    margin: 4px;
+    border-radius: 6px;
+}
+.input-search-dog:focus {
+    background-color: rgb(113, 105, 116);
+}

@@ -5,10 +5,15 @@
     border: 1px solid white;
     padding: 20px;
     border-radius: 10px;
+    background-color: rgba(128, 128, 128, 0.62);
     > h2 {
         margin: 0px;
     }
 }
 .btn-opt {
     width: 100%;
+    text-align: start;
+    > .btn-opt:hover {
+        background-color: red;
+    }
 }

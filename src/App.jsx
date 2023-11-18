@@ -1,6 +1,8 @@
 import "./App.css";
-import { Dogs, AltaDog, SearchDog } from "./components";
-import {Home} from "./pages/index";
+import { AltaDog } from "./components";
+import { DogPage } from './pages/allDogs'
+import { SearchDogPage } from './pages/searchDog';
+import { Home } from "./pages/index";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
@@ -8,10 +10,10 @@ function App() {
         <div>
         <div className="blur-overlay"></div>
         <Routes>
-        <Route path="/home" element={<Home />} />
-            <Route path="/home/alldogs" element={<Dogs />} />
-            <Route path="/home/altadogs" element={<AltaDog />} />
-            <Route path="/home/searchdog" element={<SearchDog />} />
+        <Route path="/" element={<Home />} />
+            <Route path="/alldogs" element={<DogPage />} />
+            <Route path="/altadogs" element={<AltaDog />} />
+            <Route path="/searchdog" element={<SearchDogPage />} />
         </Routes>
         </div>
     );

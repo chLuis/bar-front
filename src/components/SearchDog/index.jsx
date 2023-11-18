@@ -33,7 +33,7 @@ export const SearchDog = () => {
     return (
         <>
         <div>
-            <input type="text" placeholder="Search dogs" onChange={handleSearch}/>
+            <input type="text" placeholder="Buscar perro" className='input-search-dog' onChange={handleSearch}/>
             {filteredDogs?.map(dog => {
                 return (
                     <div key={dog._id} className='dog-filter'>
