@@ -1,11 +1,12 @@
 .dog-filter{
     display: grid;
-    grid-template-columns: (100%);
-    margin: 10px;
+    grid-template-columns: 100%;
+    margin: 18px 0px;
     background-color: rgb(68, 68, 68);
     border: 1px solid white;
     padding: 4px;
     border-radius: 8px;
+    text-align: start;
     > h2 {
         font-size: 1.2rem;
         border: 1px solid white;
@@ -36,4 +37,8 @@
 }
 .input-search-dog:focus {
     background-color: rgb(113, 105, 116);
+}
+
+.resultados-search{
+    margin: 0px;
 }

@@ -9,7 +9,6 @@ export const Home = () => {
         <>
         <LogoLengua />
         <div className="links-to-dogs">
-        <h2>Perros</h2>
             <Link to="agenda">
                 <button className="btn-opt">🗓️ Agenda</button>
             </Link>

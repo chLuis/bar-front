@@ -34,9 +34,10 @@ export const SearchDog = () => {
         <>
         <div>
             <input type="text" placeholder="Buscar perro" className='input-search-dog' onChange={handleSearch}/>
-            {filteredDogs?.map(dog => {
+            {filteredDogs.length>0 &&<p className='resultados-search'>Resultados: {filteredDogs.length}</p>}
+            {filteredDogs?.map((dog, i) => {
                 return (
-                    <div key={dog._id} className='dog-filter'>
+                    <div key={i} className='dog-filter'>
                         <h2>🐶 {dog.name}</h2>
                         <p>Raza: {dog.race}</p>
                         <p>Edad: {dog.age}</p>
@@ -51,11 +52,10 @@ export const SearchDog = () => {
                         <p>Tipo de corte: {dog.typeOfCut}</p>
                         <p>Tipo de shampoo: {dog.typeOfShampoo}</p>
                         <p>Descripción: {dog.description}</p>
-
                     </div>
                 )
-
             })}
+            {!filteredDogs.length>0 &&<p>No se encontraron resultados</p>}
         </div>
         <BtnHome />
         </>
