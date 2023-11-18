@@ -1,3 +1,9 @@
+.allArea-altaDog {
+    background-color: rgba(69, 35, 35, 0.507);
+    padding: 6px 18px;
+    border-radius: 10px;
+
+}
 .form-alta-dog{
     display: grid;
     grid-template-columns: 100%;
@@ -25,8 +31,9 @@
         line-height: 16px;
     }
     > select {
-        height: 28px;
+        height: 32px;
         color: grey;
+        font-size: 1rem;
     }
     > h2 {
         margin-bottom: 0px !important;

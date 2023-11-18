@@ -24,7 +24,7 @@ export const Dogs = () => {
         }
     })
 
-    if (isLoading) return <h1>Loading...</h1>;
+    if (isLoading) return <h1>Cargando...</h1>;
     else if (isError) return <h1>{error.message}</h1>;
 
     return (

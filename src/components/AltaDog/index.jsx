@@ -74,7 +74,7 @@ const handleSelectEnemiesChange = (selectedOptions) => {
 
 
     return (
-        <div>
+        <div className='allArea-altaDog'>
             <h2 className='title-alta-dog'>Dar de alta un perro</h2>
             <p className='subtitle-alta-dog'>Los campos con (*) son obligatorios</p>
             <form className="form-alta-dog" onSubmit={handleSubmit}>
