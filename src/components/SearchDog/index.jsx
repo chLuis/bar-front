@@ -19,11 +19,11 @@ export const SearchDog = () => {
 
     function mostrar(id) {
         let mostrarAmigos = []
-        for (let i = 0; i < dogs.length; i++) {
+        for (let i = 0; i < dogs?.length; i++) {
             if (dogs[i]._id === id) {
-                for (let j = 0; j < dogs[i].friends.length; j++) {
-                    for (let k = 0; k < dogs.length; k++) {
-                        if (dogs[k]._id === dogs[i].friends[j]) {
+                for (let j = 0; j < dogs[i]?.friends?.length; j++) {
+                    for (let k = 0; k < dogs?.length; k++) {
+                        if (dogs[k]._id === dogs[i]?.friends[j]) {
                             mostrarAmigos.push(dogs[k].name);
                         }
                     }
@@ -35,10 +35,10 @@ export const SearchDog = () => {
     }
     function mostrarPelea(id) {
         let mostrarPeleaCon = []
-        for (let i = 0; i < dogs.length; i++) {
+        for (let i = 0; i < dogs?.length; i++) {
             if (dogs[i]._id === id) {
-                for (let j = 0; j < dogs[i].enemies.length; j++) {
-                    for (let k = 0; k < dogs.length; k++) {
+                for (let j = 0; j < dogs[i]?.enemies?.length; j++) {
+                    for (let k = 0; k < dogs?.length; k++) {
                         if (dogs[k]._id === dogs[i].enemies[j]) {
                             mostrarPeleaCon.push(dogs[k].name);
                         }
@@ -68,7 +68,7 @@ export const SearchDog = () => {
                 />
                 {filteredDogs.length > 0 && (
                     <p className="resultados-search">
-                        Resultados: {filteredDogs.length}
+                        Resultados: {filteredDogs?.length}
                     </p>
                 )}
                 {filteredDogs?.map((dog, i) => {
@@ -93,7 +93,7 @@ export const SearchDog = () => {
                         </div>
                     );
                 })}
-                {!filteredDogs.length > 0 && (
+                {!filteredDogs?.length > 0 && (
                     <p>No se encontraron resultados</p>
                 )}
             </div>
