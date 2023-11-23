@@ -5,9 +5,10 @@ import { getDogs,createDog } from '../../api/dogsAPI'
 import Select from 'react-select'
 import makeAnimated from 'react-select/animated'
 import { BtnHome } from '../BtnHome'
- 
-export const AltaDog = () => {
+import Swal from 'sweetalert2'
 
+export const AltaDog = () => {
+    
     const queryClient = useQueryClient()
     const {
         isLoading,
@@ -18,34 +19,64 @@ export const AltaDog = () => {
         queryKey: ["dogs"],
         queryFn: getDogs
     });
+    const [selectedFriends, setSelectedFriends] = useState([]);
+    const [selectedEnemies, setSelectedEnemies] = useState([]);
+    const [formEmpty, setFormEmpty] = useState(true);
 
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        }
+      });
 
     const addDogMutation = useMutation({
         mutationFn: createDog,
         onSuccess: ()=> {
+            setFormEmpty(false)
             console.log("Creando!");
             queryClient.invalidateQueries(['dogs'])
-        }
+            Toast.fire({
+                title: 'Perro dado de alta!',
+                icon: 'success',
+            })
+            setTimeout(() => {
+                window.location.href = 'https://main--eloquent-conkies-02e62a.netlify.app/#/'; // Reemplaza '/otra-pagina' con la ruta a la que deseas redirigir
+              }, 2000);
+
+        },
+        onError: (error) => {
+            Swal.fire({
+                title: 'Hubo un error!',
+                icon: 'error',
+            })
+            console.error("Error en una mutación:", error);
+            // Otras acciones en caso de error global de mutación
+        },
     })
 
 
-    const [selectedValues, setSelectedValues] = useState([]);
-    const handleSelectChange = (selectedOptions) => {
-        setSelectedValues(selectedOptions);
-      };
+    // const [selectedValues, setSelectedValues] = useState([]);
+    // const handleSelectChange = (selectedOptions) => {
+    //     setSelectedValues(selectedOptions);
+    //   };
       //console.log(selectedValues)
-      const handleObtainValues = () => {
-        // Obtener los valores seleccionados
-        const selectedValuesObject = {};
-        selectedValues.forEach((value) => {
-          selectedValuesObject[value.value] = value.label;
-        });
-        
-        console.log(selectedValuesObject);
-      };
 
-      const [selectedFriends, setSelectedFriends] = useState([]);
-const [selectedEnemies, setSelectedEnemies] = useState([]);
+    //   const handleObtainValues = () => {
+    //     // Obtener los valores seleccionados
+    //     const selectedValuesObject = {};
+    //     selectedValues.forEach((value) => {
+    //       selectedValuesObject[value.value] = value.label;
+    //     });
+        
+    //     console.log(selectedValuesObject);
+    //   };
+
 
 const handleSelectFriendsChange = (selectedOptions) => {
   setSelectedFriends(selectedOptions);
@@ -56,17 +87,30 @@ const handleSelectEnemiesChange = (selectedOptions) => {
 };
     const handleSubmit = (e) => {
         e.preventDefault()
-        const formData = new FormData(e.target);
-        const dog = Object.fromEntries(formData);
-        dog.friends = selectedFriends.map(amigo => amigo.value);
-        dog.enemies = selectedEnemies.map(enemigo => enemigo.value);
-        //console.log(dog)
-        addDogMutation.mutate(dog)
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: "Estás dando de alta este perro!",
+            icon: 'info',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, dale!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const formData = new FormData(e.target);
+                    const dog = Object.fromEntries(formData);
+                    dog.friends = selectedFriends.map(amigo => amigo.value);
+                    dog.enemies = selectedEnemies.map(enemigo => enemigo.value);
+                    addDogMutation.mutate(dog)
+                }
+            
+
         /*addDogMutation.mutate({   ------>>> Si quiero agregar algo que no esta en el body
             ...dog,
             color: "black"
         })*/
-    }
+    })}
+    
     
 
     const animatedComponents = makeAnimated()
@@ -77,7 +121,7 @@ const handleSelectEnemiesChange = (selectedOptions) => {
         <div className='allArea-altaDog'>
             <h2 className='title-alta-dog'>Dar de alta un perro</h2>
             <p className='subtitle-alta-dog'>Los campos con (*) son obligatorios</p>
-            <form className="form-alta-dog" onSubmit={handleSubmit}>
+            {formEmpty && <form className="form-alta-dog" onSubmit={handleSubmit}>
                 <input type="text" placeholder="Nombre*" name="name"/>
                 <input type="text" placeholder="Raza*" name="race"/>
                 <input type="number" placeholder="Edad*" name="age"/>
@@ -117,7 +161,7 @@ const handleSelectEnemiesChange = (selectedOptions) => {
                 </Select>
                 <textarea placeholder="Descripción" name="description" rows={4}/>
                 <button type="submit">Guardar</button>
-            </form>
+            </form>}
             <BtnHome/>
         </div>
 )}

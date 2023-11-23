@@ -14,6 +14,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@sweetalert2/themes": "^5.0.15",
     "@tanstack/react-query": "5.8.4",
     "@tanstack/react-query-devtools": "^5.8.4",
     "axios": "^1.6.2",
@@ -21,7 +22,8 @@
     "react-dom": "^18.2.0",
     "react-router": "^6.19.0",
     "react-router-dom": "^6.19.0",
-    "react-select": "^5.8.0"
+    "react-select": "^5.8.0",
+    "sweetalert2": "^11.10.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

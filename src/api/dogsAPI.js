@@ -12,7 +12,13 @@ export const getDogs = async () => {
 } 
 
 export const createDog = async (dog) => {
-    dogsApi.post("/post", dog)
+    try {
+        const res = await dogsApi.post("/post", dog)
+        return res.data
+    }
+    catch (error) {
+        console.log(error)
+        throw error}
 }
 
 export const deleteDog = async (id) => {
