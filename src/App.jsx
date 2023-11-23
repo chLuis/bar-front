@@ -6,13 +6,14 @@ import { AgendaPage } from "./pages/agendaDogs";
 import { Home } from "./pages/index";
 import { EditDogPage } from './pages/editDog'
 import { Routes, Route } from "react-router-dom";
-//import { EditDog } from './components';
+import { Footer } from './components';
 
 
 function App() {
     return (
         <div>
         <div className="blur-overlay"></div>
+        <div className="bodyApp">
         <Routes>
         <Route path="/" element={<Home />} />
             <Route path="/alldogs" element={<DogPage />} />
@@ -21,6 +22,8 @@ function App() {
             <Route path="/agenda" element={<AgendaPage />} />
             <Route path="/edit" element={<EditDogPage />} />
         </Routes>
+        </div>
+        <Footer />
         </div>
     );
 }

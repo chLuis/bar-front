@@ -4,6 +4,7 @@ import './logoLengua.css'
 export const LogoLengua = () => {
     return (
         <>
-        <img className="home-img" src={logo} alt="home-img"/></>
+            <img className="home-img" src={logo} alt="home-img"/>
+        </>
     )
 }

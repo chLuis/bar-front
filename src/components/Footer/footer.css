@@ -1,0 +1,22 @@
+footer {
+    height: 100px !important;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    margin: 0px !important;
+    background-color: rgba(0, 0, 0, 0.339) !important;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    > a {
+        text-decoration: none;
+        color: white;
+    }
+}
+
+.iconsFooter, .spanFooter{
+    margin-bottom: 16px;
+    font-size: 1.4rem;
+}
+
