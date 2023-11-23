@@ -1,22 +1,38 @@
 footer {
-    height: 100px !important;
+    height: 90px !important;
     bottom: 0;
     left: 0;
     right: 0;
-    width: 100%;
+    width: 100dvw;
     margin: 0px !important;
-    background-color: rgba(0, 0, 0, 0.339) !important;
+    background-color: rgba(0, 0, 0, 0.494) !important;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: end;
-    > a {
+    align-items: center;
+    > .links-redes {
         text-decoration: none;
-        color: white;
+        > a {
+            color: white;
+        }
+    }
+    > p {
+        line-height: 16px;
+        display: flex;
+        justify-content: end;
+        align-content: end;
     }
 }
-
+.link-to-insta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.link-to-insta:hover{
+    color: rgb(215, 214, 214);    
+}
 .iconsFooter, .spanFooter{
-    margin-bottom: 16px;
-    font-size: 1.4rem;
+    font-size: 2rem;
+
 }
 

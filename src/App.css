@@ -1,8 +1,6 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
-  padding-bottom: 0px;
   text-align: center;
 }
 
@@ -34,9 +32,17 @@
 }
 
 .bodyApp{
-  min-height: 90dvh;
+  min-height: 100dvh;
+  display: flex;
+  place-content: center;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
-
+.allHtml{
+  padding: 0px !important;
+  margin: 0px !important;
+}
 
 @keyframes logo-spin {
   from {

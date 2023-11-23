@@ -11,7 +11,7 @@ import { Footer } from './components';
 
 function App() {
     return (
-        <div>
+        <div className="allHtml">
         <div className="blur-overlay"></div>
         <div className="bodyApp">
         <Routes>
@@ -22,8 +22,8 @@ function App() {
             <Route path="/agenda" element={<AgendaPage />} />
             <Route path="/edit" element={<EditDogPage />} />
         </Routes>
-        </div>
         <Footer />
+        </div>
         </div>
     );
 }

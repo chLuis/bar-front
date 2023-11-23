@@ -1,4 +1,8 @@
+.img-logo{
+    display: grid;
+    place-content: center;
+}
 .home-img{
     border-radius: 50%;
-    margin-bottom: 16px;
+    padding: 40px 0px;
 }

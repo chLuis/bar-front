@@ -3,8 +3,10 @@
     display: grid;
     gap: 20px;
     border: 1px solid white;
+    place-content: center;
     padding: 20px;
     border-radius: 10px;
+    width: fit-content;
     background-color: rgba(128, 128, 128, 0.62);
     > h2 {
         margin: 0px;

@@ -3,10 +3,11 @@ import "./footer.css";
 export const Footer = () => {
     return (
         <footer>
-            <a href="https://www.instagram.com/lengua_afuera/">
+        <div className="links-redes">
+            <a href="https://www.instagram.com/lengua_afuera/" className="link-to-insta">
                 <i className="fa-brands fa-instagram iconsFooter"></i>
-                <span className="spanFooter"> Instagram</span>
-            </a>
+            </a></div>
+            <p>© 2023 Lengua Afuera</p>
         </footer>
     );
 };
