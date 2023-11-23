@@ -4,8 +4,9 @@ import { SearchDogPage } from './pages/searchDog';
 import { AltaDogPage } from "./pages/altaDog";
 import { AgendaPage } from "./pages/agendaDogs";
 import { Home } from "./pages/index";
+import { EditDogPage } from './pages/editDog'
 import { Routes, Route } from "react-router-dom";
-import { EditDog } from './components';
+//import { EditDog } from './components';
 
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
             <Route path="/altadogs" element={<AltaDogPage />} />
             <Route path="/searchdog" element={<SearchDogPage />} />
             <Route path="/agenda" element={<AgendaPage />} />
-            <Route path="/edit" element={<EditDog />} />
+            <Route path="/edit" element={<EditDogPage />} />
         </Routes>
         </div>
     );

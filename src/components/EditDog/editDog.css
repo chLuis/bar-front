@@ -1,0 +1,24 @@
+.listDogUpdate {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    > div {
+        overflow: hidden;
+    }
+}
+
+.formEditDog {
+    display: grid;
+    grid-template-columns: 100%;
+    > input, select {
+        height: 26px;
+    }
+    > input:focus {
+        background-color: rgb(144, 131, 131);
+    }
+    > input:placeholder-shown {
+        background-color: rgb(49, 49, 49);
+    }
+    > input:not(:placeholder-shown) {
+        background-color: rgb(150, 87, 87);
+    }
+}

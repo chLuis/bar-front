@@ -2,6 +2,7 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { getDogs, deleteDog } from "../../api/dogsAPI";
 import "./dogs.css";
 import { BtnHome } from "../BtnHome";
+import { EditDog } from '../EditDog/index'
 
 export const Dogs = () => {
     const queryClient = useQueryClient()
@@ -29,12 +30,15 @@ export const Dogs = () => {
 
     return (
         <div>
+        {/* <EditDog /> */}
         <div className="dog-list">
             {dogs.map(dog => (
             <div key={dog._id} className="dog-element-list">
                 <h3>{dog.name}</h3>
                 <p>{dog.owner}</p>
                 <p>{dog.phone}</p>
+                <button>Editar</button>
+                
                 <button onClick={() => {
                     deleteDogMutation.mutate(dog._id);
                 }}>Borrar</button>
