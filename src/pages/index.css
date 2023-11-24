@@ -1,4 +1,51 @@
+/* Para borrar */
+.btn-momentaneo{
+    margin: 10px;
+}
+/* ---------------- Public ---------------- */
+.home-public{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    > h2 {
+        margin: 0px;
+        margin-top: -30px;
+    }
+    > p {
+        width: 70%;
+    }
+    > article {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 1.2rem;
+        flex-shrink: 2;
+        margin-block: 20px;
+        > h4 {
+            margin: 0;
+            padding-inline: 5px;
+            display: flex;
+            flex-shrink: 1;
+            width: fit-content;
+            border-radius: 10px;
+            background-color: rgb(89, 151, 205);
+            color: rgb(9,81,153);
+        }
+        > h5 {
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 2;
+        }
+    }
+}
 
+
+
+
+
+
+
+/* ---------------- Admin ---------------- */
 .links-to-dogs{
     display: grid;
     gap: 20px;
