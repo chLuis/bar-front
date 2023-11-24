@@ -22,6 +22,7 @@ export const AltaDog = () => {
     const [selectedFriends, setSelectedFriends] = useState([]);
     const [selectedEnemies, setSelectedEnemies] = useState([]);
     const [formEmpty, setFormEmpty] = useState(true);
+    const [image, setImage] = useState("")
 
     const Toast = Swal.mixin({
         toast: true,
@@ -60,7 +61,19 @@ export const AltaDog = () => {
         },
     })
 
-
+    function convertToBase64(e) {
+        console.log(e)
+        let reader = new FileReader();
+        reader.readAsDataURL(e.target.files[0]);
+        reader.onload =  () => {
+            console.log(reader.result) // string
+            const imageString = reader.result
+            setImage(imageString)
+        };
+        reader.onerror = (error) => {
+            console.log('Error: ', error);
+        }
+    }
     // const [selectedValues, setSelectedValues] = useState([]);
     // const handleSelectChange = (selectedOptions) => {
     //     setSelectedValues(selectedOptions);
@@ -101,14 +114,15 @@ const handleSelectEnemiesChange = (selectedOptions) => {
                     const dog = Object.fromEntries(formData);
                     dog.friends = selectedFriends.map(amigo => amigo.value);
                     dog.enemies = selectedEnemies.map(enemigo => enemigo.value);
-                    addDogMutation.mutate(dog)
+                    //addDogMutation.mutate(dog)
+                    addDogMutation.mutate({   //------>>> Si quiero agregar algo que no esta en el body
+                        ...dog,
+                        image: image
+                    })
                 }
             
 
-        /*addDogMutation.mutate({   ------>>> Si quiero agregar algo que no esta en el body
-            ...dog,
-            color: "black"
-        })*/
+        
     })}
     
     
@@ -159,6 +173,9 @@ const handleSelectEnemiesChange = (selectedOptions) => {
                     onChange={handleSelectEnemiesChange}
                     >
                 </Select>
+                <input accept='image/*' type='file' onChange={convertToBase64}></input>
+                {image ==="" || image ===null ? "" : <img width={100} height={100} src={image} alt="Imagen Perro" />}
+                
                 <textarea placeholder="Descripción" name="description" rows={4}/>
                 <button type="submit">Guardar</button>
             </form>}

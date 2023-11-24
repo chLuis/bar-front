@@ -57,6 +57,7 @@ export const SearchDog = () => {
         e.target.value === "" ? setFilteredDogs([]) : null;
     };
 
+
     return (
         <>
             <div>

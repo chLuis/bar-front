@@ -38,6 +38,7 @@ export const Dogs = () => {
                 <h3>{dog.name}</h3>
                 <p>{dog.owner}</p>
                 <p>{dog.phone}</p>
+                <img src={dog.image} alt={dog.name} />
                 <button>Editar</button>
                 
                 <button onClick={() => {
