@@ -42,3 +42,8 @@
 .resultados-search{
     margin: 0px;
 }
+
+.imagen-dog-search {
+    border-radius: 50%;
+    margin: auto;
+}

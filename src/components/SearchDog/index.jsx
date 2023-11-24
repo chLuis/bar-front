@@ -75,6 +75,7 @@ export const SearchDog = () => {
                 {filteredDogs?.map((dog, i) => {
                     return (
                         <div key={i} className="dog-filter">
+                            <img src={dog.image} alt={`imagen de ${dog.name}`} className="imagen-dog-search"></img>
                             <h2>🐶 {dog.name}</h2>
                             <p>Raza: {dog.race}</p>
                             <p>Edad: {dog.age}</p>
