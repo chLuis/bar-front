@@ -2,22 +2,22 @@
     display: grid;
     grid-template-columns: 100%;
     margin: 18px 0px;
-    background-color: rgb(255,105,70);
+    background-color: rgb(86,37,25);
     color: rgb(255, 244, 222);
-    border:  1px solid rgb(121, 51, 36);
+    border:  1px solid rgb(172, 73, 51);
     padding: 4px;
     border-radius: 8px;
     text-align: start;
     > h2 {
         font-size: 1.2rem;
-        border: 1px solid rgb(121, 51, 36);
+        border: 1px solid rgb(172, 73, 51);
         margin: 0px;
         border-radius: 4px 4px 0px 0px;
     }
     > p {
         margin: 0px;
         font-size: 1.2rem;
-        border:  1px solid rgb(121, 51, 36);
+        border:  1px solid rgb(172, 73, 51);
         padding-inline: 4px;
     }
     > p:nth-last-child(1) {
