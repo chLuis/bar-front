@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom"
 import './btnHome.css'
 
+
 export const BtnHome = () => {
     return (
         <Link to="/">
-            <button className="btn-backhome">🔙</button>
+            <i className="fa-solid fa-rotate-left volver"></i>
         </Link>
     )
 }
