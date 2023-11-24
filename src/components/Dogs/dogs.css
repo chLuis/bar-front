@@ -1,6 +1,6 @@
 .dog-list {
     display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-columns: 30% 30% 30%;
 }
 
 .avatar-dog {
