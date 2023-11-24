@@ -106,6 +106,7 @@ export const EditDog = () => {
                 {dogs?.map((dog, i) => (
                     dog._id === idDog ?<>
                     <h3>Editar información de: {dog.name}</h3>
+                    <img src={dog.image}></img>
                     <div key={i} className="formEditDog">
                     
                     <input type="text" placeholder="Nombre*" name="name" defaultValue={dog.name}/>

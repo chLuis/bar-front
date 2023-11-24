@@ -5,7 +5,7 @@
   overflow: hidden !important;
 }
 
-.blur-overlay{
+/* .blur-overlay{
   position: absolute;
   top: 0;
   bottom: 0;
@@ -18,7 +18,7 @@
   filter: blur(8px) grayscale(50%);
   z-index: -1;
   overflow: hidden;
-}
+} */
 .logo {
   height: 6em;
   padding: 1.5em;

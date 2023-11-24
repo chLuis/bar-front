@@ -2,21 +2,22 @@
     display: grid;
     grid-template-columns: 100%;
     margin: 18px 0px;
-    background-color: rgb(68, 68, 68);
-    border: 1px solid white;
+    background-color: rgb(255,105,70);
+    color: rgb(255, 244, 222);
+    border:  1px solid rgb(121, 51, 36);
     padding: 4px;
     border-radius: 8px;
     text-align: start;
     > h2 {
         font-size: 1.2rem;
-        border: 1px solid white;
+        border: 1px solid rgb(121, 51, 36);
         margin: 0px;
         border-radius: 4px 4px 0px 0px;
     }
     > p {
         margin: 0px;
         font-size: 1.2rem;
-        border: 1px solid white;
+        border:  1px solid rgb(121, 51, 36);
         padding-inline: 4px;
     }
     > p:nth-last-child(1) {
@@ -34,6 +35,7 @@
     height: 24px;
     margin: 4px;
     border-radius: 6px;
+    background-color: rgb(86, 37, 25);
 }
 .input-search-dog:focus {
     background-color: rgb(113, 105, 116);
@@ -45,5 +47,7 @@
 
 .imagen-dog-search {
     border-radius: 50%;
+    border:  2px solid rgb(121, 51, 36);
     margin: auto;
+    margin-bottom: 2px;
 }

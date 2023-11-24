@@ -1,10 +1,10 @@
-import logo from '../../assets/images/LenguaLogo.png'
+import logo from '../../assets/images/LogoLenguaAfuera.jpeg'
 import './logoLengua.css'
 
 export const LogoLengua = () => {
     return (
         <div className='img-logo'>
-            <img className="home-img" src={logo} alt="home-img"/>
+            <img className="home-img" src={logo} alt="home-img" width={220}/>
         </div>
     )
 }
