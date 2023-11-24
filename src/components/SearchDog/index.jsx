@@ -3,6 +3,7 @@ import { getDogs, createDog } from "../../api/dogsAPI";
 import { useState } from "react";
 import "./searchDog.css";
 import { BtnHome } from "../index.js";
+import perroSinFoto from "../../assets/images/perroSinFoto.png";
 
 export const SearchDog = () => {
     const queryClient = useQueryClient();
@@ -75,7 +76,7 @@ export const SearchDog = () => {
                 {filteredDogs?.map((dog, i) => {
                     return (
                         <div key={i} className="dog-filter">
-                            <img src={dog.image} alt={`imagen de ${dog.name}`} className="imagen-dog-search"></img>
+                            <img src={dog.image? dog.image : perroSinFoto} alt={`imagen de ${dog.name}`} height={100} className="imagen-dog-search"></img>
                             <h2>🐶 {dog.name}</h2>
                             <p>Raza: {dog.race}</p>
                             <p>Edad: {dog.age}</p>
