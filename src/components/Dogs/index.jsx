@@ -27,7 +27,20 @@ export const Dogs = () => {
         }
     })
 
-    if (isLoading) return <><h1>Cargando...</h1><BtnHome /></>;
+    if (isLoading) return <>
+    <h1 className="loader">
+        <span className="loader-loading" style={{"--d": "150ms"}}>C</span>
+        <span className="loader-loading" style={{"--d": "300ms"} }>A</span>
+        <span className="loader-loading" style={{"--d": "450ms"} }>R</span>
+        <span className="loader-loading" style={{"--d": "600ms"} }>G</span>
+        <span className="loader-loading" style={{"--d": "750ms"} }>A</span>
+        <span className="loader-loading" style={{"--d": "900ms"} }>N</span>
+        <span className="loader-loading" style={{"--d": "1050ms" }}>D</span>
+        <span className="loader-loading" style={{"--d": "1200ms" }}>O</span>
+        <span className="loader-loading" style={{"--d": "1350ms" }}>.</span>
+        <span className="loader-loading" style={{"--d": "1500ms" }}>.</span>
+        <span className="loader-loading" style={{"--d": "1650ms" }}>.</span>
+    </h1><BtnHome /></>;
     else if (isError) {console.log(error)
         return <><h1>{error.message}</h1><BtnHome /></>}
 

@@ -6,7 +6,7 @@ import { AgendaPage } from "./pages/agendaDogs";
 import { Home } from "./pages/index";
 import { EditDogPage } from './pages/editDog'
 import { Routes, Route } from "react-router-dom";
-import { Footer } from './components';
+import { Footer, BtnTop } from './components';
 
 
 function App() {
@@ -22,6 +22,7 @@ function App() {
             <Route path="/agenda" element={<AgendaPage />} />
             <Route path="/edit" element={<EditDogPage />} />
         </Routes>
+        <BtnTop />
         <Footer />
         </div>
         </div>

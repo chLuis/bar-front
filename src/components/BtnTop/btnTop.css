@@ -1,0 +1,18 @@
+.btnToTop {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    > i {
+        font-size: 2.2rem;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        border-radius: 50%;
+        background-color: rgb(32, 5, 5);
+        color: rgb(218, 218, 218) !important;
+        height: 40px;
+        width: 46px;
+        margin: 5px;
+        padding-top: 6px;
+    }
+}
