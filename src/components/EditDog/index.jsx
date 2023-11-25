@@ -46,13 +46,13 @@ export const EditDog = () => {
             Swal.fire({
                 title: 'Hubo un error!',
                 icon: 'error',
-                text: error || (error.response.statusText ? "Imagen demasiado grande" : null),
+                text: (error.response.data = "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Payload Too Large</pre>\n</body>\n</html>\n" ? "Imagen demasiado grande" : null) || error,
             })
             console.error(error);
             // Otras acciones en caso de error global de mutación
         }
     });
-    console.log(updateDogMutation.isPending)
+    //console.log(updateDogMutation.isPending)
     
     const [formUpdateDog, setFormUpdateDog] = useState(false)
     const [idDog, setIdDog] = useState("")
@@ -121,7 +121,7 @@ export const EditDog = () => {
     }
 
     function convertToBase64(e) {
-        console.log(e)
+        //console.log(e)
         let reader = new FileReader();
         reader.readAsDataURL(e.target.files[0]);
         reader.onload =  () => {
@@ -136,7 +136,7 @@ export const EditDog = () => {
 
     function updateCompleteDog(e, _id) {
         e.preventDefault();
-        console.log(_id)
+        //console.log(_id)
         //console.log(e.target)
         const formData = new FormData(e.target);
         const dog = Object.fromEntries(formData);
@@ -189,7 +189,7 @@ export const EditDog = () => {
         // })
         //console.log(dog)
         updateDogMutation.mutate(dog)
-        console.log("Si ando")
+        //console.log("Si ando")
     }
 
     return (
@@ -219,7 +219,8 @@ export const EditDog = () => {
                 <input type="number" placeholder="Celular*" name="phone" defaultValue={dog.phone}/>
                 <input type="email" placeholder="Email" name="email" defaultValue={dog.email}/>
                 <input type="number" placeholder="Rotación*" name="rotation" defaultValue={dog.rotation}/>
-                <input type="text" placeholder="Enfermedad/Discapacidad" name="disease" defaultValue={dog.disease}/>
+                <input type="text" placeholder="Enfermedad" name="disease" defaultValue={dog.disease}/>
+                <input type="text" placeholder="Discapacidad" name="disability" defaultValue={dog.disability}/>
                 <input type="text" placeholder="Alergia" name="allergy" defaultValue={dog.allergy}/>
                 <input type="text" placeholder="Temperamento" name="temper" defaultValue={dog.temper}/>
                 <select name="castrated" placeholder='Castra3do?' defaultValue={dog.castrated}>

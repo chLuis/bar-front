@@ -23,6 +23,7 @@ export const AltaDog = () => {
     const [selectedEnemies, setSelectedEnemies] = useState([]);
     const [formEmpty, setFormEmpty] = useState(true);
     const [image, setImage] = useState("")
+    const [showBtnEdit, setShowBtnEdit] = useState(true)
 
     const Toast = Swal.mixin({
         toast: true,
@@ -39,7 +40,8 @@ export const AltaDog = () => {
     const addDogMutation = useMutation({
         mutationFn: createDog,
         onSuccess: ()=> {
-            setFormEmpty(false)
+            setShowBtnEdit(false)
+            //setFormEmpty(false)
             console.log("Creando!");
             queryClient.invalidateQueries(['dogs'])
             Toast.fire({
@@ -55,6 +57,7 @@ export const AltaDog = () => {
             Swal.fire({
                 title: 'Hubo un error!',
                 icon: 'error',
+                text: (error.response.data = "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Payload Too Large</pre>\n</body>\n</html>\n" ? "Imagen demasiado grande" : null) || error,
             })
             console.error("Error en una mutación:", error);
             // Otras acciones en caso de error global de mutación
@@ -74,21 +77,7 @@ export const AltaDog = () => {
             console.log('Error: ', error);
         }
     }
-    // const [selectedValues, setSelectedValues] = useState([]);
-    // const handleSelectChange = (selectedOptions) => {
-    //     setSelectedValues(selectedOptions);
-    //   };
-      //console.log(selectedValues)
 
-    //   const handleObtainValues = () => {
-    //     // Obtener los valores seleccionados
-    //     const selectedValuesObject = {};
-    //     selectedValues.forEach((value) => {
-    //       selectedValuesObject[value.value] = value.label;
-    //     });
-        
-    //     console.log(selectedValuesObject);
-    //   };
 
 
 const handleSelectFriendsChange = (selectedOptions) => {
@@ -114,6 +103,44 @@ const handleSelectEnemiesChange = (selectedOptions) => {
                     const dog = Object.fromEntries(formData);
                     dog.friends = selectedFriends.map(amigo => amigo.value);
                     dog.enemies = selectedEnemies.map(enemigo => enemigo.value);
+                    if(!dog.name){
+                        return Swal.fire({
+                            title: 'Hubo un error!',
+                            icon: 'error',
+                            text: "Nombre es requerido"
+                        })}
+                    if(!dog.race){
+                        return Swal.fire({
+                            title: 'Hubo un error!',
+                            icon: 'error',
+                            text: "Raza es requerida"
+                        })
+                    }
+                    if(!dog.age){
+                        return Swal.fire({
+                            title: 'Hubo un error!',
+                            icon: 'error',
+                            text: "Edad es requerida"})
+                    }
+                    if(!dog.owner){
+                        return Swal.fire({
+                            title: 'Hubo un error!',
+                            icon: 'error',
+                            text: "Dueño es requerido"})
+                    }
+                    if(!dog.phone){
+                        return Swal.fire({
+                            title: 'Hubo un error!',
+                            icon: 'error',
+                            text: "Teléfono es requerido"})
+                        }
+                    if(!dog.rotation){
+                        return Swal.fire({
+                            title: 'Hubo un error!',
+                            icon: 'error',
+                            text: "Rotación es requerida"
+                        })
+                    }
                     addDogMutation.mutate({   //------>>> Si quiero agregar algo que no esta en el body
                         ...dog,
                         image: image
@@ -132,18 +159,20 @@ const handleSelectEnemiesChange = (selectedOptions) => {
 
 
     return (
+        <>
         <div className='allArea-altaDog'>
             <h2 className='title-alta-dog'>Dar de alta un perro</h2>
-            <p className='subtitle-alta-dog'>Los campos con (*) son obligatorios</p>
+            <p className='subtitle-alta-dog'>(*) campos obligatorios</p>
             {formEmpty && <form className="form-alta-dog" onSubmit={handleSubmit}>
-                <input type="text" placeholder="Nombre*" name="name"/>
-                <input type="text" placeholder="Raza*" name="race"/>
-                <input type="number" placeholder="Edad*" name="age"/>
-                <input type="text" placeholder="Dueño*" name="owner"/>
-                <input type="number" placeholder="Celular*" name="phone"/>
+                <input type="text" placeholder="*Nombre" name="name"/>
+                <input type="text" placeholder="*Raza" name="race"/>
+                <input type="number" placeholder="*Edad" name="age"/>
+                <input type="text" placeholder="*Dueño" name="owner"/>
+                <input type="number" placeholder="*Teléfono" name="phone"/>
                 <input type="email" placeholder="Email" name="email"/>
-                <input type="number" placeholder="Rotación*" name="rotation"/>
-                <input type="text" placeholder="Enfermedad/Discapacidad" name="disease"/>
+                <input type="number" placeholder="*Rotación" name="rotation"/>
+                <input type="text" placeholder="Enfermedad" name="disease"/>
+                <input type="text" placeholder="Discapacidad" name="disability"/>
                 <input type="text" placeholder="Alergia" name="allergy"/>
                 <input type="text" placeholder="Temperamento" name="temper"/>
                 <select name="castrated" placeholder='Castra3do?' defaultValue={-1}>
@@ -173,12 +202,13 @@ const handleSelectEnemiesChange = (selectedOptions) => {
                     onChange={handleSelectEnemiesChange}
                     >
                 </Select>
-                <input accept='image/*' type='file' onChange={convertToBase64}></input>
+                <input accept='image/*' type='file' onChange={convertToBase64} className='imageUp'></input>
                 {image ==="" || image ===null ? "" : <img width={100} height={100} src={image} alt="Imagen Perro" />}
                 
-                <textarea placeholder="Descripción" name="description" rows={4}/>
-                <button type="submit">Guardar</button>
+                <textarea placeholder="Descripción" name="description" rows={4} className='descriptionUpDog'/>
+                {!addDogMutation.isPending && showBtnEdit && <button type="submit" className='btn-up-dog'>Crear</button>}
             </form>}
-            <BtnHome/>
         </div>
+            <BtnHome/>
+            </>
 )}

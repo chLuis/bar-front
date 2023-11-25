@@ -33,6 +33,7 @@
 }
 
 .bodyApp{
+  max-width: 99dvw;
   min-height: 100dvh;
   display: flex;
   place-content: center;

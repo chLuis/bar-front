@@ -19,7 +19,7 @@
         background-color: rgb(186, 80, 53);
     }
     > input:focus, textarea:focus {
-        background-color: rgb(244, 242, 242);
+        background-color: rgb(215, 133, 133);
     }
     > input::placeholder {
         color: rgb(244,232,208);
@@ -28,7 +28,7 @@
         background-color: rgb(118, 51, 34);
     }
     > input:hover, textarea:hover {
-        background-color: grey !important;
+        background-color: rgb(147, 81, 81) !important;
         cursor: pointer;
     }
     > button {
@@ -37,7 +37,7 @@
     > select {
         height: 32px;
         background-color: rgb(186, 80, 53);
-        color: grey;
+        color: rgb(244,232,208);
         font-size: 1rem;
     }
     > h2 {
@@ -48,18 +48,43 @@
 
 .select-option{
     line-height: 16px !important;
-    color: black !important;
+    background-color: rgb(186, 80, 53);
+    color: rgb(244,232,208);
     text-align: start;
     > :not(hover) {
-        background-color: rgb(87, 67, 67);
+        color: rgb(244,232,208) !important;
+        background-color: rgb(186, 80, 53);
     }
 }
-
+#react-select-3-placeholder, #react-select-5-placeholder{
+    color: rgb(244,232,208);
+}
+.imageUp{
+    background-color: black !important;
+    color: white;
+}
+/* input[type="file"]{
+    background-color: red;
+} */
 .title-alta-dog {
     margin-bottom: 0px;
+    color: rgb(158, 158, 158);
+
 }
 
 .subtitle-alta-dog{
     margin: 0px 0px 5px 0px;
     color: rgb(182, 182, 182);
+}
+
+.descriptionUpDog{
+    color: rgb(244,232,208) !important;
+    > ::placeholder {
+        color: rgb(244,232,208) !important;
+    }
+}
+
+.btn-up-dog{
+    margin: 10px auto;
+    background-color: rgb(28, 100, 28);
 }

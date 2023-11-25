@@ -81,10 +81,11 @@ export const SearchDog = () => {
                             <p>Raza: {dog.race}</p>
                             <p>Edad: {dog.age}</p>
                             <p>Dueño: {dog.owner}</p>
-                            <p>Cel: {dog.phone}</p>
+                            <p>Teléfono: {dog.phone}</p>
                             <p>Email: {dog.email}</p>
                             <p>Vuelve cada: {dog.rotation} días</p>
-                            <p>Enfermedad/Discapacidad: {dog.disease}</p>
+                            <p>Enfermedad: {dog.disease}</p>
+                            <p>Discapacidad: {dog.disability}</p>
                             <p>Alergias: {dog.allergy}</p>
                             <p>Temperamento: {dog.temper}</p>
                             <p>Castrado: {dog.castrated ? "Si" : "No"}</p>
