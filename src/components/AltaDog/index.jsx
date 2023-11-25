@@ -114,11 +114,11 @@ const handleSelectEnemiesChange = (selectedOptions) => {
                     const dog = Object.fromEntries(formData);
                     dog.friends = selectedFriends.map(amigo => amigo.value);
                     dog.enemies = selectedEnemies.map(enemigo => enemigo.value);
-                    //addDogMutation.mutate(dog)
                     addDogMutation.mutate({   //------>>> Si quiero agregar algo que no esta en el body
                         ...dog,
                         image: image
                     })
+                    //addDogMutation.mutate(dog)
                 }
             
 

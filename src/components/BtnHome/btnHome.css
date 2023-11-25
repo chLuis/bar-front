@@ -2,9 +2,9 @@
     background-color: rgb(108, 21, 21);
     color: white;
     margin: 16px 0px;
-    padding: 6px 16px;
-    border-radius: 10%;
-    transition: 0.2s;
+    padding: 8px 8px;
+    border-radius: 50%;
+    transition: 0.3s;
 }
 .volver:hover  {
     scale: 1.3;
