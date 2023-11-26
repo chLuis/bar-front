@@ -46,6 +46,7 @@
     font-size: 2rem;
     color: black;
     font-weight: 600;
+    
 }
 .peluRealLink{
     > .aToPelu {
@@ -65,6 +66,7 @@
     display: grid;
     place-content: center;
     transition: 0.4s;
+    text-shadow: rgb(62, 62, 59) 1px 0 10px;
 }
 
 
