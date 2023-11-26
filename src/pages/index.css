@@ -39,18 +39,20 @@
 }
 
 .peluPrevLink{
+    font-family: 'Courier New', Courier, monospace;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-items: center;
     font-size: 2rem;
-    color: black;
+    color: rgb(43, 43, 42);
+    letter-spacing: 1px;
     font-weight: 600;
     
 }
 .peluRealLink{
     > .aToPelu {
-        color: black !important;
+        color:rgb(43, 43, 42) !important;
         font-weight: 600;
         line-height: 40px;
     }
@@ -58,9 +60,21 @@
         cursor: pointer;;
     }
 }
+.fondo-linkPelu{
+    position: absolute;
+    background-image: url('../assets/images/peluPrev.jpeg');
+    background-position: center;
+    background-size: cover;
+    width: 100dvw;
+    height: 240px;
+    filter: blur(3px);
+    z-index: -1;
+}
 
 .home-link-pelu {
-    background-image: url('../assets/images/lenguaAfuera.png');
+    position: relative;
+    top: 0;
+    bottom: 0;
     width: 100dvw;
     height: 240px;
     display: grid;

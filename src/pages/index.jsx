@@ -38,6 +38,7 @@ export const Home = () => {
                 </p>
                 <article>
                 <div className="home-link-pelu">
+                <i className="fondo-linkPelu"></i>
                     {!peluLink &&<div onClick={linksToPelu} className="peluPrevLink">
                         PELUQUERÍA CANINA<br></br><span>---- <i class="fa-regular fa-hand-pointer"></i> ----</span>
                     </div>}
