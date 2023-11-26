@@ -17,27 +17,41 @@ export const Home = () => {
         queryFn: getDogs,
         //select: dogs => dogs.sort((a, b) => b.id - a.id)
     });
+
     const [admin, setAdmin] = useState(false);
+    const [peluLink, setPeluLink] = useState(false);
     //const logo = require('../assets/images/LenguaLogo.png');
+
+    function linksToPelu() {
+        setPeluLink(!peluLink);
+    }
+
     return (
         <>
             <LogoLengua />
             <section className="home-public">
-                <h2>Hola</h2>
+                
                 <p>
                     En estos links podrás conocer los servicios que brindamos,
                     además ver equipamientos y accesorios en nuestra tienda para
                     tu compañero de 4 patas.
                 </p>
                 <article>
-                    <h4>1) PELUQUERÍA CANINA</h4>
-                    <h5>
-                        Conoce nuestro salón y más <br></br>
-                        Qué servicios ofrecemos.<br></br>
-                        Nuestra formación.<br></br>
-                        Nuestros trabajos y testimonios.<br></br>
+                <div className="home-link-pelu">
+                    {!peluLink &&<div onClick={linksToPelu} className="peluPrevLink">
+                        PELUQUERÍA CANINA<br></br><span>---- <i class="fa-regular fa-hand-pointer"></i> ----</span>
+                    </div>}
+                    {peluLink &&<div onClick={linksToPelu} className="peluRealLink">
+                    <a>- Conoce nuestro salón y más</a> <br></br>
+                    <a>- Qué servicios ofrecemos.</a><br></br>
+                    <a>- Nuestra formación.</a><br></br>
+                    <a>- Nuestros trabajos y testimonios.</a><br></br>
                         <a>Agenda tu turno</a>
-                    </h5>
+                    </div>}
+                </div>
+{/*                 
+                    <h4>1) PELUQUERÍA CANINA</h4>
+                     */}
                 </article>
                 <article>
                     <h4>2) TIENDA</h4>

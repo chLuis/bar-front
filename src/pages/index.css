@@ -9,7 +9,6 @@
     align-items: center;
     > h2 {
         margin: 0px;
-        margin-top: -30px;
     }
     > p {
         width: 70%;
@@ -39,6 +38,33 @@
     }
 }
 
+.peluPrevLink{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    font-size: 2rem;
+    color: black;
+    font-weight: 600;
+}
+.peluRealLink{
+    > a {
+        color: black;
+        font-weight: 600;
+        line-height: 40px;
+    }
+    > a:hover {
+        cursor: pointer;;
+    }
+}
+.home-link-pelu {
+    background-image: url('../assets/images/lenguaAfuera.png');
+    width: 100dvw;
+    height: 240px;
+    display: grid;
+    place-content: center;
+    transition: 0.4s;
+}
 
 
 

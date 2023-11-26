@@ -3,8 +3,13 @@ import './logoLengua.css'
 
 export const LogoLengua = () => {
     return (
-        <div className='img-logo' id='LogoLengua'>
-            <img className="home-img" src={logo} alt="home-img" width={220}/>
+        <div className='allLogo'>
+        <div className='container-logo' id='LogoLengua'>
+        <div className='img-logo'>
+            <img className="home-img" src={logo} alt="home-img" width={200}/>
+            </div>
+        <div className='container-logo-bottom'></div>
+        </div>
         </div>
     )
 }
