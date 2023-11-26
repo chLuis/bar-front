@@ -48,15 +48,16 @@
     font-weight: 600;
 }
 .peluRealLink{
-    > a {
-        color: black;
+    > .aToPelu {
+        color: black !important;
         font-weight: 600;
         line-height: 40px;
     }
-    > a:hover {
+    > aToPelu:hover {
         cursor: pointer;;
     }
 }
+
 .home-link-pelu {
     background-image: url('../assets/images/lenguaAfuera.png');
     width: 100dvw;

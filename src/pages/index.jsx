@@ -42,11 +42,11 @@ export const Home = () => {
                         PELUQUERÍA CANINA<br></br><span>---- <i class="fa-regular fa-hand-pointer"></i> ----</span>
                     </div>}
                     {peluLink &&<div onClick={linksToPelu} className="peluRealLink">
-                    <a>- Conoce nuestro salón y más</a> <br></br>
-                    <a>- Qué servicios ofrecemos.</a><br></br>
-                    <a>- Nuestra formación.</a><br></br>
-                    <a>- Nuestros trabajos y testimonios.</a><br></br>
-                        <a>Agenda tu turno</a>
+                    <a className="aToPelu">- Conoce nuestro salón y más</a> <br></br>
+                    <a className="aToPelu">- Qué servicios ofrecemos.</a><br></br>
+                    <a className="aToPelu">- Nuestra formación.</a><br></br>
+                    <a className="aToPelu">- Nuestros trabajos y testimonios.</a><br></br>
+                    <Link to="agenda"><a className="aToPelu">Agenda tu turno</a></Link>
                     </div>}
                 </div>
 {/*                 
