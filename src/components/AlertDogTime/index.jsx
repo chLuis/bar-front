@@ -2,6 +2,7 @@ import "./alertDogTime.css";
 import { useQuery } from "@tanstack/react-query";
 import { getDogs } from "../../api/dogsAPI";
 import { useState } from "react";
+import { LogoLengua, BtnHome } from "../index.js";
 
 export const AlertDogTime = () => {
     const {
@@ -15,6 +16,73 @@ export const AlertDogTime = () => {
         select: (dogs) => dogs.sort((a, b) => b.id - a.id),
     });
     const [diasNegativos, setDiasNegativos] = useState("");
+
+    if (isLoading)
+        return (
+            <>
+                <LogoLengua />
+                <h1 className="loader">
+                    <span className="loader-loading" style={{ "--d": "150ms" }}>
+                        C
+                    </span>
+                    <span className="loader-loading" style={{ "--d": "300ms" }}>
+                        A
+                    </span>
+                    <span className="loader-loading" style={{ "--d": "450ms" }}>
+                        R
+                    </span>
+                    <span className="loader-loading" style={{ "--d": "600ms" }}>
+                        G
+                    </span>
+                    <span className="loader-loading" style={{ "--d": "750ms" }}>
+                        A
+                    </span>
+                    <span className="loader-loading" style={{ "--d": "900ms" }}>
+                        N
+                    </span>
+                    <span
+                        className="loader-loading"
+                        style={{ "--d": "1050ms" }}
+                    >
+                        D
+                    </span>
+                    <span
+                        className="loader-loading"
+                        style={{ "--d": "1200ms" }}
+                    >
+                        O
+                    </span>
+                    <span
+                        className="loader-loading"
+                        style={{ "--d": "1350ms" }}
+                    >
+                        .
+                    </span>
+                    <span
+                        className="loader-loading"
+                        style={{ "--d": "1500ms" }}
+                    >
+                        .
+                    </span>
+                    <span
+                        className="loader-loading"
+                        style={{ "--d": "1650ms" }}
+                    >
+                        .
+                    </span>
+                </h1>
+                <BtnHome />
+            </>
+        );
+    else if (isError) {
+        //console.log(error)
+        return (
+            <>
+                <h1>{error.message}</h1>
+                <BtnHome />
+            </>
+        );
+    }
 
     function lastVisitDate(fecha) {
         //console.log(fecha)
@@ -51,12 +119,15 @@ export const AlertDogTime = () => {
     };
 
     return (
+        <>
+            <LogoLengua />
+        
         <div className="alertContainer">
             <div className="alertDogTimeTitle">
                 <p>🐶 Perro</p>
                 <p>Dueño</p>
                 <p>Rotación</p>
-                <p>📅 Última Visita</p>
+                <p>Última Visita</p>
                 <p>Vuelve en</p>
             </div>
             {dogs?.map((dog, i) =>
@@ -73,5 +144,7 @@ export const AlertDogTime = () => {
                 ) : null
             )}
         </div>
+        <BtnHome />
+        </>
     );
 };

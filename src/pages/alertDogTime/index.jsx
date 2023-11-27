@@ -1,4 +1,4 @@
-import { AlertDogTime, LogoLengua, BtnHome } from '../../components'
+import { AlertDogTime } from '../../components'
 
 
 export const AlertDogTimePage = () => {
@@ -6,9 +6,7 @@ export const AlertDogTimePage = () => {
 
     return (
         <>
-        <LogoLengua />
             <AlertDogTime />
-        <BtnHome />
         </>
         
     )
