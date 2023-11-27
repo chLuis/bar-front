@@ -20,10 +20,14 @@ export const Home = () => {
 
     const [admin, setAdmin] = useState(false);
     const [peluLink, setPeluLink] = useState(false);
+    const [tiendaLink, setTiendaLink] = useState(false);
     //const logo = require('../assets/images/LenguaLogo.png');
 
     function linksToPelu() {
         setPeluLink(!peluLink);
+    }
+    function linksToTienda() {
+        setTiendaLink(!tiendaLink);
     }
 
     return (
@@ -50,18 +54,20 @@ export const Home = () => {
                     <Link to="agenda"><a className="aToPelu">Agenda tu turno</a></Link>
                     </div>}
                 </div>
-{/*                 
-                    <h4>1) PELUQUERÍA CANINA</h4>
-                     */}
                 </article>
                 <article>
-                    <h4>2) TIENDA</h4>
-                    <h5>
-                        Equipamiento de paso<br></br>
-                        Cosmética natural<br></br>
-                        Accesorios<br></br>
-                        <a>Quiero mis kits de limpieza "Lengua Afuera"</a>
-                    </h5>
+                <div className="home-link-tienda">
+                <i className="fondo-linktienda"></i>
+                    {!tiendaLink &&<div onClick={linksToTienda} className="tiendaPrevLink">
+                    TIENDA<br></br><span>---- <i class="fa-regular fa-hand-pointer"></i> ----</span>
+                    </div>}
+                    {tiendaLink &&<div onClick={linksToTienda} className="tiendaRealLink">
+                    <a className="aTotienda">- Equipamiento de paso</a> <br></br>
+                    <a className="aTotienda">- Cosmética natural</a><br></br>
+                    <a className="aTotienda">- Accesorios</a><br></br>
+                    <a className="aTotienda">- Quiero mis kits de limpieza "Lengua Afuera"</a><br></br>
+                    </div>}
+                </div>
                 </article>
             </section>
             <button className="btn-momentaneo" onClick={() => setAdmin(!admin)}> Mostrar opciones de Administrador </button>

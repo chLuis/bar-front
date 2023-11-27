@@ -84,6 +84,53 @@
 }
 
 
+/*/ Tienda /*/
+.tiendaPrevLink{
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    font-size: 2rem;
+    color: rgb(43, 43, 42);
+    letter-spacing: 1px;
+    font-weight: 600;
+    
+}
+.tiendaRealLink{
+    > .aTotienda {
+        color:rgb(43, 43, 42) !important;
+        font-weight: 600;
+        line-height: 40px;
+    }
+    > aTotienda:hover {
+        cursor: pointer;;
+    }
+}
+.fondo-linktienda{
+    position: absolute;
+    background-image: url('../assets/images/tiendaPrev.jpeg');
+    background-position: center;
+    background-size: cover;
+    width: 100dvw;
+    height: 240px;
+    filter: blur(3px);
+    z-index: -1;
+}
+
+.home-link-tienda {
+    position: relative;
+    top: 0;
+    bottom: 0;
+    width: 100dvw;
+    height: 240px;
+    display: grid;
+    place-content: center;
+    transition: 0.4s;
+    text-shadow: rgb(62, 62, 59) 1px 0 10px;
+}
+
+
 
 
 

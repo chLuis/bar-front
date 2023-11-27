@@ -1,0 +1,12 @@
+.agendaCalendar {
+    margin-top: 30px;
+}
+th, td {
+    border: 1px solid black;
+    min-width: 70px !important;
+    max-width: 70px !important;
+}
+.horas{
+   max-width: 30px !important;
+   min-width: 30px !important;
+}
