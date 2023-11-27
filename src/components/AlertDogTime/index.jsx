@@ -12,9 +12,11 @@ export const AlertDogTime = () => {
         error,
     } = useQuery({
         queryKey: ["dogs"],
-        queryFn: getDogs,
-        select: (dogs) => dogs.sort((a, b) => b.id - a.id),
+        queryFn: getDogs
     });
+
+    const sortedDogs = dogs?.slice().sort((a, b) => (((new Date(a.lastVisit).getTime() + a.rotation * 24 * 60 * 60 * 1000) -  new Date()) / (24 * 60 * 60 * 1000)) - (((new Date(b.lastVisit).getTime() + b.rotation * 24 * 60 * 60 * 1000) -  new Date()) / (24 * 60 * 60 * 1000)))
+    console.log(sortedDogs)
     const [diasNegativos, setDiasNegativos] = useState("");
 
     if (isLoading)
@@ -127,17 +129,18 @@ export const AlertDogTime = () => {
                 <p>🐶 Perro</p>
                 <p>Dueño</p>
                 <p>Rotación</p>
-                <p>Última Visita</p>
                 <p>Vuelve en</p>
             </div>
-            {dogs?.map((dog, i) =>
+            {sortedDogs?.map((dog, i) =>
                 dog.lastVisit ? (
                     <div key={i} className="alertDogTime">
-                    <span className="tooltipPanel">Teléfono: {dog.phone}</span>
+                    <span className="tooltipPanel">
+                    <span>Teléfono: {dog.phone}</span><br></br>
+                    <span>Última vez: {lastVisitDate(dog.lastVisit)}</span><br></br>
+                    </span>
                         <p>{dog.name}</p>
                         <p>{dog.owner}</p>
                         <p>{dog.rotation}</p>
-                        <p>{lastVisitDate(dog.lastVisit)}</p>
                         <p>{calcularDiasRestantes(dog.lastVisit, dog.rotation)}{" "}
                             día/s.
                         </p>

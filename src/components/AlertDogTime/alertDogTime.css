@@ -8,12 +8,12 @@
     background-color: rgb(247, 225, 181);
     border: 1px solid black;
     display: grid;
-    grid-template-columns: 20% 20% 15% 20% 25%;
+    grid-template-columns: 20% 35% 20% 20%;
 }
 .alertDogTime{
     border: 1px solid black;
     display: grid;
-    grid-template-columns: 20% 20% 15% 20% 25%;
+    grid-template-columns: 20% 35% 20% 20%;
 }
 .alertDogTime{
     position: relative;
@@ -65,9 +65,10 @@
         color: rgb(202, 202, 202) !important;
         padding-inline: 10px;
         font-size: 1rem;
-        transform: translateY(-20px);
+        transform: translateY(-50px);
         background-color: rgb(230,17,3) !important;
         display: inline;
         opacity: 1 !important;
+        z-index: 3;
     }
 }
