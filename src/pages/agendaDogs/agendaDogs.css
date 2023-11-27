@@ -1,5 +1,7 @@
 .agendaCalendar {
+    max-width: 98dvw;
     margin-top: 30px;
+    overflow-x: scroll;
 }
 th, td {
     border: 1px solid black;
