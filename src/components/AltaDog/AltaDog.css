@@ -1,4 +1,5 @@
 .pageAltaDog{
+    margin: auto;
     margin-top: 40px;
     width: 90dvw !important;
 }
@@ -7,12 +8,14 @@
     background-color: rgb(86,37,25);
     padding: 6px 18px;
     border-radius: 10px;
-
+    margin-inline: 20px;
 }
 .form-alta-dog{
     display: grid;
     grid-template-columns: 100%;
     gap: 6px;
+    width: 95%;
+    margin: auto;
     font-size: 1.2rem !important;
     > input[type="number"]::-webkit-inner-spin-button,
     input[type="number"]::-webkit-outer-spin-button {
@@ -84,9 +87,9 @@
 
 .descriptionUpDog{
     color: rgb(244,232,208) !important;
-    > ::placeholder {
-        color: rgb(244,232,208) !important;
-    }
+}
+textarea::placeholder {
+    color: rgb(182, 182, 182);
 }
 
 .btn-up-dog{
