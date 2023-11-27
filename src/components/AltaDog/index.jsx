@@ -159,7 +159,7 @@ const handleSelectEnemiesChange = (selectedOptions) => {
 
 
     return (
-        <>
+        <div className='pageAltaDog'>
         <div className='allArea-altaDog'>
             <h2 className='title-alta-dog'>Dar de alta un perro</h2>
             <p className='subtitle-alta-dog'>(*) campos obligatorios</p>
@@ -210,5 +210,5 @@ const handleSelectEnemiesChange = (selectedOptions) => {
             </form>}
         </div>
             <BtnHome/>
-            </>
+            </div>
 )}
