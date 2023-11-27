@@ -133,6 +133,7 @@ export const AlertDogTime = () => {
             {dogs?.map((dog, i) =>
                 dog.lastVisit ? (
                     <div key={i} className="alertDogTime">
+                    <span className="tooltipPanel">Teléfono: {dog.phone}</span>
                         <p>{dog.name}</p>
                         <p>{dog.owner}</p>
                         <p>{dog.rotation}</p>

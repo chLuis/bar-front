@@ -8,11 +8,66 @@
     background-color: rgb(247, 225, 181);
     border: 1px solid black;
     display: grid;
-    grid-template-columns: 20% 20% 10% 20% 30%;
+    grid-template-columns: 20% 20% 15% 20% 25%;
 }
 .alertDogTime{
     border: 1px solid black;
     display: grid;
-    grid-template-columns: 20% 20% 10% 20% 30%;
+    grid-template-columns: 20% 20% 15% 20% 25%;
+}
+.alertDogTime{
+    position: relative;
+    border-bottom: 1px solid black;
+    font-size: 0.9rem;
+    & p {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        height: 35px;
+        padding: 5px;
+        margin: 5px;
+        overflow: hidden;
+    }
 }
 
+.tooltipPanel {
+    display: none;
+    position: absolute;
+    top: 0;
+    font-size: 0.8rem;
+    background: #fff;
+    color: #fff;
+    border-radius: 5px;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+.tooltipPanel::before{
+    position: absolute;
+    content: "";
+    height: 8px;
+    width: 8px;
+    background: #fff;
+    bottom: -3px;
+    left: 50%;
+    transform: translate(-50%) rotate(45deg);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.alertDogTime:hover, .tooltipPanel{
+    cursor: pointer;
+    transition: 0.15s;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto;
+    background-color: rgb(214, 112, 104) !important;
+    color: white;
+    > .tooltipPanel {
+        color: rgb(202, 202, 202) !important;
+        padding-inline: 10px;
+        font-size: 1rem;
+        transform: translateY(-20px);
+        background-color: rgb(230,17,3) !important;
+        display: inline;
+        opacity: 1 !important;
+    }
+}
