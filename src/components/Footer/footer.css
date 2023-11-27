@@ -32,9 +32,11 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: 0.3s;
 }
 .link-to-insta:hover{
-    color: rgb(215, 214, 214);    
+    color: rgb(215, 214, 214); 
+    scale: 1.2;  
 }
 .iconsFooter-insta, .iconsFooter-wsp, .spanFooter{
     font-size: 2rem;
@@ -49,10 +51,11 @@ footer {
     border-radius: 6px;
     overflow: hidden;
     margin: auto;
-    padding-inline: 2px;
+    padding: 5px 7px;
 }
 .iconsFooter-wsp {
     background-color: rgb(37,211,102);
-    padding-inline: 2px;
+    padding-block: 5px;
+    padding-inline: 7px;
     border-radius: 50%;
 }

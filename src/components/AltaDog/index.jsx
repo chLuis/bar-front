@@ -103,6 +103,7 @@ const handleSelectEnemiesChange = (selectedOptions) => {
                     const dog = Object.fromEntries(formData);
                     dog.friends = selectedFriends.map(amigo => amigo.value);
                     dog.enemies = selectedEnemies.map(enemigo => enemigo.value);
+                    dog.image = image
                     if(!dog.name){
                         return Swal.fire({
                             title: 'Hubo un error!',
@@ -143,7 +144,7 @@ const handleSelectEnemiesChange = (selectedOptions) => {
                     }
                     addDogMutation.mutate({   //------>>> Si quiero agregar algo que no esta en el body
                         ...dog,
-                        image: image
+                        //image: image
                     })
                     //addDogMutation.mutate(dog)
                 }
@@ -169,12 +170,11 @@ const handleSelectEnemiesChange = (selectedOptions) => {
                 <input type="number" placeholder="*Edad" name="age"/>
                 <input type="text" placeholder="*Dueño" name="owner"/>
                 <input type="number" placeholder="*Teléfono" name="phone"/>
-                <input type="email" placeholder="Email" name="email"/>
                 <input type="number" placeholder="*Rotación" name="rotation"/>
+                <input type="email" placeholder="Email" name="email"/>
                 <input type="text" placeholder="Enfermedad" name="disease"/>
                 <input type="text" placeholder="Discapacidad" name="disability"/>
                 <input type="text" placeholder="Alergia" name="allergy"/>
-                <input type="text" placeholder="Temperamento" name="temper"/>
                 <select name="castrated" placeholder='Castra3do?' defaultValue={-1}>
                     <option value={-1} disabled>Castrado?</option>
                     <option value="true">Si</option>
@@ -182,6 +182,7 @@ const handleSelectEnemiesChange = (selectedOptions) => {
                 </select>
                 <input type="text" placeholder="Tipo de Corte" name="typeOfCut"/>
                 <input type="text" placeholder="Tipo de Shampoo" name="typeOfShampoo"/>
+                <input type="text" placeholder="Temperamento" name="temper"/>
                 <Select name="friends"
                     options={optionsDogs}
                     closeMenuOnSelect={false}
@@ -202,6 +203,34 @@ const handleSelectEnemiesChange = (selectedOptions) => {
                     onChange={handleSelectEnemiesChange}
                     >
                 </Select>
+                <select name="photo"  defaultValue={-1}>
+                    <option value={-1} disabled>Sacar fotos?</option>
+                    <option value="true">Si</option>
+                    <option value="false">No</option>
+                </select>
+                <select name="video"  defaultValue={-1}>
+                    <option value={-1} disabled>Hacer videos?</option>
+                    <option value="true">Si</option>
+                    <option value="false">No</option>
+                </select>
+                <select name="paymentMode"  defaultValue={-1}>
+                    <option value={-1} disabled>Modo de pago?</option>
+                    <option value="Efectivo">Efectivo</option>
+                    <option value="Transferencia">Transferencia</option>
+                </select>
+                <select name="jumper"  defaultValue={-1}>
+                    <option value={-1} disabled>Salta de la mesa?</option>
+                    <option value="true">Si</option>
+                    <option value="false">No</option>
+                </select>
+                <select name="ownerStay"  defaultValue={-1}>
+                    <option value={-1} disabled>El dueño se queda?</option>
+                    <option value="true">Si</option>
+                    <option value="false">No</option>
+                </select>
+                <input type="number" placeholder="Saldo" name="balance"/>
+                <label name="lastVisit">Ultima visita?</label>
+                <input type="date" placeholder="Última visita" name="lastVisit"/>
                 <input accept='image/*' type='file' onChange={convertToBase64} className='imageUp'></input>
                 {image ==="" || image ===null ? "" : <img width={100} height={100} src={image} alt="Imagen Perro" />}
                 

@@ -1,0 +1,17 @@
+.alertContainer{
+    width: 98dvw;
+    border: 1px solid black;
+    background-color: rgb(249, 243, 230);
+}
+.alertDogTimeTitle{
+    background-color: rgb(247, 225, 181);
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: 20% 20% 10% 20% 30%;
+}
+.alertDogTime{
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: 20% 20% 10% 20% 30%;
+}
+

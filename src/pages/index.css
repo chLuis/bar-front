@@ -12,6 +12,7 @@
     }
     > p {
         width: 70%;
+        font-weight: 500;
     }
     > article {
         display: flex;
@@ -48,7 +49,10 @@
     color: rgb(43, 43, 42);
     letter-spacing: 1px;
     font-weight: 600;
-    
+    transition: 0.3s;
+}
+.peluPrevLink:hover{
+    scale: 1.2;
 }
 .peluRealLink{
     > .aToPelu {
@@ -95,7 +99,11 @@
     color: rgb(43, 43, 42);
     letter-spacing: 1px;
     font-weight: 600;
-    
+    transition: 0.3s;
+}
+
+.tiendaPrevLink:hover{
+    scale: 1.2;
 }
 .tiendaRealLink{
     > .aTotienda {

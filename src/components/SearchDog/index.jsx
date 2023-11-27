@@ -21,6 +21,23 @@ export const SearchDog = () => {
     const [enemiesGet, setEnemyGet] = useState([])
     const [image, setImage] = useState("")
     const [showBtnEdit, setShowBtnEdit] = useState(true)
+    const [balanceDog, setBalanceDog] = useState()
+    const [dateDog, setDateDog] = useState()
+
+    function handleSaldo(e) {
+        const saldoNumber = parseInt(e.target.value)
+        setBalanceDog(saldoNumber)
+        console.log(typeof balanceDog)
+    }
+    function handleDate(e) {
+        console.log(e.target.value)
+        const dateeee = e.target.value
+        console.log(dateeee)
+        const date = new Date(e.target.value)
+        console.log(date)
+        console.log(typeof date)
+        setDateDog(date)
+    }
 
     const {
         isLoading,
@@ -57,7 +74,7 @@ const updateDogMutation = useMutation({
             icon: 'success',
         })
         setTimeout(() => {
-            window.location.reload(true)
+           window.location.reload(true)
           }, 2000);
         
     },
@@ -77,7 +94,11 @@ function updateCompleteDog(e, _id) {
     //console.log(_id)
     //console.log(e.target)
     const formData = new FormData(e.target);
+    console.log(e.target)
     const dog = Object.fromEntries(formData);
+    dog.balance = balanceDog
+    dog.lastVisit = dateDog
+    console.log(dog)
     if(!dog.name){
         return Swal.fire({
             title: 'Hubo un error!',
@@ -144,7 +165,6 @@ function updateCompleteDog(e, _id) {
         showEnemies(id_dog)
         setIdDog(id_dog)
     }
-
 
     function showFriends(id) {
         let mostrarAmigos = []
@@ -263,6 +283,20 @@ function updateCompleteDog(e, _id) {
         const peleaConString = mostrarPeleaCon.join(", ")
         return peleaConString;
     }
+    function lastVisitDate(fecha){
+        //console.log(fecha)
+        if(fecha){
+            const date = new Date(fecha);
+            const offsetMinutes = new Date().getTimezoneOffset();
+            const fechaLocal = new Date(date.getTime() + offsetMinutes * 60000);
+            const año = fechaLocal?.getFullYear();
+            const mes = ('0' + (fechaLocal?.getMonth() + 1)).slice(-2); // Agregar un cero al mes si es necesario
+            const dia = ('0' + fechaLocal?.getDate()).slice(-2)
+            const fechaFormateada = `${año}-${mes}-${dia}`
+            return fechaFormateada
+        }
+        return null
+    }
 
     const handleSearch = (e) => {
         e.target.value
@@ -310,12 +344,19 @@ function updateCompleteDog(e, _id) {
                             <p>Discapacidad: {dog.disability}</p>
                             <p>Alergias: {dog.allergy}</p>
                             <p>Temperamento: {dog.temper}</p>
-                            <p>Castrado: {dog.castrated ? "Si" : "No"}</p>
+                            <p>Castrado: {typeof dog.castrated === 'boolean' ? dog.castrated? "Si":"No" : ""}</p>
                             <p>Tipo de corte: {dog.typeOfCut}</p>
                             <p>Tipo de shampoo: {dog.typeOfShampoo}</p>
-                            <p>Descripción: {dog.description}</p>
                             <p>Amigos: {mostrar(dog._id)}</p>
                             <p>Pelea con: {mostrarPelea(dog._id)}</p>
+                            <p>Hacer fotos? {typeof dog.photo === 'boolean' ? dog.photo ? "Si":"No" : ''}</p>
+                            <p>Hacer videos? {typeof dog.video === 'boolean' ? dog.video ? "Si":"No" : ''}</p>
+                            <p>Medio de pago? {dog.paymentMode}</p>
+                            <p>Salta de la mesa? {typeof dog.jumper === 'boolean' ? dog.jumper ? "Si":"No" : ''}</p>
+                            <p>El dueño se queda? {typeof dog.ownerStay === 'boolean' ? dog.ownerStay ? "Si":"No" : ''}</p>
+                            <p>Ultima visita: {lastVisitDate(dog.lastVisit)}</p>
+                            <p>Saldo: $ {dog.balance}</p>
+                            <p>Descripción: {dog.description}</p>
                             <div>
                             <button onClick={() => handleEditOption(dog._id)}>editar</button>
                             <button onClick={() => {handleDelete(dog._id)}}>borrar</button>
@@ -335,7 +376,6 @@ function updateCompleteDog(e, _id) {
                     <img src={dog.image? dog.image : perroSinFoto} height={100} width={100}></img>
                     <form onSubmit={(e) => updateCompleteDog(e, dog._id)}>
                     <div  className="formEditDog">
-                    
                     <input type="text" placeholder="Nombre*" name="name" defaultValue={dog.name}/>
                     <input type="text" placeholder="Raza*" name="race" defaultValue={dog.race}/>
                     <input type="number" placeholder="Edad*" name="age" defaultValue={dog.age}/>
@@ -347,7 +387,7 @@ function updateCompleteDog(e, _id) {
                     <input type="text" placeholder="Discapacidad" name="disability" defaultValue={dog.disability}/>
                     <input type="text" placeholder="Alergia" name="allergy" defaultValue={dog.allergy}/>
                     <input type="text" placeholder="Temperamento" name="temper" defaultValue={dog.temper}/>
-                    <select name="castrated" placeholder='Castra3do?' defaultValue={dog.castrated}>
+                    <select name="castrated" placeholder='Castra3do?' defaultValue={typeof dog.castrated === 'boolean' ? dog.castrated : -1}>
                         <option value="true">Si</option>
                         <option value="false">No</option>
                     </select>
@@ -376,6 +416,34 @@ function updateCompleteDog(e, _id) {
                         onChange={handleSelectEnemiesChange}
                         >
                     </Select>
+                    <select name="photo" placeholder='Hacer fotos?' defaultValue={typeof dog.photo === 'boolean' ? dog.photo : -1}>
+                        <option value={-1} disabled>Hacer fotos?</option>
+                        <option value="true">Si</option>
+                        <option value="false">No</option>
+                    </select>
+                    <select name="video" placeholder='Hacer videos?' defaultValue={typeof dog.video === 'boolean' ? dog.video : -1}>
+                        <option value={-1} disabled>Hacer videos?</option>
+                        <option value="true">Si</option>
+                        <option value="false">No</option>
+                    </select>
+                    <select name="paymentMode" defaultValue={dog.paymentMode ? dog.paymentMode : -1}>
+                        <option value={-1} disabled>Medios de pago</option>
+                        <option value="Efectivo">Efectivo</option>
+                        <option value="Transferencia">Transferencia</option>
+                    </select>
+                    <select name="jumper" defaultValue={typeof dog.jumper === 'boolean' ? dog.jumper : -1}>
+                        <option value={-1} disabled>Salta de la mesa?</option>
+                        <option value="true">Si</option>
+                        <option value="false">No</option>
+                    </select>
+                    <select name="ownerStay" defaultValue={typeof dog.ownerStay === 'boolean' ? dog.ownerStay : -1}>
+                        <option value={-1} disabled>El dueño se queda?</option>
+                        <option value="true">Si</option>
+                        <option value="false">No</option>
+                    </select>
+                    <input type="number" placeholder="Saldo" name="balance" defaultValue={dog.balance} onChange={handleSaldo}/>
+                    <label name="lastVisit">Ultima visita {lastVisitDate(dog.lastVisit)}</label>
+                    <input type="date" name="balance" defaultValue={dog.lastVisit} onChange={handleDate}/>
                     <label>Imagen</label>
                     <input accept='image/*' type='file' onChange={convertToBase64}></input>
                     {image ==="" || image ===null ? "" : <img width={100} height={100} src={image} alt="Imagen Perro" />}

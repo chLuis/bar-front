@@ -4,8 +4,10 @@ import "./dogs.css";
 import { BtnHome } from "../BtnHome";
 import perroSinFoto from '../../assets/images/perroSinFoto.png'
 import { EditDog } from '../EditDog/index'
+import Swal from "sweetalert2";
 
 export const Dogs = () => {
+    
     const fotoPerroSinFoto = perroSinFoto
     const queryClient = useQueryClient()
     const {
@@ -19,10 +21,31 @@ export const Dogs = () => {
         //select: dogs => dogs.sort((a, b) => b.id - a.id)
     });
 
+    function handleDelete(id) {
+        Swal.fire({
+            title: '¿Estas seguro de borrar a este perro?',
+            text: "No podras revertir esto!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, borrar!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                deleteDogMutation.mutate(id)
+            }
+          })
+    }
+        
+
     const deleteDogMutation = useMutation({
         mutationFn: deleteDog,
         onSuccess: () => {
-            console.log("borrado")
+            Swal.fire(
+                'Borrado!',
+                'El perro ha sido borrado.',
+                'success'
+            )
             queryClient.invalidateQueries(["dogs"]);
         }
     })
@@ -55,7 +78,7 @@ export const Dogs = () => {
                 <p>{dog.owner}</p>
                 <button>✏️ Editar</button>
                 <button onClick={() => {
-                    deleteDogMutation.mutate(dog._id);
+                    handleDelete(dog._id);
                 }}>🗑️ Borrar</button>
             </div>
             ))}

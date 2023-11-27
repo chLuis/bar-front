@@ -34,7 +34,6 @@ export const Home = () => {
         <>
             <LogoLengua />
             <section className="home-public">
-                
                 <p>
                     En estos links podrás conocer los servicios que brindamos,
                     además ver equipamientos y accesorios en nuestra tienda para
@@ -44,14 +43,14 @@ export const Home = () => {
                 <div className="home-link-pelu">
                 <i className="fondo-linkPelu"></i>
                     {!peluLink &&<div onClick={linksToPelu} className="peluPrevLink">
-                        PELUQUERÍA CANINA<br></br><span>---- <i class="fa-regular fa-hand-pointer"></i> ----</span>
+                        PELUQUERÍA CANINA<br></br><span>---- <i className="fa-regular fa-hand-pointer"></i> ----</span>
                     </div>}
                     {peluLink &&<div onClick={linksToPelu} className="peluRealLink">
-                    <a className="aToPelu">- Conoce nuestro salón y más</a> <br></br>
-                    <a className="aToPelu">- Qué servicios ofrecemos.</a><br></br>
-                    <a className="aToPelu">- Nuestra formación.</a><br></br>
-                    <a className="aToPelu">- Nuestros trabajos y testimonios.</a><br></br>
-                    <Link to="agenda"><a className="aToPelu">Agenda tu turno</a></Link>
+                    <Link to="" className="aToPelu">- Conoce nuestro salón y más</Link> <br></br>
+                    <Link to="" className="aToPelu">- Qué servicios ofrecemos.</Link><br></br>
+                    <Link to="" className="aToPelu">- Nuestra formación.</Link><br></br>
+                    <Link to="" className="aToPelu">- Nuestros trabajos y testimonios.</Link><br></br>
+                    <Link to="agenda" className="aToPelu">Agenda tu turno</Link>
                     </div>}
                 </div>
                 </article>
@@ -59,13 +58,13 @@ export const Home = () => {
                 <div className="home-link-tienda">
                 <i className="fondo-linktienda"></i>
                     {!tiendaLink &&<div onClick={linksToTienda} className="tiendaPrevLink">
-                    TIENDA<br></br><span>---- <i class="fa-regular fa-hand-pointer"></i> ----</span>
+                    TIENDA<br></br><span>---- <i className="fa-regular fa-hand-pointer"></i> ----</span>
                     </div>}
                     {tiendaLink &&<div onClick={linksToTienda} className="tiendaRealLink">
-                    <a className="aTotienda">- Equipamiento de paso</a> <br></br>
-                    <a className="aTotienda">- Cosmética natural</a><br></br>
-                    <a className="aTotienda">- Accesorios</a><br></br>
-                    <a className="aTotienda">- Quiero mis kits de limpieza "Lengua Afuera"</a><br></br>
+                    <Link to="" className="aTotienda">- Equipamiento de paso</Link> <br></br>
+                    <Link to="" className="aTotienda">- Cosmética natural</Link><br></br>
+                    <Link to="" className="aTotienda">- Accesorios</Link><br></br>
+                    <Link to="" className="aTotienda">- Quiero mis kits de limpieza "Lengua Afuera"</Link><br></br>
                     </div>}
                 </div>
                 </article>
@@ -84,6 +83,9 @@ export const Home = () => {
                     </Link>
                     <Link to="agenda">
                         <button className="btn-opt">🗓️ Agenda</button>
+                    </Link>
+                    <Link to="alertdogtime">
+                        <button className="btn-opt">🚨 Alerta!</button>
                     </Link>
                     {/* <Link to="edit">
                         <button className="btn-opt">✏️ Editar</button>

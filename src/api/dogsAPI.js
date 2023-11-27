@@ -26,6 +26,7 @@ export const deleteDog = async (id) => {
 }
 
 export const updateDog = async (dog) => {
+    console.log(dog)
     try {
         const res = await dogsApi.patch(`/patch/${dog.id}`, dog)
         return res.data
