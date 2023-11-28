@@ -152,7 +152,7 @@ function updateCompleteDog(e, _id) {
 }
 
     const optionsDogs = dogs?.map(dog => ({ value: dog._id, label: dog.name }));
-    optionsDogs.unshift({ value: 'Todos', label: 'Todos' })
+    optionsDogs?.unshift({ value: 'Todos', label: 'Todos' })
 
     const handleSelectFriendsChange = (selectedOptions) => {
       setSelectedFriends(selectedOptions);
@@ -298,7 +298,7 @@ function updateCompleteDog(e, _id) {
 
     const handleSearch = (e) => {
         e.target.value
-            ? setFilteredDogs(dogs.filter((dog) => dog.name.includes(e.target.value)))
+            ? setFilteredDogs(dogs.filter((dog) => (dog.name.toLowerCase()).includes(e.target.value.toLowerCase())))
             : null;
         e.target.value === "" ? setFilteredDogs([]) : null;
     };

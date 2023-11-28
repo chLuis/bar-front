@@ -63,7 +63,7 @@ export const EditDog = () => {
 
     const animatedComponents = makeAnimated()
     const optionsDogs = dogs?.map(dog => ({ value: dog._id, label: dog.name }));
-    optionsDogs.unshift({ value: 'Todos', label: 'Todos' })
+    optionsDogs?.unshift({ value: 'Todos', label: 'Todos' })
 
     const handleSelectFriendsChange = (selectedOptions) => {
       setSelectedFriends(selectedOptions);

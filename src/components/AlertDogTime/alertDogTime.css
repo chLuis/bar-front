@@ -1,8 +1,10 @@
 .alertContainer{
     width: 98dvw;
     border: 1px solid black;
+    border-radius: 8px;
     margin-top: 30px;
     background-color: rgb(249, 243, 230);
+    overflow: hidden;
 }
 .alertDogTimeTitle{
     background-color: rgb(247, 225, 181);
