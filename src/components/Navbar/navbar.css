@@ -1,0 +1,33 @@
+.navbar-container{
+    position: fixed !important;
+    z-index: 5;
+    width: 100%;
+}
+.navbar {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 16px;
+    height: 36px;
+    color: rgb(244,232,208);
+    background-color: rgb(230, 46, 32);
+    z-index: 4 !important;
+}
+.navbar-links-left {
+    display: flex;
+    gap: 12px;
+}
+
+
+.Links-navbar, .Links-navbar-home{
+    display: flex;
+    align-items: center;
+    height: 36px;
+    color: white;
+}
+.Links-navbar-home {
+    font-size: 1.05rem;
+    font-weight: 800;
+}
