@@ -16,7 +16,7 @@ export const AlertDogTime = () => {
     });
 
     const sortedDogs = dogs?.slice().sort((a, b) => (((new Date(a.lastVisit).getTime() + a.rotation * 24 * 60 * 60 * 1000) -  new Date()) / (24 * 60 * 60 * 1000)) - (((new Date(b.lastVisit).getTime() + b.rotation * 24 * 60 * 60 * 1000) -  new Date()) / (24 * 60 * 60 * 1000)))
-    console.log(sortedDogs)
+    //console.log(sortedDogs)
     const [diasNegativos, setDiasNegativos] = useState("");
 
     if (isLoading)
@@ -128,20 +128,19 @@ export const AlertDogTime = () => {
             <div className="alertDogTimeTitle">
                 <p>🐶 Perro</p>
                 <p>Dueño</p>
-                <p>Rotación</p>
                 <p>Vuelve en</p>
             </div>
             {sortedDogs?.map((dog, i) =>
-                dog.lastVisit ? (
+                dog.lastVisit.length > 0  ? (
                     <div key={i} className="alertDogTime">
                     <span className="tooltipPanel">
-                    <span>Teléfono: {dog.phone}</span><br></br>
+                    <span>Vuelve cada: {dog.rotation} dias</span><br></br>
                     <span>Última vez: {lastVisitDate(dog.lastVisit)}</span><br></br>
+                    <span>Teléfono: {dog.phone}</span><br></br>
                     </span>
-                        <p>{dog.name}</p>
-                        <p>{dog.owner}</p>
-                        <p>{dog.rotation}</p>
-                        <p>{calcularDiasRestantes(dog.lastVisit, dog.rotation)}{" "}
+                        <p className="data-alert-cuadro">{dog.name}</p>
+                        <p className="data-alert-cuadro">{dog.owner}</p>
+                        <p className="data-alert-cuadro">{calcularDiasRestantes(dog.lastVisit, dog.rotation)}{" "}
                             día/s.
                         </p>
                     </div>

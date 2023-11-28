@@ -83,6 +83,13 @@ export const AltaDog = () => {
 const handleSelectFriendsChange = (selectedOptions) => {
   setSelectedFriends(selectedOptions);
 };
+function handleLastVisit(e) {
+    console.log(e.target.value)
+    console.log(typeof e.target.value)
+    const lastVisit = new Date(e.target.value)
+    console.log(lastVisit)
+    console.log(typeof lastVisit)
+}
 
 const handleSelectEnemiesChange = (selectedOptions) => {
   setSelectedEnemies(selectedOptions);
@@ -103,6 +110,7 @@ const handleSelectEnemiesChange = (selectedOptions) => {
                     const dog = Object.fromEntries(formData);
                     dog.friends = selectedFriends.map(amigo => amigo.value);
                     dog.enemies = selectedEnemies.map(enemigo => enemigo.value);
+                    //dog.lastVisit.unshift()
                     dog.image = image
                     if(!dog.name){
                         return Swal.fire({
@@ -230,7 +238,7 @@ const handleSelectEnemiesChange = (selectedOptions) => {
                 </select>
                 <input type="number" placeholder="Saldo" name="balance"/>
                 <label name="lastVisit">Ultima visita?</label>
-                <input type="date" placeholder="Última visita" name="lastVisit"/>
+                <input type="date" placeholder="Última visita" name="lastVisit" onChange={(e) => handleLastVisit(e)}/>
                 <input accept='image/*' type='file' onChange={convertToBase64} className='imageUp'></input>
                 {image ==="" || image ===null ? "" : <img width={100} height={100} src={image} alt="Imagen Perro" />}
                 
