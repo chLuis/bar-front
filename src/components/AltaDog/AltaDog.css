@@ -60,7 +60,7 @@
     color: rgb(244,232,208);
     text-align: start;
     > :not(hover) {
-        color: rgb(244,232,208) !important;
+        color: rgb(41, 41, 40) !important;
         background-color: rgb(186, 80, 53);
     }
 }

@@ -68,14 +68,14 @@ const updateDogMutation = useMutation({
     mutationFn: updateDog,
     onSuccess: () => {
         queryClient.invalidateQueries(["dogs"]);
-        setShowBtnEdit(false)
+        setShowBtnEdit(true)
         Toast.fire({
             title: 'Perro editado!',
             icon: 'success',
         })
-        setTimeout(() => {
-           window.location.reload(true)
-          }, 2000);
+         setTimeout(() => {
+            window.location.reload(true)
+           }, 2000);
         
     },
     onError: (error) => {
@@ -160,43 +160,56 @@ function updateCompleteDog(e, _id) {
     const handleSelectEnemiesChange = (selectedOptions) => {
         setSelectedEnemies(selectedOptions);
       };
-    //   function updateDogOpenForm(id_dog) {
-    //     toggleFormUpdateDog()
-    //     showFriends(id_dog)
-    //     showEnemies(id_dog)
-    //     setIdDog(id_dog)
-    // }
+
 
     function showFriends(id) {
         let mostrarAmigos = []
         for (let i = 0; i < dogs?.length; i++) {
+            if(dogs[i]._id === id && dogs[i].friends[0] === "Todos"){
+                console.log(dogs[i].friends[0])
+                mostrarAmigos.push({value: dogs[i].friends[0], label: dogs[i].friends[0]})
+                setSelectedFriends(mostrarAmigos)
+                return setFriendGet(mostrarAmigos)
+            }
             if (dogs[i]?._id === id) {
+                let mostrarAmigos = []
                 for (let j = 0; j < dogs[i]?.friends?.length; j++) {
                     for(let k = 0; k < dogs?.length; k++) {
                         if(dogs[k]._id === dogs[i]?.friends[j]) {
                             mostrarAmigos.push({value: dogs[i].friends[j], label: dogs[k].name})
+                            setSelectedFriends(mostrarAmigos)
                         }
                     }
                 }
+                return setFriendGet(mostrarAmigos)
             }
         }
-        return setFriendGet(mostrarAmigos)
+        return
     }
 
     function showEnemies(id) {
         let mostrarEnemigos = []
         for (let i = 0; i < dogs?.length; i++) {
+            if(dogs[i]._id === id && dogs[i].enemies[0] === "Todos"){
+                console.log(dogs[i].enemies[0])
+                mostrarEnemigos.push({value: dogs[i].enemies[0], label: dogs[i].enemies[0]})
+                setSelectedEnemies(mostrarEnemigos)
+                return setEnemyGet(mostrarEnemigos)
+            }
             if (dogs[i]?._id === id) {
+                let mostrarEnemigos = []
                 for (let j = 0; j < dogs[i]?.enemies?.length; j++) {
                     for(let k = 0; k < dogs?.length; k++) {
                         if(dogs[k]._id === dogs[i]?.enemies[j]) {
                             mostrarEnemigos.push({value: dogs[i].enemies[j], label: dogs[k].name})
+                            setSelectedEnemies(mostrarEnemigos)
                         }
                     }
                 }
+                return setEnemyGet(mostrarEnemigos)
             }
         }
-        return setEnemyGet(mostrarEnemigos)
+        return
     }
     
     function toggleFormUpdateDog() {
@@ -253,35 +266,53 @@ function updateCompleteDog(e, _id) {
     function mostrar(id) {
         let mostrarAmigos = []
         for (let i = 0; i < dogs?.length; i++) {
-            if (dogs[i]._id === id) {
-                for (let j = 0; j < dogs[i]?.friends?.length; j++) {
-                    for (let k = 0; k < dogs?.length; k++) {
-                        if (dogs[k]._id === dogs[i]?.friends[j]) {
-                            mostrarAmigos.push(dogs[k].name);
+            if(dogs[i]._id === id && dogs[i].friends[0] === "Todos"){
+                mostrarAmigos.push(dogs[i].friends[0])
+                const amigosString = mostrarAmigos.join(", ")
+                return amigosString;
+            } else {
+                let mostrarAmigos = []
+                if (dogs[i]._id === id) {
+                    for (let j = 0; j < dogs[i]?.friends?.length; j++) {
+                        for (let k = 0; k < dogs?.length; k++) {
+                            if (dogs[k]._id === dogs[i]?.friends[j]) {
+                                mostrarAmigos.push(dogs[k].name);
+                            }
                         }
                     }
                 }
+                const amigosString = mostrarAmigos.join(", ")
+                return amigosString;
             }
         }
-        const amigosString = mostrarAmigos.join(", ")
-        return amigosString;
+        return ;
     }
+
     function mostrarPelea(id) {
         let mostrarPeleaCon = []
         for (let i = 0; i < dogs?.length; i++) {
-            if (dogs[i]._id === id) {
-                for (let j = 0; j < dogs[i]?.enemies?.length; j++) {
-                    for (let k = 0; k < dogs?.length; k++) {
-                        if (dogs[k]._id === dogs[i].enemies[j]) {
-                            mostrarPeleaCon.push(dogs[k].name);
+            if(dogs[i]._id === id && dogs[i].enemies[0] === "Todos"){
+                mostrarPeleaCon.push(dogs[i].enemies[0])
+                const peleaConString = mostrarPeleaCon.join(", ")
+                return peleaConString;
+            } else if (dogs[i].enemies[0] !== "Todos"){
+                let mostrarPeleaCon = []
+                if (dogs[i]._id === id) {
+                    for (let j = 0; j < dogs[i]?.enemies?.length; j++) {
+                        for (let k = 0; k < dogs?.length; k++) {
+                            if (dogs[k]._id === dogs[i]?.enemies[j]) {
+                                mostrarPeleaCon.push(dogs[k].name);
+                            }
                         }
                     }
                 }
+                const peleaConString = mostrarPeleaCon.join(", ")
+                return peleaConString;
             }
         }
-        const peleaConString = mostrarPeleaCon.join(", ")
-        return peleaConString;
+        return ;
     }
+
     function lastVisitDate(fecha){
         if(fecha){
             const date = new Date(fecha);
@@ -355,7 +386,7 @@ function updateCompleteDog(e, _id) {
                             <p>Descripción: {dog.description}</p>
                             <div>
                                 <button onClick={() => handleEditOption(dog._id)}>editar</button>
-                                <button onClick={() => {handleDelete(dog._id)}}>borrar</button>
+                                <button onClick={() => handleDelete(dog._id)}>borrar</button>
                             </div>
                         </div>
                     );
@@ -450,12 +481,6 @@ function updateCompleteDog(e, _id) {
                         </form>
                     </div> : null))}
                     
-                    
-
-
-
-
-
                 <button onClick={toggleFormUpdateDog}>
                     Cerrar
                 </button>
