@@ -165,6 +165,7 @@ const handleSelectEnemiesChange = (selectedOptions) => {
 
     const animatedComponents = makeAnimated()
     const optionsDogs = dogs?.map(dog => ({ value: dog._id, label: dog.name }));
+    optionsDogs.unshift({ value: 'Todos', label: 'Todos' })
 
 
     return (

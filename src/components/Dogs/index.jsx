@@ -5,6 +5,8 @@ import { BtnHome } from "../BtnHome";
 import perroSinFoto from '../../assets/images/perroSinFoto.png'
 import { EditDog } from '../EditDog/index'
 import Swal from "sweetalert2";
+import { useEffect } from "react";
+
 
 export const Dogs = () => {
     
@@ -20,6 +22,20 @@ export const Dogs = () => {
         queryFn: getDogs,
         //select: dogs => dogs.sort((a, b) => b.id - a.id)
     });
+    
+    const deleteDogMutation = useMutation({
+        mutationFn: deleteDog,
+        onSuccess: () => {
+            queryClient.invalidateQueries(["dogs"]);
+            Swal.fire(
+                'Borrado!',
+                'El perro ha sido borrado.',
+                'success'
+            )
+        },
+    })
+
+
 
     function handleDelete(id) {
         Swal.fire({
@@ -38,17 +54,7 @@ export const Dogs = () => {
     }
         
 
-    const deleteDogMutation = useMutation({
-        mutationFn: deleteDog,
-        onSuccess: () => {
-            Swal.fire(
-                'Borrado!',
-                'El perro ha sido borrado.',
-                'success'
-            )
-            queryClient.invalidateQueries(["dogs"]);
-        }
-    })
+
 
     if (isLoading) return <>
         <h1 className="loader">
@@ -78,7 +84,6 @@ export const Dogs = () => {
 
     return (
         <div>
-        {/* <EditDog /> */}
         <div className="dog-list">
             {dogs.map(dog => (
             <div key={dog._id} className="dog-element-list">
