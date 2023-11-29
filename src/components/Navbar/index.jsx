@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export const Navbar = () => {
 
-    const [showMenu, setShowMenu] = useState(true);
+    const [showMenu, setShowMenu] = useState(false);
     //const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
   
 
