@@ -7,6 +7,9 @@ import makeAnimated from 'react-select/animated'
 import { BtnHome } from "../index.js";
 import perroSinFoto from "../../assets/images/perroSinFoto.png";
 import Swal from "sweetalert2";
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+import Button from '@mui/material/Button';
 
 export const SearchDog = () => {
     
@@ -23,19 +26,22 @@ export const SearchDog = () => {
     const [showBtnEdit, setShowBtnEdit] = useState(true)
     const [balanceDog, setBalanceDog] = useState()
     const [dateDog, setDateDog] = useState()
+    const [open, setOpen] = useState(false);
+  
+    const handleClose = () => {
+    setOpen(false);
+    };
+  
+    const handleOpen = () => {
+    setOpen(true);
+    };
 
     function handleSaldo(e) {
         const saldoNumber = parseInt(e.target.value)
         setBalanceDog(saldoNumber)
-        console.log(typeof balanceDog)
     }
     function handleDate(e) {
-        console.log(e.target.value)
-        const dateeee = e.target.value
-        console.log(dateeee)
         const date = new Date(e.target.value)
-        console.log(date)
-        console.log(typeof date)
         setDateDog(date)
     }
 
@@ -51,6 +57,7 @@ export const SearchDog = () => {
     const Toast = Swal.mixin({
         toast: true,
         position: "top-end",
+        zIndex: 11,
         showConfirmButton: false,
         timer: 2000,
         timerProgressBar: true,
@@ -68,17 +75,19 @@ const updateDogMutation = useMutation({
     mutationFn: updateDog,
     onSuccess: () => {
         queryClient.invalidateQueries(["dogs"]);
-        setShowBtnEdit(true)
+        setShowBtnEdit(false)
         Toast.fire({
             title: 'Perro editado!',
             icon: 'success',
         })
          setTimeout(() => {
+            handleClose()
             window.location.reload(true)
            }, 2000);
         
     },
     onError: (error) => {
+        handleClose()
         Swal.fire({
             title: 'Hubo un error!',
             icon: 'error',
@@ -90,15 +99,12 @@ const updateDogMutation = useMutation({
 });
 
 function updateCompleteDog(e, _id) {
+    handleOpen()
     e.preventDefault();
-    //console.log(_id)
-    //console.log(e.target)
     const formData = new FormData(e.target);
-    console.log(e.target)
     const dog = Object.fromEntries(formData);
     dog.balance = balanceDog
     dog.lastVisit = dateDog
-    console.log(dog)
     if(!dog.name){
         return Swal.fire({
             title: 'Hubo un error!',
@@ -140,15 +146,17 @@ function updateCompleteDog(e, _id) {
     dog.friends = selectedFriends.map(amigo => amigo.value);
     dog.enemies = selectedEnemies.map(enemigo => enemigo.value);
     dog._id = _id
-    dog.image = image
-    //console.log(dog)
+    if(image !== "")
+    {   
+        dog.image = image
+    }
+    //dog.image = image
     // addDogMutation.mutate({   //------>>> Si quiero agregar algo que no esta en el body
     //     ...dog,
     //     image: image
     // })
-    //console.log(dog)
     updateDogMutation.mutate(dog)
-    //console.log("Si ando")
+
 }
 
     const optionsDogs = dogs?.map(dog => ({ value: dog._id, label: dog.name }));
@@ -166,7 +174,6 @@ function updateCompleteDog(e, _id) {
         let mostrarAmigos = []
         for (let i = 0; i < dogs?.length; i++) {
             if(dogs[i]._id === id && dogs[i].friends[0] === "Todos"){
-                console.log(dogs[i].friends[0])
                 mostrarAmigos.push({value: dogs[i].friends[0], label: dogs[i].friends[0]})
                 setSelectedFriends(mostrarAmigos)
                 return setFriendGet(mostrarAmigos)
@@ -191,7 +198,6 @@ function updateCompleteDog(e, _id) {
         let mostrarEnemigos = []
         for (let i = 0; i < dogs?.length; i++) {
             if(dogs[i]._id === id && dogs[i].enemies[0] === "Todos"){
-                console.log(dogs[i].enemies[0])
                 mostrarEnemigos.push({value: dogs[i].enemies[0], label: dogs[i].enemies[0]})
                 setSelectedEnemies(mostrarEnemigos)
                 return setEnemyGet(mostrarEnemigos)
@@ -253,11 +259,10 @@ function updateCompleteDog(e, _id) {
     const deleteDogMutation = useMutation({
         mutationFn: deleteDog,
         onSuccess: () => {
-            console.log("borrado")
             queryClient.invalidateQueries(["dogs"]);
             setTimeout(() => {
                 window.location.reload(true)
-              }, 2000);
+            }, 2000);
         }
     })
 
@@ -341,10 +346,19 @@ function updateCompleteDog(e, _id) {
         setFormUpdateDog(!formUpdateDog)
         setShowFilter(!showFilter)
     }
+    
 
     return (
         <>
-            <div>
+            <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer-1 }}
+        open={open}
+        onClick={handleClose}
+      >
+      <CircularProgress color="inherit" />
+
+      </Backdrop>
+            <div className="container-search">
                 <input
                     type="text"
                     placeholder="Buscar perro"
@@ -470,7 +484,7 @@ function updateCompleteDog(e, _id) {
                                     <input type="date" name="balance" defaultValue={dog.lastVisit} onChange={handleDate}/>
                                 <label>Imagen</label>
                                 <input accept='image/*' type='file' onChange={convertToBase64}></input>
-                                {image ==="" || image ===null ? "" : <img width={100} height={100} src={image} alt="Imagen Perro" />}
+                                {image ==="" || image ===null ? <img width={100} height={100} src={dog.image} alt="Imagen Perro" /> : <img width={100} height={100} src={image} alt="Imagen Perro" />}
                                 <textarea placeholder="Descripción" name="description" rows={4} defaultValue={dog.description}/>
                                 {!updateDogMutation.isPending && showBtnEdit && 
                                     <button type="submit" className="sendEditForm">
