@@ -16,7 +16,6 @@ export const AlertDogTime = () => {
     });
 
     const sortedDogs = dogs?.slice().sort((a, b) => (((new Date(a.lastVisit).getTime() + a.rotation * 24 * 60 * 60 * 1000) -  new Date()) / (24 * 60 * 60 * 1000)) - (((new Date(b.lastVisit).getTime() + b.rotation * 24 * 60 * 60 * 1000) -  new Date()) / (24 * 60 * 60 * 1000)))
-    //console.log(sortedDogs)
     const [diasNegativos, setDiasNegativos] = useState("");
 
     if (isLoading)
@@ -77,7 +76,6 @@ export const AlertDogTime = () => {
             </>
         );
     else if (isError) {
-        //console.log(error)
         return (
             <>
                 <h1>{error.message}</h1>
@@ -87,7 +85,6 @@ export const AlertDogTime = () => {
     }
 
     function lastVisitDate(fecha) {
-        //console.log(fecha)
         if (fecha) {
             const date = new Date(fecha);
             const offsetMinutes = new Date().getTimezoneOffset();

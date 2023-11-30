@@ -183,7 +183,6 @@ export const EditDog = () => {
         // })
 
         updateDogMutation.mutate(dog)
-        //console.log("Si ando")
     }
 
     return (

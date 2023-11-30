@@ -52,7 +52,6 @@ export const AltaDog = () => {
         mutationFn: createDog,
         onSuccess: ()=> {
             setShowBtnEdit(false)
-            console.log("Creando!");
             queryClient.invalidateQueries(['dogs'])
             Toast.fire({
                 title: 'Perro dado de alta!',
@@ -77,11 +76,10 @@ export const AltaDog = () => {
     })
 
     function convertToBase64(e) {
-        console.log(e)
         let reader = new FileReader();
         reader.readAsDataURL(e.target.files[0]);
         reader.onload =  () => {
-            console.log(reader.result) // string
+            //console.log(reader.result) // string
             const imageString = reader.result
             setImage(imageString)
         };
@@ -96,11 +94,11 @@ const handleSelectFriendsChange = (selectedOptions) => {
   setSelectedFriends(selectedOptions);
 };
 function handleLastVisit(e) {
-    console.log(e.target.value)
-    console.log(typeof e.target.value)
+    //console.log(e.target.value)
+    //console.log(typeof e.target.value)
     const lastVisit = new Date(e.target.value)
     console.log(lastVisit)
-    console.log(typeof lastVisit)
+    //console.log(typeof lastVisit)
 }
 
 const handleSelectEnemiesChange = (selectedOptions) => {

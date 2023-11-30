@@ -77,7 +77,6 @@ export const AgendaPage = () => {
             </>
         );
     else if (isError) {
-        //console.log(error)
         return (
             <>
                 <h1>{error.message}</h1>
