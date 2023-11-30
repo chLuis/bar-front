@@ -67,7 +67,7 @@ nav{
 .navbar {
     background-color: #8f4242;
     color: #fff;
-    padding: 10px 20px;
+    padding: 10px 20px 10px 12px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -81,6 +81,8 @@ nav{
   .navbar a {
     color: #fff;
     text-decoration: none;
+    height: 50px !important;
+    margin: 0px;
     margin-right: 20px;
   }
   
@@ -88,10 +90,38 @@ nav{
     font-size: 1.3rem;
     cursor: pointer;
     display: none;
-    padding-inline: 10px;
+    padding: 0px 16px 0px 0px;
   }
   
-  
+  .navbar-pelu-div {
+    display: flex;
+    padding-left: 18px;
+    > a {
+      padding: 0px !important;
+      margin: 0px !important; 
+    }
+  }
+  .navbar-pelu-div-links {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0px 20px 20px;
+    height: fit-content !important;
+  }
+  .aToPelu{
+    max-height: 16px !important;
+    width: fit-content !important;
+    line-height: 12px !important;
+    margin: 0px !important;
+  }
+  .aToPelu:hover {
+    color: rgb(212, 149, 149);
+  }
+  .navbar-redes{
+    display: flex;
+    width: fit-content;
+    margin: 5px 0px 0px 16px;
+  }
+
   /* Media query para mostrar u ocultar elementos según el tamaño de la pantalla */
   @media (max-width: 1200px) {
     
@@ -142,9 +172,8 @@ nav{
 
     .navbar.active .mobile-menu.active a {
         display: flex;
-        padding: 5px 10px;
+        padding: 0px 10px;
         width: 100%;
-        height: 40px;
         transform: translateX(0%);
     }
   }
