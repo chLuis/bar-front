@@ -32,20 +32,20 @@ export const Navbar = () => {
           <div>
           <div className="navbar-pelu-div">Peluqueria</div>
             <div className="navbar-pelu-div-links">
-              <Link to="peluqueria/nuestrosalon" className="aToPelu">- Conoce nuestro salón y más</Link> <br></br>
-              <Link to="peluqueria/nuestrosservicios" className="aToPelu">- Qué servicios ofrecemos</Link><br></br>
-              <Link to="peluqueria/nuestraformacion" className="aToPelu">- Nuestra formación</Link><br></br>
-              <Link to="peluqueria/trabajosytestimonios" className="aToPelu">- Nuestros trabajos y testimonios</Link><br></br>
-              <Link to="agenda" className="aToPelu">- Agenda tu turno</Link>
+              <Link to="peluqueria/nuestrosalon" className="navbarToPelu">- Conoce nuestro salón y más</Link> <br></br>
+              <Link to="peluqueria/nuestrosservicios" className="navbarToPelu">- Qué servicios ofrecemos</Link><br></br>
+              <Link to="peluqueria/nuestraformacion" className="navbarToPelu">- Nuestra formación</Link><br></br>
+              <Link to="peluqueria/trabajosytestimonios" className="navbarToPelu">- Nuestros trabajos y testimonios</Link><br></br>
+              <Link to="agenda" className="navbarToPelu">- Agenda tu turno</Link>
             </div>
           </div>
           <div>
             <div className="navbar-pelu-div">Tienda</div>
             <div className="navbar-pelu-div-links">
-              <Link to="peluqueria/nuestrosalon" className="aToPelu">- Equipamiento de paseo</Link> <br></br>
-              <Link to="peluqueria/nuestrosservicios" className="aToPelu">- Cosmética natural</Link><br></br>
-              <Link to="peluqueria/nuestraformacion" className="aToPelu">- Accesorios</Link><br></br>
-              <Link to="peluqueria/trabajosytestimonios" className="aToPelu">- ¡Quiero mis kits de limpieza "Lengua Afuera"</Link><br></br>
+              <Link to="peluqueria/nuestrosalon" className="navbarToPelu">- Equipamiento de paseo</Link> <br></br>
+              <Link to="peluqueria/nuestrosservicios" className="navbarToPelu">- Cosmética natural</Link><br></br>
+              <Link to="peluqueria/nuestraformacion" className="navbarToPelu">- Accesorios</Link><br></br>
+              <Link to="peluqueria/trabajosytestimonios" className="navbarToPelu">- ¡Quiero mis kits de limpieza "Lengua Afuera"</Link><br></br>
             </div>
           </div>
           <div className="navbar-pelu-div">Contacto</div>
@@ -56,7 +56,8 @@ export const Navbar = () => {
             <a href="https://w.app/5fgq7w" className="link-to-insta">
                 <i className="fa-brands fa-whatsapp iconsFooter-wsp"></i>
             </a>
-        </div></div>
+          </div>
+        </div>
       </nav>
     );
   };
