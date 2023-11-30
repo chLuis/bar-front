@@ -6,6 +6,8 @@ import Select from 'react-select'
 import makeAnimated from 'react-select/animated'
 import { BtnHome } from '../BtnHome'
 import Swal from 'sweetalert2'
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 
 export const AltaDog = () => {
     
@@ -24,6 +26,15 @@ export const AltaDog = () => {
     const [formEmpty, setFormEmpty] = useState(true);
     const [image, setImage] = useState("")
     const [showBtnEdit, setShowBtnEdit] = useState(true)
+    const [open, setOpen] = useState(false);
+  
+    const handleClose = () => {
+    setOpen(false);
+    };
+  
+    const handleOpen = () => {
+    setOpen(true);
+    };
 
     const Toast = Swal.mixin({
         toast: true,
@@ -41,7 +52,6 @@ export const AltaDog = () => {
         mutationFn: createDog,
         onSuccess: ()=> {
             setShowBtnEdit(false)
-            //setFormEmpty(false)
             console.log("Creando!");
             queryClient.invalidateQueries(['dogs'])
             Toast.fire({
@@ -49,11 +59,13 @@ export const AltaDog = () => {
                 icon: 'success',
             })
             setTimeout(() => {
+                handleClose()
                 window.location.href = 'https://main--eloquent-conkies-02e62a.netlify.app/#/'; // Reemplaza '/otra-pagina' con la ruta a la que deseas redirigir
               }, 2000);
 
         },
         onError: (error) => {
+            handleClose()
             Swal.fire({
                 title: 'Hubo un error!',
                 icon: 'error',
@@ -95,6 +107,7 @@ const handleSelectEnemiesChange = (selectedOptions) => {
   setSelectedEnemies(selectedOptions);
 };
     const handleSubmit = (e) => {
+        handleOpen()
         e.preventDefault()
         Swal.fire({
             title: '¿Estás seguro?',
@@ -170,6 +183,12 @@ const handleSelectEnemiesChange = (selectedOptions) => {
 
     return (
         <div className='pageAltaDog'>
+            <Backdrop
+                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer-1 }}
+                open={open}
+                onClick={handleClose}>
+                <CircularProgress color="inherit" />
+            </Backdrop>
         <div className='allArea-altaDog'>
             <h2 className='title-alta-dog'>Dar de alta un perro</h2>
             <p className='subtitle-alta-dog'>(*) campos obligatorios</p>

@@ -26,7 +26,7 @@ export const Navbar = () => {
             <Link to={"/"}>Inicio</Link>
         </div>
         </div>
-        <div className={`mobile-menu ${showMenu ? 'active' : ''}`}>
+        <div onClick={toggleMenu} className={`mobile-menu ${showMenu ? 'active' : ''}`}>
           <Link to={"/"}><a href="#">Inicio</a></Link>
           <Link><a href="#">Peluqueria</a></Link>
           <Link><a href="#">Tienda</a></Link>

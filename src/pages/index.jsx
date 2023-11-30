@@ -18,7 +18,7 @@ export const Home = () => {
         //select: dogs => dogs.sort((a, b) => b.id - a.id)
     });
 
-    const [admin, setAdmin] = useState(false);
+    const [admin, setAdmin] = useState(true);
     const [peluLink, setPeluLink] = useState(false);
     const [tiendaLink, setTiendaLink] = useState(false);
     //const logo = require('../assets/images/LenguaLogo.png');
@@ -72,20 +72,20 @@ export const Home = () => {
             <button className="btn-momentaneo" onClick={() => setAdmin(!admin)}> Mostrar opciones de Administrador </button>
             {admin && (
                 <div className="links-to-dogs">
+                    <Link to="altadogs">
+                        <button className="btn-opt">➕ Alta Perro</button>
+                    </Link>
                     <Link to="searchdog">
                         <button className="btn-opt">🔎 Buscar</button>
                     </Link>
                     <Link to="alldogs">
                         <button className="btn-opt">🐶 Ver Todos</button>
                     </Link>
-                    <Link to="altadogs">
-                        <button className="btn-opt">➕ Alta Perro</button>
+                    <Link to="alertdogtime">
+                        <button className="btn-opt">🚨 Alerta!</button>
                     </Link>
                     <Link to="agenda">
                         <button className="btn-opt">🗓️ Agenda</button>
-                    </Link>
-                    <Link to="alertdogtime">
-                        <button className="btn-opt">🚨 Alerta!</button>
                     </Link>
                     {/* <Link to="edit">
                         <button className="btn-opt">✏️ Editar</button>

@@ -96,3 +96,7 @@ textarea::placeholder {
     margin: 10px auto;
     background-color: rgb(28, 100, 28);
 }
+
+.swal2-container{
+    z-index: 9999;
+}
