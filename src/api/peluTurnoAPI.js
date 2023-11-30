@@ -1,6 +1,6 @@
 import axios from "axios";
-const DB_URL = "http://localhost:8080/peluturno";
-//const DB_URL = "https://lenguaback.onrender.com/peluturno";
+//const DB_URL = "http://localhost:8080/peluturno";
+const DB_URL = "https://lenguaback.onrender.com/peluturno";
 
 const peluTurnoApi = axios.create({
     baseURL: DB_URL
