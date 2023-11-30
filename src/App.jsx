@@ -2,7 +2,7 @@ import "./App.css";
 import { DogPage } from './pages/allDogs'
 import { SearchDogPage } from './pages/searchDog';
 import { AltaDogPage } from "./pages/altaDog";
-import { AgendaPage } from "./pages/agendaDogs";
+import { AgendaDogsPage } from "./pages/agendaDogs";
 import { AlertDogTimePage } from './pages/alertDogTime'
 import { Home } from "./pages/index";
 import { EditDogPage } from './pages/editDog'
@@ -21,7 +21,7 @@ function App() {
             <Route path="/alldogs" element={<DogPage />} />
             <Route path="/altadogs" element={<AltaDogPage />} />
             <Route path="/searchdog" element={<SearchDogPage />} />
-            <Route path="/agenda" element={<AgendaPage />} />
+            <Route path="/agendadogs" element={<AgendaDogsPage />} />
             <Route path="/edit" element={<EditDogPage />} />
             <Route path="/alertdogtime" element={<AlertDogTimePage />} />
         </Routes>

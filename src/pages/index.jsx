@@ -84,7 +84,7 @@ export const Home = () => {
                     <Link to="alertdogtime">
                         <button className="btn-opt">🚨 Alerta!</button>
                     </Link>
-                    <Link to="agenda">
+                    <Link to="agendadogs">
                         <button className="btn-opt">🗓️ Agenda</button>
                     </Link>
                     {/* <Link to="edit">

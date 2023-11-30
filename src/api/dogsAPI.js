@@ -26,9 +26,8 @@ export const deleteDog = async (id) => {
 }
 
 export const updateDog = async (dog) => {
-    console.log(dog)
     try {
-        const res = await dogsApi.patch(`/patch/${dog.id}`, dog)
+        const res = await dogsApi.patch(`/patch/${dog._id}`, dog)
         return res.data
     }
     catch (error) {

@@ -130,7 +130,7 @@ export const EditDog = () => {
         }
     }
 
-    function updateCompleteDog(e, _id) {
+    function updateCompleteDog(e) {
         e.preventDefault();
         const formData = new FormData(e.target);
         const dog = Object.fromEntries(formData);
@@ -174,7 +174,7 @@ export const EditDog = () => {
         }
         dog.friends = selectedFriends.map(amigo => amigo.value);
         dog.enemies = selectedEnemies.map(enemigo => enemigo.value);
-        dog._id = _id
+        //dog._id = _id
         dog.image = image
 
         // addDogMutation.mutate({   //------>>> Si quiero agregar algo que no esta en el body
@@ -202,7 +202,7 @@ export const EditDog = () => {
                     <div key={i}>
                         <h3>Editar información de: {dog.name}</h3>
                         <img src={dog.image? dog.image : dogSinFoto} height={100} width={100}></img>
-                        <form onSubmit={(e) => updateCompleteDog(e, dog._id)}>
+                        <form onSubmit={(e) => updateCompleteDog(e)}>
                             <div className="formEditDog">
                                 <input type="text" placeholder="Nombre*" name="name" defaultValue={dog.name}/>
                                 <input type="text" placeholder="Raza*" name="race" defaultValue={dog.race}/>
