@@ -6,6 +6,12 @@
   color-scheme: light dark;
   color: #656565de;
   background-color: rgb(244,232,208);
+  -webkit-appearance: none;
+  appearance: none;
+  -moz-appearance: none;
+
+  -webkit-border-radius: none !important;
+  -moz-border-radius:none !important;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
