@@ -27,11 +27,49 @@ export const AgendaDogs = () => {
         queryFn: getPeluTurno
     })
 
-    const [selectedWeek, setSelectedWeek] = useState(1); // Estado para la semana seleccionada
+    const startingDate = "11/27/2023"
+    const [selectedWeek, setSelectedWeek] = useState(-1); // Estado para la semana seleccionada
     const [currentDate, setCurrentDate] = useState(new Date());
+    const [week1, setWeek1] = useState(false)
+    const [week2, setWeek2] = useState(false)
+    const [week3, setWeek3] = useState(false)
+    const [week4, setWeek4] = useState(false)
+
 
     const handleWeekChange = (e) => {
-        setSelectedWeek(parseInt(e.target.value, 10));
+        setSelectedWeek(parseInt(e.target.value, 10))
+        switch(e.target.value){
+            case '1':
+                setWeek2(false)
+                setWeek3(false)
+                setWeek4(false)
+                setWeek1(true)
+                break;
+            case '2':
+                setWeek1(false)
+                setWeek3(false)
+                setWeek4(false)
+                setWeek2(true)
+                break;
+            case '3':
+                setWeek1(false)
+                setWeek2(false)
+                setWeek4(false)
+                setWeek3(true)
+                break;
+            case '4':
+                setWeek1(false)
+                setWeek2(false)
+                setWeek3(false)
+                setWeek4(true)
+                break;
+            default:
+                setWeek1(false)
+                setWeek2(false)
+                setWeek3(false)
+                setWeek4(false)
+                break;
+        }
     };
 
     const getEventDataForDayAndHour = (day, hour) => {
@@ -41,6 +79,15 @@ export const AgendaDogs = () => {
         );
     };
 
+    const fecha = new Date(startingDate);  // Puedes poner tu propia fecha aquí
+    const diasSemana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+    //const diaDeLaSemana = fecha.getDay();
+    //const nombreDia = diasSemana[diaDeLaSemana];
+    const diasSemanaWork1 = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado']
+    const diasSemanaWork2 = ['Martes', 'Miercoles', 'Jueves', 'Jueves', 'Viernes', 'Sábado']
+    const diasSemanaWork3 = ['Mierc', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado']
+    const diasSemanaWork4 = ['Jueves', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado']
+ 
 
 
 
@@ -49,7 +96,7 @@ export const AgendaDogs = () => {
         const today = new Date();
 
         // Calcular el número de semanas entre la fecha actual y la fecha de inicio
-        const startDate = new Date("2023-11-27"); // Establece la fecha de inicio
+        const startDate = new Date(startingDate); // Establece la fecha de inicio
         const diffInWeeks = Math.floor(
             (today - startDate) / (7 * 24 * 60 * 60 * 1000)
         ) + 1;
@@ -146,34 +193,26 @@ export const AgendaDogs = () => {
         3: [{ day: "Sábado", time: "13:00 AM", event: "Almuerzo" }],
     };
 
-    // Lista de días de la semana
-    const daysOfWeek = [
-        "Lunes",
-        "Martes",
-        "Miércoles",
-        "Jueves",
-        "Viernes",
-        "Sábado",
-    ];
+
 
     // Lista de horas
     const hoursOfDay = Array.from({ length: 14 }, (_, index) => index + 8); // De 8 AM a 21 PM
 
     const getWeekDateRange = (weekNumber) => {
-        const startDate = new Date("2023-11-27"); // Establece la fecha de inicio
+        const startDate = new Date(startingDate); // Establece la fecha de inicio
         const endDate = new Date(startDate);
         endDate.setDate(endDate.getDate() + (weekNumber - 1) * 7 + 6);
 
         const startOfWeek = new Date(startDate);
-        startOfWeek.setDate(startDate.getDate() + (weekNumber - 1) * 7 +1);
+        startOfWeek.setDate(startDate.getDate() + (weekNumber - 1) * 7 );
 
         return {
             start: startOfWeek.toLocaleDateString(),
             end: endDate.toLocaleDateString(),
         };
     };
-
-
+    //const dayofWeekTable = new Date(startingDate);
+    //console.log(dayofWeekTable.getDay()+1)
 
     return (
         <>
@@ -194,8 +233,10 @@ export const AgendaDogs = () => {
                 <select
                     id="weekSelector"
                     onChange={handleWeekChange}
-                    value={selectedWeek}
+                    defaultValue={-1}
+                    //value={selectedWeek}
                 >
+                <option value={-1}>Seleccione una fecha</option>
                     {[...Array(4)].map((_, index) => {
                         const { start, end } = getWeekDateRange(index + 1);
                         return (
@@ -207,44 +248,110 @@ export const AgendaDogs = () => {
                 </select>
             </div>
                 <div className="table-Agenda">
-                <table>
+                {week1 && <table>
                     <thead>
                         <tr>
-                            <th></th>{/* Espacio vacío para la esquina superior izquierda */}
-                            {daysOfWeek.map((day, index) => (
-                                <th key={index}>{day} </th>
-                            ))}
+                            <th>Elija</th>{/* Espacio vacío para la esquina superior izquierda */}
+                            {true &&<>
+                                        {diasSemanaWork1.map((dias, index) => 
+                                        <td key={index}>{dias}</td>)}
+                                        </>}
                         </tr>
                     </thead>
                     <tbody>
-                        {hoursOfDay.map((hour) => (
-                            <tr key={hour}>
+                    {hoursOfDay.map((hour, index) => (
+                            <tr key={index}>
                                 <td className="horas">{hour}:00</td>
-                                {daysOfWeek.map((day) => {
-                                    const eventData = getEventDataForDayAndHour(
-                                        day,
-                                        hour
-                                    );
-                                    return (
-                                        <td key={day}>
-                                            {eventData ? eventData.event : ""}
-                                        </td>
-                                    );
-                                })}
+                                        {true &&<>
+                                        {diasSemanaWork1.map((dias, index) => 
+                                        <td key={index}>
+                                            {peluTurno?.map((turno, i) => 
+                                            turno.horario == hour ?
+                                            <>{dias}</>
+                                            : null
+                                             )}
+
+
+                                        </td>)}
+                                        </>}
+                                  
                             </tr>
-                        ))}
+                    ))}
                     </tbody>
-                </table></div>
+                </table>}
+                {week2 && <table>
+                    <thead>
+                        <tr>
+                            <th>Elija</th>{/* Espacio vacío para la esquina superior izquierda */}
+                            {true &&<>
+                                        {diasSemanaWork2.map((dias, index) => 
+                                        <td key={index}>{dias}</td>)}
+                                        </>}
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {hoursOfDay.map((hour, index) => (
+                            <tr key={index}>
+                                <td className="horas">{hour}:00</td>
+                                        {true &&<>
+                                        {diasSemanaWork2.map((dias, index) => 
+                                        <td key={index}></td>)}
+                                        </>}
+                                  
+                            </tr>
+                    ))}
+                    </tbody>
+                </table>}
+                {week3 && <table>
+                    <thead>
+                        <tr>
+                            <th>Elija</th>{/* Espacio vacío para la esquina superior izquierda */}
+                            {true &&<>
+                                        {diasSemanaWork3.map((dias, index) => 
+                                        <td key={index}>{dias}</td>)}
+                                        </>}
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {hoursOfDay.map((hour, index) => (
+                            <tr key={index}>
+                                <td className="horas">{hour}:00</td>
+                                        {true &&<>
+                                        {diasSemanaWork3.map((dias, index) => 
+                                        <td key={index}></td>)}
+                                        </>}
+                                  
+                            </tr>
+                    ))}
+                    </tbody>
+                </table>}
+                {week4 && <table>
+                    <thead>
+                        <tr>
+                            <th>Elija</th>{/* Espacio vacío para la esquina superior izquierda */}
+                            {true &&<>
+                                        {diasSemanaWork4.map((dias, index) => 
+                                        <td key={index}>{dias}</td>)}
+                                        </>}
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {hoursOfDay.map((hour, index) => (
+                            <tr key={index}>
+                                <td className="horas">{hour}:00</td>
+                                        {true &&<>
+                                        {diasSemanaWork4.map((dias, index) => 
+                                        <td key={index}></td>)}
+                                        </>}
+                                  
+                            </tr>
+                    ))}
+                    </tbody>
+                </table>}
+                </div>
+                <div>Desplace 👉🏼 para ver mas dias</div>
             </div>
-            {peluTurno?.map((pelu, i) => {
-                return (
-                    <div className="pelu-turno" key={i}>
-                        <p>
-                            {pelu.idPerro} - {pelu.fecha} - {pelu.horario}
-                        </p>
-                    </div>
-                );
-            })}
+            
         </>
     );
 };
