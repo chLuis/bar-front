@@ -36,7 +36,7 @@ export const Navbar = () => {
               <Link to="peluqueria/nuestrosservicios" className="navbarToPelu">- Qué servicios ofrecemos</Link><br></br>
               <Link to="peluqueria/nuestraformacion" className="navbarToPelu">- Nuestra formación</Link><br></br>
               <Link to="peluqueria/trabajosytestimonios" className="navbarToPelu">- Nuestros trabajos y testimonios</Link><br></br>
-              <Link to="agenda" className="navbarToPelu">- Agenda tu turno</Link>
+              <Link to="agendadogs" className="navbarToPelu">- Agenda tu turno</Link>
             </div>
           </div>
           <div>
