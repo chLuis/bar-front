@@ -1,29 +1,42 @@
 import "./navbar.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+//import { Login } from '../index.js'
 
 export const Navbar = () => {
 
     const [showMenu, setShowMenu] = useState(false);
+    const [modalLoginShow, setModalLoginShow] = useState(false)
+    //const [valorDelModal, setValorDelModal] = useState(false)
     //const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
-  
 
-  
 
-  
+  function cambiarvalor() {
+    setModalLoginShow(!modalLoginShow)
+}
+  function showModalLogin() {
+    setModalLoginShow(!modalLoginShow);
+  }
     const toggleMenu = () => {
       setShowMenu(!showMenu);
     };
   
     return (
       <nav className={`navbar ${showMenu ? 'active' : ''}`}>
+      {modalLoginShow && <div className="modal-login">
+            <h2>Bienvenido</h2>
+            <input type="text"></input>
+            <input type="password"></input>
+            <button>Iniciar</button>
+            <button onClick={cambiarvalor}>Cerrar</button>
+        </div>}
         <div className="navbar-container">
           
           <div className="navbar-toggle" onClick={toggleMenu}>
             ☰
           </div>
           <div className="navbar-btn-home">
-            <Link to={"/"}>Inicio</Link>
+            <Link onClick={showModalLogin}>Inicia sesion</Link>
         </div>
         </div>
         <div onClick={toggleMenu} className={`mobile-menu ${showMenu ? 'active' : ''}`}>

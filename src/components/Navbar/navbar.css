@@ -10,56 +10,36 @@
     padding-right: 10px;
     font-size: 1.3rem;
 }
-/* 
-.navbar {
-    position: relative;
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0px 16px;
-    height: 36px;
-    color: rgb(244,232,208);
-    background-color: rgb(230, 46, 32);
-    z-index: 4 !important;
+.modal-login{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 10dvh;
+  left: 9dvw;
+  height: 60dvh;
+  width: 80dvw;
+  gap: 5px;
+  border-radius: 10px;
+  background-color: rgba(120, 34, 34, 0.732);
+  backdrop-filter: blur(5px);
+  
+  > input {
+    margin: 10px 0px;
+    height: 26px;
+    max-width: 250px;
+    border-radius: 10px;
+    background-color: rgb(195, 73, 73);
+    padding: 0px 8px;
+  }
+  > button {
+    margin: 10px 0px;
+    width: 140px;
+    height: 32px;
+    line-height: 12px;
+  }
 }
-.navbar-links-left {
-    display: flex;
-    gap: 12px;
-}
-
-
-.Links-navbar, .Links-navbar-home{
-    display: flex;
-    align-items: center;
-    height: 36px;
-    color: white;
-}
-.Links-navbar-home {
-    font-size: 1.05rem;
-    font-weight: 800;
-}
-
-.div-pel-links{
-    position: relative;
-}
-.pelu-links-navbar{
-    transition: 0.5s;
-    position: absolute;
-    transform: translateX(-300%);
-}
-.pelu-links-navbar-show {
-    transition: 0.2s;
-    background-color: red;
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    padding-left: 4px;
-    width: 250px;
-    transform: translateY(-13%);
-    text-align: left;
-} */
 
 nav{
     height: 20px;
