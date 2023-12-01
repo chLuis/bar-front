@@ -61,10 +61,10 @@ export const Home = () => {
                     TIENDA<br></br><span>---- <i className="fa-regular fa-hand-pointer"></i> ----</span>
                     </div>}
                     {tiendaLink &&<div onClick={linksToTienda} className="tiendaRealLink">
-                    <Link to="" className="aTotienda">- Equipamiento de paso</Link> <br></br>
-                    <Link to="" className="aTotienda">- Cosmética natural</Link><br></br>
-                    <Link to="" className="aTotienda">- Accesorios</Link><br></br>
-                    <Link to="" className="aTotienda">- Quiero mis kits de limpieza "Lengua Afuera"</Link><br></br>
+                    <Link to="tienda/equipamiento" className="aTotienda">- Equipamiento de paso</Link> <br></br>
+                    <Link to="tienda/cosmetica" className="aTotienda">- Cosmética natural</Link><br></br>
+                    <Link to="tienda/accesorios" className="aTotienda">- Accesorios</Link><br></br>
+                    <Link to="tienda/kitslimpieza" className="aTotienda">- Quiero mis kits de limpieza "Lengua Afuera"</Link><br></br>
                     </div>}
                 </div>
                 </article>

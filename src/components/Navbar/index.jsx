@@ -28,7 +28,7 @@ export const Navbar = () => {
         </div>
         <div onClick={toggleMenu} className={`mobile-menu ${showMenu ? 'active' : ''}`}>
           
-          <div className="navbar-pelu-div"><Link to={"/"}>Inicio</Link></div>
+          <div className="navbar-pelu-div"><Link to={"/"} className="navbarToHome">Inicio</Link></div>
           <div>
           <div className="navbar-pelu-div">Peluqueria</div>
             <div className="navbar-pelu-div-links">
@@ -42,10 +42,10 @@ export const Navbar = () => {
           <div>
             <div className="navbar-pelu-div">Tienda</div>
             <div className="navbar-pelu-div-links">
-              <Link to="peluqueria/nuestrosalon" className="navbarToPelu">- Equipamiento de paseo</Link> <br></br>
-              <Link to="peluqueria/nuestrosservicios" className="navbarToPelu">- Cosmética natural</Link><br></br>
-              <Link to="peluqueria/nuestraformacion" className="navbarToPelu">- Accesorios</Link><br></br>
-              <Link to="peluqueria/trabajosytestimonios" className="navbarToPelu">- ¡Quiero mis kits de limpieza "Lengua Afuera"</Link><br></br>
+              <Link to="tienda/equipamiento" className="navbarToPelu">- Equipamiento de paseo</Link> <br></br>
+              <Link to="tienda/cosmetica" className="navbarToPelu">- Cosmética natural</Link><br></br>
+              <Link to="tienda/accesorios" className="navbarToPelu">- Accesorios</Link><br></br>
+              <Link to="tienda/kitslimpieza" className="navbarToPelu">- ¡Quiero mis kits de limpieza "Lengua Afuera"</Link><br></br>
             </div>
           </div>
           <div className="navbar-pelu-div">Contacto</div>

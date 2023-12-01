@@ -124,12 +124,14 @@ const handleSelectEnemiesChange = (selectedOptions) => {
                     //dog.lastVisit.unshift()
                     dog.image = image
                     if(!dog.name){
+                        handleClose()
                         return Swal.fire({
                             title: 'Hubo un error!',
                             icon: 'error',
                             text: "Nombre es requerido"
                         })}
                     if(!dog.race){
+                        handleClose()
                         return Swal.fire({
                             title: 'Hubo un error!',
                             icon: 'error',
@@ -137,24 +139,28 @@ const handleSelectEnemiesChange = (selectedOptions) => {
                         })
                     }
                     if(!dog.age){
+                        handleClose()
                         return Swal.fire({
                             title: 'Hubo un error!',
                             icon: 'error',
                             text: "Edad es requerida"})
                     }
                     if(!dog.owner){
+                        handleClose()
                         return Swal.fire({
                             title: 'Hubo un error!',
                             icon: 'error',
                             text: "Dueño es requerido"})
                     }
                     if(!dog.phone){
+                        handleClose()
                         return Swal.fire({
                             title: 'Hubo un error!',
                             icon: 'error',
                             text: "Teléfono es requerido"})
                         }
                     if(!dog.rotation){
+                        handleClose()
                         return Swal.fire({
                             title: 'Hubo un error!',
                             icon: 'error',
