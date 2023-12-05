@@ -7,8 +7,14 @@ const dogsApi = axios.create({
 })
 
 export const getDogs = async () => {
-    const res = await dogsApi.get("/get");
-    return res.data
+    try {
+        const res = await dogsApi.get("/get");
+        return res.data
+    }
+    catch (error) {
+        console.log(error)
+        throw error
+    }
 } 
 
 export const createDog = async (dog) => {

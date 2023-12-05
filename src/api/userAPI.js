@@ -6,9 +6,17 @@ const userApi = axios.create({
     baseURL: DB_URL
 })
 
-export const getUser = async () => {
-    const res = await userApi.get("/get");
-    return res.data
+export const getUser = async (name, password) => {
+    console.log("la data")
+    try {
+        const res = await userApi.get("/get",{params: {name, password}});
+        console.log(res.data)
+        return res.data
+    }
+    catch (error) {
+        return error.response.data
+        //throw error
+    }
 } 
 
 export const createUser = async (user) => {

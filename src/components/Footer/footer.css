@@ -18,11 +18,13 @@ footer {
         text-decoration: none;
     }
     > p {
+        margin-bottom: 0;
         height: 10px;
         line-height: 16px;
         display: flex;
         justify-content: end;
         align-content: end;
+        color: black;
     }
 }
 .link-to-insta {
@@ -48,11 +50,11 @@ footer {
     border-radius: 6px;
     overflow: hidden;
     margin: auto;
-    padding: 5px 7px;
+    padding: 2px 4px;
 }
 .iconsFooter-wsp {
     background-color: rgb(37,211,102);
-    padding-block: 5px;
-    padding-inline: 7px;
+    padding-block: 4px;
+    padding-inline: 6px;
     border-radius: 50%;
 }

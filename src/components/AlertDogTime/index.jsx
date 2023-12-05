@@ -127,6 +127,7 @@ export const AlertDogTime = () => {
                 <p>Dueño</p>
                 <p>Vuelve en</p>
             </div>
+            <div className="cuadroAlert">
             {sortedDogs?.map((dog, i) =>
                 dog.lastVisit.length > 0  ? (
                     <div key={i} className="alertDogTime">
@@ -143,6 +144,7 @@ export const AlertDogTime = () => {
                     </div>
                 ) : null
             )}
+            </div>
         </div>
         <BtnHome />
         </>

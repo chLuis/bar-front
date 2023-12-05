@@ -3,6 +3,7 @@ import { getDogs, deleteDog } from "../../api/dogsAPI";
 import "./dogs.css";
 import { BtnHome } from "../BtnHome";
 import perroSinFoto from '../../assets/images/perroSinFoto.png'
+import { Link } from "react-router-dom";
 import { EditDog } from '../EditDog/index'
 import Swal from "sweetalert2";
 import { useEffect } from "react";
@@ -20,7 +21,7 @@ export const Dogs = () => {
     } = useQuery({
         queryKey: ["dogs"],
         queryFn: getDogs,
-        //select: dogs => dogs.sort((a, b) => b.id - a.id)
+        select: dogs => dogs.sort((a, b) => b.name - a.name)
     });
     
     const deleteDogMutation = useMutation({
@@ -90,7 +91,7 @@ export const Dogs = () => {
                 <img className="avatar-dog" src={dog.image ? dog.image : fotoPerroSinFoto} height={100} alt={dog.image ? dog.image : fotoPerroSinFoto} />
                 <h3>{dog.name}</h3>
                 <p>{dog.owner}</p>
-                <button>✏️ Editar</button>
+                <button><Link to={"/searchdog"}>✏️ Editar</Link></button>
                 <button onClick={() => {
                     handleDelete(dog._id);
                 }}>🗑️ Borrar</button>

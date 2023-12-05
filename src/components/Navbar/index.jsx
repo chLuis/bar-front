@@ -1,34 +1,84 @@
 import "./navbar.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-//import { Login } from '../index.js'
+import  LogoLengua from "../../assets/images/LogoLenguaAfuera.jpeg"
+import Box from '@mui/material/Box';
+import { TextField } from "@mui/material";
+import { useQuery,useMutation, useQueryClient, Query  } from '@tanstack/react-query'
+import { getUser } from '../../api/userAPI.js'
+import Swal from 'sweetalert2'
+
 
 export const Navbar = () => {
 
+  //const queryClient = useQueryClient();
+  // const Toast = Swal.mixin({
+  //   toast: true,
+  //   position: "top-end",
+  //   zIndex: 11,
+  //   showConfirmButton: false,
+  //   timer: 2000,
+  //   timerProgressBar: true,
+  //   didOpen: (toast) => {
+  //     toast.onmouseenter = Swal.stopTimer;
+  //     toast.onmouseleave = Swal.resumeTimer;
+  //   }
+  // });
+
+      // Toast.fire({
+      //     title: 'Usuario conectado!',
+      //     icon: 'success',
+      // })
+
+
+
+//user? console.log(user):console.log("No hay usuario")
+
     const [showMenu, setShowMenu] = useState(false);
     const [modalLoginShow, setModalLoginShow] = useState(false)
-    //const [valorDelModal, setValorDelModal] = useState(false)
-    //const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
 
 
   function cambiarvalor() {
     setModalLoginShow(!modalLoginShow)
-}
+  }
   function showModalLogin() {
     setModalLoginShow(!modalLoginShow);
   }
     const toggleMenu = () => {
       setShowMenu(!showMenu);
     };
-  
+    const  handleSubmit = async (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const user = Object.fromEntries(formData);
+      //const data = await getUser(user)
+     
+      }
+
     return (
+
       <nav className={`navbar ${showMenu ? 'active' : ''}`}>
       {modalLoginShow && <div className="modal-login">
-            <h2>Bienvenido</h2>
-            <input type="text"></input>
-            <input type="password"></input>
-            <button>Iniciar</button>
-            <button onClick={cambiarvalor}>Cerrar</button>
+            <img src={LogoLengua} alt="LogoLengua" width={120} className="logoLengaLogin"></img>
+            <h3>¡Hola!</h3>
+            <Box
+            component="form"
+            sx={{
+            '& > :not(style)': { m: 1, width: '25ch'},
+            }}noValidate
+            autoComplete="off"
+            onSubmit={handleSubmit}
+            >
+            <div className="login-div-input">
+              <TextField className="login-inputs" id="outlined-basic" name="name" label="Usuario" variant="outlined" />
+              <TextField className="login-inputs" id="filled-basic" type="password" name="password" label="Contraseña" variant="outlined" />
+
+            </div>
+            <div>
+            <button type="submit" className="btn-login-log">Entrar</button>
+            <button className="btn-login-cancel" onClick={cambiarvalor}>Cerrar</button>
+            </div>
+            </Box>
         </div>}
         <div className="navbar-container">
           
@@ -40,7 +90,6 @@ export const Navbar = () => {
         </div>
         </div>
         <div onClick={toggleMenu} className={`mobile-menu ${showMenu ? 'active' : ''}`}>
-          
           <div className="navbar-pelu-div"><Link to={"/"} className="navbarToHome">Inicio</Link></div>
           <div>
           <div className="navbar-pelu-div">Peluqueria</div>

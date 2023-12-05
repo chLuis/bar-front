@@ -13,17 +13,17 @@
 .modal-login{
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   position: absolute;
   top: 10dvh;
   left: 9dvw;
-  height: 60dvh;
+  height: max-content;
   width: 80dvw;
   gap: 5px;
   border-radius: 10px;
-  background-color: rgba(120, 34, 34, 0.732);
-  backdrop-filter: blur(5px);
+  border: 1px solid rgb(139, 33, 47);
+  background-color: rgba(60, 3, 78, 0.532);
+  backdrop-filter: blur(10px);
   
   > input {
     margin: 10px 0px;
@@ -39,7 +39,60 @@
     height: 32px;
     line-height: 12px;
   }
+  > h3 {
+    margin: 0px !important;
+    padding: 0px !important;
+    max-height: 30px;
+  }
+  > form {
+    display: flex;
+    flex-direction: column;
+    margin: 30px 0px 10px 0px;
+    gap: 40px;
+    > div {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      >span {
+        position: relative;
+        > input {
+          border-radius: 10px;
+          padding: 4px 8px;
+          background-color: #8f424268;
+        }
+      }
+    }
+  }
 }
+.login-div-input{
+  height: 100px;
+  color: white !important;
+  > .login-inputs{
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.483);
+  }
+  }
+
+.btn-login-log, .btn-login-cancel {
+  height: 40px;
+  width: 130px;
+  margin: auto;
+  transition: 0.4s;
+}
+.btn-login-log{
+  background-color: rgba(4, 2, 17, 0.493)
+}
+ .btn-login-log:hover {
+    background-color: rgb(29, 18, 110);
+    letter-spacing: 2px;
+    width: 140px;
+  }
+ .btn-login-cancel:hover {
+    background-color: rgb(104, 24, 24);
+    letter-spacing: 2px;
+    width: 140px;
+  }
+
 
 nav{
     height: 20px;
@@ -171,3 +224,9 @@ nav{
         transform: translateX(0%);
     }
   }
+
+
+.logoLengaLogin {
+  border-radius: 50%;
+  padding: 20px 0px;
+}
