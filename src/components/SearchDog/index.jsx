@@ -59,7 +59,7 @@ export const SearchDog = () => {
         position: "top-end",
         zIndex: 11,
         showConfirmButton: false,
-        timer: 2000,
+        timer: 1500,
         timerProgressBar: true,
         didOpen: (toast) => {
           toast.onmouseenter = Swal.stopTimer;
@@ -83,7 +83,7 @@ const updateDogMutation = useMutation({
          setTimeout(() => {
             handleClose()
             window.location.reload(true)
-           }, 2000);
+           }, 1500);
         
     },
     onError: (error) => {
@@ -274,8 +274,10 @@ function updateCompleteDog(e, _id) {
             if(dogs[i]._id === id && dogs[i].friends[0] === "Todos"){
                 mostrarAmigos.push(dogs[i].friends[0])
                 const amigosString = mostrarAmigos.join(", ")
+                //console.log(amigosString)
                 return amigosString;
-            } else {
+            }
+            if(dogs[i]?._id === id) {
                 let mostrarAmigos = []
                 if (dogs[i]._id === id) {
                     for (let j = 0; j < dogs[i]?.friends?.length; j++) {
@@ -300,7 +302,7 @@ function updateCompleteDog(e, _id) {
                 mostrarPeleaCon.push(dogs[i].enemies[0])
                 const peleaConString = mostrarPeleaCon.join(", ")
                 return peleaConString;
-            } else if (dogs[i].enemies[0] !== "Todos"){
+            } if (dogs[i]?._id === id){
                 let mostrarPeleaCon = []
                 if (dogs[i]._id === id) {
                     for (let j = 0; j < dogs[i]?.enemies?.length; j++) {
