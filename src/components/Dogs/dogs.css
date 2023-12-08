@@ -15,7 +15,7 @@
     flex-direction: column;
     align-items: center;
     width: 108px;
-    height: 260px;
+    height: 270px;
     overflow: hidden;
     margin: 8px;
     padding: 4px;
@@ -24,10 +24,14 @@
     background-color: rgb(250,188,129);
     border-radius: 10px;
     > h3 {
-        margin: 0;;
+        margin: 4px 0 0 0;
+        height: 28px;
+        overflow-y: auto;
     }
     > p {
+        overflow-y: auto;
         margin: 0px 0px 16px 0px;
+        height: 48px;
     }
     > button {
         margin: 2px;

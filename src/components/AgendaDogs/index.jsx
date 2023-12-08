@@ -27,7 +27,35 @@ export const AgendaDogs = () => {
         queryFn: getPeluTurno
     })
 
-    const startingDate = "11/27/2023"
+    const startingDate = "12/04/2023";
+    // //console.log(startingDate.getDay())
+    // switch(startingDate.getDay()){
+    //     case 0:
+    //         console.log(startingDate.getDate() + 1);
+    //         break;
+    //     case 1:
+    //         console.log(startingDate.getDate());
+    //         break;
+    //     case 2:
+    //         console.log(startingDate.getDate() - 1);
+    //         break;
+    //     case 3:
+    //         console.log(startingDate.getDate() - 2);
+    //         break;
+    //     case 4:
+    //         console.log(startingDate.getDate() - 3);
+    //         break;
+    //     case 5:
+    //         console.log(startingDate.getDate() - 7);
+    //         break;
+    //     case 6:
+    //         console.log(startingDate.getDate() - 5);
+    //         break;
+    //     default:
+    //         console.log("no deberia");
+    //         break;
+    // }
+    //console.log(startingDate.getDay()? "asd": "NOO")
     const [selectedWeek, setSelectedWeek] = useState(-1); // Estado para la semana seleccionada
     const [currentDate, setCurrentDate] = useState(new Date());
     const [week1, setWeek1] = useState(false)
@@ -84,9 +112,9 @@ export const AgendaDogs = () => {
     //const diaDeLaSemana = fecha.getDay();
     //const nombreDia = diasSemana[diaDeLaSemana];
     const diasSemanaWork1 = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado']
-    const diasSemanaWork2 = ['Martes', 'Miercoles', 'Jueves', 'Jueves', 'Viernes', 'Sábado']
-    const diasSemanaWork3 = ['Mierc', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado']
-    const diasSemanaWork4 = ['Jueves', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado']
+    const diasSemanaWork2 = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado']
+    const diasSemanaWork3 = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado']
+    const diasSemanaWork4 = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado']
  
 
 

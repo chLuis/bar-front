@@ -85,6 +85,7 @@ export const Dogs = () => {
 
     return (
         <div>
+        <h2>Lista de perros</h2>
         <div className="dog-list">
             {dogs.map(dog => (
             <div key={dog._id} className="dog-element-list">

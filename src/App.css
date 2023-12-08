@@ -5,6 +5,19 @@
   overflow: hidden !important;
 }
 
+*::-webkit-scrollbar {
+  width: 4px;               /* width of the entire scrollbar */
+}
+
+*::-webkit-scrollbar-track {
+  background: rgb(248,182,0);        /* color of the tracking area */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgb(143,66,66);    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  border: 1px solid orange;  /* creates padding around scroll thumb */
+}
 /* .blur-overlay{
   position: absolute;
   top: 0;
