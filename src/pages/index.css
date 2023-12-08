@@ -38,9 +38,10 @@
         }
     }
 }
-
+.peluPrevLink , .tiendaPrevLink {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
 .peluPrevLink{
-    font-family: 'Courier New', Courier, monospace;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -71,7 +72,7 @@
     background-size: cover;
     width: 100dvw;
     height: 240px;
-    filter: blur(3px);
+    filter: blur(6px);
     z-index: -1;
 }
 
@@ -90,7 +91,6 @@
 
 /*/ Tienda /*/
 .tiendaPrevLink{
-    font-family: 'Courier New', Courier, monospace;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -122,7 +122,7 @@
     background-size: cover;
     width: 100dvw;
     height: 240px;
-    filter: blur(3px);
+    filter: blur(6px);
     z-index: -1;
 }
 
@@ -162,5 +162,45 @@
     text-align: start;
     > .btn-opt:hover {
         background-color: red;
+    }
+}
+
+
+.spanAnimated{
+    animation: clickMove 2.5s linear infinite;
+}
+
+@keyframes clickMove {
+    0% {
+        transform: translateX(0) translateY(0);
+        scale: 1;
+    }
+    20% {
+        transform: translateX(-70%) translateY(30%);
+        scale: 1;
+    }
+    40% {
+        transform: translateX(0%) translateY(0);
+        scale: 1;
+    }
+    60% {
+        transform: translateX(70%) translateY(-30%);
+        scale: 1;
+    }
+    80% {
+        transform: translateX(0) translateY(0);
+        scale: 1;
+    }
+    90%{
+        scale: 1;
+    }
+    92%{
+        scale: 0.5;
+    }
+    95%{
+        scale: 1.5;
+    }
+    100%{
+        scale: 1;
     }
 }

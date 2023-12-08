@@ -43,7 +43,8 @@ export const Home = () => {
                 <div className="home-link-pelu">
                 <i className="fondo-linkPelu"></i>
                     {!peluLink &&<div onClick={linksToPelu} className="peluPrevLink">
-                        PELUQUERÍA CANINA<br></br><span>---- <i className="fa-regular fa-hand-pointer"></i> ----</span>
+                        PELUQUERÍA CANINA<br></br>
+                        <span className="spanAnimated">-<i className="fa-regular fa-hand-pointer"></i>-</span>
                     </div>}
                     {peluLink &&<div onClick={linksToPelu} className="peluRealLink">
                     <Link to="peluqueria/nuestrosalon" className="aToPelu">- Conoce nuestro salón y más</Link> <br></br>
@@ -58,7 +59,8 @@ export const Home = () => {
                 <div className="home-link-tienda">
                 <i className="fondo-linktienda"></i>
                     {!tiendaLink &&<div onClick={linksToTienda} className="tiendaPrevLink">
-                    TIENDA<br></br><span>---- <i className="fa-regular fa-hand-pointer"></i> ----</span>
+                    TIENDA<br></br>
+                    <span className="spanAnimated">-<i className="fa-regular fa-hand-pointer"></i>-</span>
                     </div>}
                     {tiendaLink &&<div onClick={linksToTienda} className="tiendaRealLink">
                     <Link to="tienda/equipamiento" className="aTotienda">- Equipamiento de paso</Link> <br></br>
