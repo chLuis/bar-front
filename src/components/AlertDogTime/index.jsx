@@ -84,6 +84,15 @@ export const AlertDogTime = () => {
         );
     }
 
+    // Funcion para ir al tope de la pagina
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    scrollToTop()
     function lastVisitDate(fecha) {
         if (fecha) {
             const date = new Date(fecha);

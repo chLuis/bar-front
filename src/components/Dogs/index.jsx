@@ -40,20 +40,6 @@ export const Dogs = () => {
         },
     })
 
-    function handleEdit(id) {
-        console.log(id)
-        // Swal.fire({
-        //     title: '¿Estás seguro?',
-        //     text: "Estás editando este perro!",
-        //     icon: 'info',
-        //     showCancelButton: true,
-        //     confirmButtonColor: '#3085d6',
-        //     cancelButtonColor: '#d33',
-        //     confirmButtonText: 'Si, editar!'
-        //     }).then((result) => {
-            history.push(`/searchdog/${id}`);
-    }
-
     function handleDelete(id) {
         Swal.fire({
             title: '¿Estas seguro de borrar a este perro?',

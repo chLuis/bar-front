@@ -88,6 +88,7 @@
     flex-wrap: wrap;
     width: 100%;
     justify-content: space-around;
+    gap: 4px;
     > button {
         border: 1px solid rgb(210, 207, 207);
         padding: 8px 2px;

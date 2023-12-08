@@ -1,23 +1,24 @@
+import "./searchDog.css";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { getDogs, deleteDog, updateDog } from "../../api/dogsAPI";
 import { useState } from "react";
-import "./searchDog.css";
-import Select from 'react-select'
-import makeAnimated from 'react-select/animated'
 import { BtnHome } from "../index.js";
 import perroSinFoto from "../../assets/images/perroSinFoto.png";
+import { useLocation } from "react-router";
 import Swal from "sweetalert2";
+import Select from 'react-select'
+import makeAnimated from 'react-select/animated'
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
-import { useLocation } from "react-router";
 
 
 export const SearchDog = () => {
 
-    const location = useLocation();
-    const [parametro, setParametro] = useState(location.state?.parametro || "")
-    
+    const animatedComponents = makeAnimated()
     const queryClient = useQueryClient();
+    const location = useLocation(); // Info traida desde all dogs
+
+    const [parametro, setParametro] = useState(location.state?.parametro || "")
     const [filteredDogs, setFilteredDogs] = useState([]);
     const [showFilter, setShowFilter] = useState(true)
     const [formUpdateDog, setFormUpdateDog] = useState(false)
@@ -32,24 +33,22 @@ export const SearchDog = () => {
     const [dateDog, setDateDog] = useState()
     const [open, setOpen] = useState(false);
     const [seeMore, setSeeMore] = useState(false)
-  
-    const handleClose = () => {
-    setOpen(false);
-    };
-  
-    const handleOpen = () => {
-    setOpen(true);
-    };
 
-    function handleSaldo(e) {
-        const saldoNumber = parseInt(e.target.value)
-        setBalanceDog(saldoNumber)
-    }
-    function handleDate(e) {
-        const date = new Date(e.target.value)
-        setDateDog(date)
-    }
+    //Notificacion toast
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        zIndex: 11,
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+        }
+    });
 
+    //Querys DOGS
     const {
         isLoading,
         data: dogs,
@@ -59,23 +58,30 @@ export const SearchDog = () => {
         queryKey: ["dogs"],
         queryFn: getDogs,
     });
-    const Toast = Swal.mixin({
-        toast: true,
-        position: "top-end",
-        zIndex: 11,
-        showConfirmButton: false,
-        timer: 1500,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.onmouseenter = Swal.stopTimer;
-          toast.onmouseleave = Swal.resumeTimer;
-        }
-      });
 
-      const animatedComponents = makeAnimated()
+    //Manejo del loader spin
+    const handleClose = () => {
+    setOpen(false);
+    };
 
-/// EDIT
+    const handleOpen = () => {
+    setOpen(true);
+    };
 
+    //Manejo del saldo
+    function handleSaldo(e) {
+        const saldoNumber = parseInt(e.target.value)
+        setBalanceDog(saldoNumber)
+    }
+    //Manejo de la fecha de visita del perro
+    function handleDate(e) {
+        const date = new Date(e.target.value)
+        setDateDog(date)
+    }
+
+
+    
+    /// EDIT DOG
 const updateDogMutation = useMutation({
     mutationFn: updateDog,
     onSuccess: () => {
@@ -164,17 +170,18 @@ function updateCompleteDog(e, _id) {
 
 }
 
+    // Metodo para crear las opciones, de acuerdo a los perros dentro de la DB
     const optionsDogs = dogs?.map(dog => ({ value: dog._id, label: dog.name }));
     optionsDogs?.unshift({ value: 'Todos', label: 'Todos' })
 
     const handleSelectFriendsChange = (selectedOptions) => {
-      setSelectedFriends(selectedOptions);
+        setSelectedFriends(selectedOptions);
     };
     const handleSelectEnemiesChange = (selectedOptions) => {
         setSelectedEnemies(selectedOptions);
-      };
+    };
 
-
+    // Funcion para mostrar los perros amigos
     function showFriends(id) {
         let mostrarAmigos = []
         for (let i = 0; i < dogs?.length; i++) {
@@ -198,7 +205,7 @@ function updateCompleteDog(e, _id) {
         }
         return
     }
-
+    // Funcion para mostrar los perros con quien pelea
     function showEnemies(id) {
         let mostrarEnemigos = []
         for (let i = 0; i < dogs?.length; i++) {
@@ -223,12 +230,14 @@ function updateCompleteDog(e, _id) {
         return
     }
     
+    // Funcion para cerrar el formulario de edicion sin cambiar datos
     function toggleFormUpdateDog() {
         setFormUpdateDog(!formUpdateDog)
         setShowFilter(!showFilter)
         scrollToTop()
     }
 
+    // Funcion para convertir una imagen a texto y poder almacenarla
     function convertToBase64(e) {
         let reader = new FileReader();
         reader.readAsDataURL(e.target.files[0]);
@@ -241,12 +250,13 @@ function updateCompleteDog(e, _id) {
         }
     }
 
+    // Funcion para ir al tope de la pagina
     function scrollToTop() {
         window.scrollTo({
-          top: 0,
-          behavior: 'instant'
+            top: 0,
+            behavior: 'instant'
         });
-      }
+    }
 
     // Borrar un perro
     function handleDelete(id) {
@@ -268,18 +278,19 @@ function updateCompleteDog(e, _id) {
                 }
                 })}
 
+    // Borrar perro del query
     const deleteDogMutation = useMutation({
         mutationFn: deleteDog,
         onSuccess: () => {
             queryClient.invalidateQueries(["dogs"]);
             setTimeout(() => {
                 window.location.reload(true)
-            }, 2000);
+            }, 1500);
         }
     })
 
 
-
+    //Funcion para mostrar los perros amigos cuando hago el search
     function mostrar(id) {
         let mostrarAmigos = []
         for (let i = 0; i < dogs?.length; i++) {
@@ -307,6 +318,7 @@ function updateCompleteDog(e, _id) {
         return ;
     }
 
+    // Funcion para mostrar los perros con quien pelea cuando hago el search
     function mostrarPelea(id) {
         let mostrarPeleaCon = []
         for (let i = 0; i < dogs?.length; i++) {
@@ -332,6 +344,7 @@ function updateCompleteDog(e, _id) {
         return ;
     }
 
+    // Funcion para mostrar la ultima visita
     function lastVisitDate(fecha){
         if(fecha){
             const date = new Date(fecha);
@@ -345,6 +358,8 @@ function updateCompleteDog(e, _id) {
         }
         return null
     }
+
+    // Funcion para mostrar al perro de acuerdo al resultado de la busqueda o Vengo de otra pagina con params
     const handleSearch = (e) => {
         let busqueda
         if(e.target?.value === "") {
@@ -352,12 +367,12 @@ function updateCompleteDog(e, _id) {
         }
         if(!e.target?.value){
             busqueda = e
-            return setFilteredDogs(dogs.filter((dog) => (dog.name.toLowerCase()).includes(busqueda?.toLowerCase())))
+            return setFilteredDogs(dogs?.filter((dog) => (dog.name.toLowerCase()).includes(busqueda?.toLowerCase())))
         }
         if(e.target.value){
             e.target.value? busqueda = e.target.value : busqueda = e
             busqueda
-            ? setFilteredDogs(dogs.filter((dog) => (dog.name.toLowerCase()).includes(busqueda?.toLowerCase())))
+            ? setFilteredDogs(dogs?.filter((dog) => (dog.name.toLowerCase()).includes(busqueda?.toLowerCase())))
             : null;
         } 
     };
@@ -369,10 +384,13 @@ function updateCompleteDog(e, _id) {
         scrollToTop()
     }
 
+    // Funcion para mostrar mas datos del perro
     const handleSeeMore = () => {
         setSeeMore(!seeMore)
         scrollToTop()
     }
+
+    // Funcion para mostrar el formulario de edicion
     const handleEditOption = (id) => {
         showFriends(id)
         showEnemies(id)
@@ -386,13 +404,13 @@ function updateCompleteDog(e, _id) {
     return (
         <>
             <Backdrop
-        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer-1 }}
-        open={open}
-        onClick={handleClose}
-      >
-      <CircularProgress color="inherit" />
-
-      </Backdrop>
+            sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer-1 }}
+            open={open}
+            onClick={handleClose}
+            >
+            <CircularProgress color="inherit" />
+            </Backdrop>
+            
             <div className="container-search">
                 {showFilter && <input
                     type="text"
@@ -401,7 +419,7 @@ function updateCompleteDog(e, _id) {
                     onChange={handleSearch}
                     defaultValue={parametro? parametro : ""}
                 />}
-                {showFilter && filteredDogs.length > 0 &&(
+                {showFilter && filteredDogs?.length > 0 &&(
                     <p className="resultados-search">
                         Resultados: {filteredDogs?.length} de {dogs?.length}
                     </p>
@@ -429,11 +447,6 @@ function updateCompleteDog(e, _id) {
                         </div>
                     );
                 })}</>}
-
-
-
-
-
 
                 {showFilter && seeMore && <>{filteredDogs?.map((dog, i) => {
                     return (

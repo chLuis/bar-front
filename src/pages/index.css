@@ -135,7 +135,7 @@
     display: grid;
     place-content: center;
     transition: 0.4s;
-    text-shadow: rgb(196, 196, 196) 2px 0 4px;
+    text-shadow: rgb(90, 90, 90) 2px 0 4px;
 }
 
 
@@ -172,6 +172,7 @@
 
 @keyframes clickMove {
     0% {
+        color: rgb(202, 198, 198);
         transform: translateX(0) translateY(0);
         scale: 1;
     }
@@ -192,6 +193,7 @@
         scale: 1;
     }
     90%{
+        color: rgb(202, 198, 198);
         scale: 1;
     }
     92%{
