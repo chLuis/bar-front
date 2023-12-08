@@ -1,12 +1,13 @@
 import logo from '../../assets/images/LogoLenguaAfuera.jpeg'
 import './logoLengua.css'
+import { Link } from 'react-router-dom'
 
 export const LogoLengua = () => {
     return (
         <div className='allLogo'>
         <div className='container-logo' id='LogoLengua'>
         <div className='img-logo'>
-            <img className="home-img" src={logo} alt="home-img" width={200}/>
+            <Link to="/"><img className="home-img" src={logo} alt="home-img" width={200}/></Link>
             </div>
         <div className='container-logo-bottom'></div>
         </div>

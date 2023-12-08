@@ -9,9 +9,13 @@ import perroSinFoto from "../../assets/images/perroSinFoto.png";
 import Swal from "sweetalert2";
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
+import { useLocation } from "react-router";
 
 
 export const SearchDog = () => {
+
+    const location = useLocation();
+    const [parametro, setParametro] = useState(location.state?.parametro || "")
     
     const queryClient = useQueryClient();
     const [filteredDogs, setFilteredDogs] = useState([]);
@@ -27,6 +31,7 @@ export const SearchDog = () => {
     const [balanceDog, setBalanceDog] = useState()
     const [dateDog, setDateDog] = useState()
     const [open, setOpen] = useState(false);
+    const [seeMore, setSeeMore] = useState(false)
   
     const handleClose = () => {
     setOpen(false);
@@ -221,6 +226,7 @@ function updateCompleteDog(e, _id) {
     function toggleFormUpdateDog() {
         setFormUpdateDog(!formUpdateDog)
         setShowFilter(!showFilter)
+        scrollToTop()
     }
 
     function convertToBase64(e) {
@@ -235,6 +241,12 @@ function updateCompleteDog(e, _id) {
         }
     }
 
+    function scrollToTop() {
+        window.scrollTo({
+          top: 0,
+          behavior: 'instant'
+        });
+      }
 
     // Borrar un perro
     function handleDelete(id) {
@@ -333,20 +345,41 @@ function updateCompleteDog(e, _id) {
         }
         return null
     }
-
     const handleSearch = (e) => {
-        e.target.value
-            ? setFilteredDogs(dogs.filter((dog) => (dog.name.toLowerCase()).includes(e.target.value.toLowerCase())))
+        let busqueda
+        if(e.target?.value === "") {
+            return setFilteredDogs([])
+        }
+        if(!e.target?.value){
+            busqueda = e
+            return setFilteredDogs(dogs.filter((dog) => (dog.name.toLowerCase()).includes(busqueda?.toLowerCase())))
+        }
+        if(e.target.value){
+            e.target.value? busqueda = e.target.value : busqueda = e
+            busqueda
+            ? setFilteredDogs(dogs.filter((dog) => (dog.name.toLowerCase()).includes(busqueda?.toLowerCase())))
             : null;
-        e.target.value === "" ? setFilteredDogs([]) : null;
+        } 
     };
+    
+    if(parametro){
+        let newParam = parametro
+        setParametro(false)
+        handleSearch(newParam)
+        scrollToTop()
+    }
 
+    const handleSeeMore = () => {
+        setSeeMore(!seeMore)
+        scrollToTop()
+    }
     const handleEditOption = (id) => {
         showFriends(id)
         showEnemies(id)
         setIdDog(id)
         setFormUpdateDog(!formUpdateDog)
         setShowFilter(!showFilter)
+        scrollToTop()
     }
     
 
@@ -361,18 +394,48 @@ function updateCompleteDog(e, _id) {
 
       </Backdrop>
             <div className="container-search">
-                <input
+                {showFilter && <input
                     type="text"
                     placeholder="Buscar perro"
                     className="input-search-dog"
                     onChange={handleSearch}
-                />
-                {filteredDogs.length > 0 && (
+                    defaultValue={parametro? parametro : ""}
+                />}
+                {showFilter && filteredDogs.length > 0 &&(
                     <p className="resultados-search">
-                        Resultados: {filteredDogs?.length}
+                        Resultados: {filteredDogs?.length} de {dogs?.length}
                     </p>
                 )}
-                {showFilter &&<>{filteredDogs?.map((dog, i) => {
+                {showFilter && !seeMore && <>{filteredDogs?.map((dog, i) => {
+                    return (
+                        <div key={i} className="dog-filter">
+                            <img src={dog.image? dog.image : perroSinFoto} alt={`imagen de ${dog.name}`} height={100} className="imagen-dog-search"></img>
+                            <h2>🐶 {dog.name}</h2>
+                            <p>Raza: {dog.race}</p>
+                            <p>Dueño: {dog.owner}</p>
+                            <p>Teléfono: {dog.phone}</p>
+                            <p>Alergias: {dog.allergy}</p>
+                            <p>Tipo de corte: {dog.typeOfCut}</p>
+                            <p>Tipo de shampoo: {dog.typeOfShampoo}</p>
+                            <p>Hacer fotos? {typeof dog.photo === 'boolean' ? dog.photo ? "Si":"No" : ''}</p>
+                            <p>Hacer videos? {typeof dog.video === 'boolean' ? dog.video ? "Si":"No" : ''}</p>
+                            <p>Saldo: $ {dog.balance}</p>
+                            <p>Descripción: {dog.description}</p>
+                            <div className="btn-dogFounded">
+                                <button className="btn-foundedSeeMore" onClick={() => handleSeeMore()}>Ver más</button>
+                                <button className="btn-foundedEdit" onClick={() => handleEditOption(dog._id)}>Editar</button>
+                                <button className="btn-foundedDelete" onClick={() => handleDelete(dog._id)}>Borrar</button>
+                            </div>
+                        </div>
+                    );
+                })}</>}
+
+
+
+
+
+
+                {showFilter && seeMore && <>{filteredDogs?.map((dog, i) => {
                     return (
                         <div key={i} className="dog-filter">
                             <img src={dog.image? dog.image : perroSinFoto} alt={`imagen de ${dog.name}`} height={100} className="imagen-dog-search"></img>
@@ -400,9 +463,10 @@ function updateCompleteDog(e, _id) {
                             <p>Ultima visita: {lastVisitDate(dog.lastVisit)}</p>
                             <p>Saldo: $ {dog.balance}</p>
                             <p>Descripción: {dog.description}</p>
-                            <div>
-                                <button onClick={() => handleEditOption(dog._id)}>editar</button>
-                                <button onClick={() => handleDelete(dog._id)}>borrar</button>
+                            <div className="btn-dogFounded">
+                                <button className="btn-foundedSeeLess" onClick={() => handleSeeMore()}>Ver menos</button>
+                                <button className="btn-foundedEdit" onClick={() => handleEditOption(dog._id)}>Editar</button>
+                                <button className="btn-foundedDelete" onClick={() => handleDelete(dog._id)}>Borrar</button>
                             </div>
                         </div>
                     );
@@ -506,3 +570,4 @@ function updateCompleteDog(e, _id) {
         </>
     );
 };
+

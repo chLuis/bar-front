@@ -81,3 +81,29 @@
 .swal2-container{
     z-index: 9999;
 }
+
+.btn-dogFounded {
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-around;
+    > button {
+        border: 1px solid rgb(210, 207, 207);
+        padding: 8px 2px;
+        margin: 16px 0px;
+        width: 90px;
+    }
+}
+.btn-foundedSeeMore{
+    background-color: rgb(29, 25, 57);
+}
+.btn-foundedSeeLess{
+    background-color: rgb(29, 25, 57);
+}
+.btn-foundedEdit{
+    background-color: rgb(40, 40, 176);
+}
+.btn-foundedDelete{
+    background-color: rgb(144, 34, 34);
+}

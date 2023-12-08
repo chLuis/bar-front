@@ -50,7 +50,7 @@ export const Home = () => {
                     <Link to="peluqueria/nuestrosservicios" className="aToPelu">- Qué servicios ofrecemos.</Link><br></br>
                     <Link to="peluqueria/nuestraformacion" className="aToPelu">- Nuestra formación.</Link><br></br>
                     <Link to="peluqueria/trabajosytestimonios" className="aToPelu">- Nuestros trabajos y testimonios.</Link><br></br>
-                    <Link to="agenda" className="aToPelu">Agenda tu turno</Link>
+                    <Link to="agendadogs" className="aToPelu">Agenda tu turno</Link>
                     </div>}
                 </div>
                 </article>

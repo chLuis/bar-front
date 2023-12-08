@@ -1,5 +1,5 @@
 import './AltaDog.css'
-import { useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { getDogs,createDog } from '../../api/dogsAPI'
 import Select from 'react-select'
@@ -8,6 +8,7 @@ import { BtnHome } from '../BtnHome'
 import Swal from 'sweetalert2'
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
+
 
 export const AltaDog = () => {
     
@@ -27,6 +28,7 @@ export const AltaDog = () => {
     const [image, setImage] = useState("")
     const [showBtnEdit, setShowBtnEdit] = useState(true)
     const [open, setOpen] = useState(false);
+    const [seHaRenderizado, setSeHaRenderizado] = useState(false);
   
     const handleClose = () => {
     setOpen(false);
@@ -40,7 +42,7 @@ export const AltaDog = () => {
         toast: true,
         position: "top-end",
         showConfirmButton: false,
-        timer: 2000,
+        timer: 1200,
         timerProgressBar: true,
         didOpen: (toast) => {
           toast.onmouseenter = Swal.stopTimer;
@@ -60,7 +62,7 @@ export const AltaDog = () => {
             setTimeout(() => {
                 handleClose()
                 window.location.href = 'https://main--eloquent-conkies-02e62a.netlify.app/#/'; // Reemplaza '/otra-pagina' con la ruta a la que deseas redirigir
-              }, 2000);
+              }, 1200);
 
         },
         onError: (error) => {
@@ -87,18 +89,26 @@ export const AltaDog = () => {
             console.log('Error: ', error);
         }
     }
+    function scrollToTop() {
+        window.scrollTo({
+          top: 0,
+          behavior: 'instant'
+        });
+      }
 
-
+    useEffect(() => {
+        // Realiza la acción solo si no se ha renderizado antes
+        if (!seHaRenderizado) {
+            scrollToTop()
+            setSeHaRenderizado(true);
+        }}, [seHaRenderizado]);
 
 const handleSelectFriendsChange = (selectedOptions) => {
   setSelectedFriends(selectedOptions);
 };
 function handleLastVisit(e) {
-    //console.log(e.target.value)
-    //console.log(typeof e.target.value)
     const lastVisit = new Date(e.target.value)
     console.log(lastVisit)
-    //console.log(typeof lastVisit)
 }
 
 const handleSelectEnemiesChange = (selectedOptions) => {

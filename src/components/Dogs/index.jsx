@@ -1,16 +1,20 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useState } from "react";
 import { getDogs, deleteDog } from "../../api/dogsAPI";
 import "./dogs.css";
 import { BtnHome } from "../BtnHome";
 import perroSinFoto from '../../assets/images/perroSinFoto.png'
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { EditDog } from '../EditDog/index'
 import Swal from "sweetalert2";
 import { useEffect } from "react";
+import { SearchDog } from "..";
 
 
 export const Dogs = () => {
     
+    const navigate = useNavigate();
+    const [nombrePerro, setNombrePerro] = useState("")
     const fotoPerroSinFoto = perroSinFoto
     const queryClient = useQueryClient()
     const {
@@ -36,7 +40,19 @@ export const Dogs = () => {
         },
     })
 
-
+    function handleEdit(id) {
+        console.log(id)
+        // Swal.fire({
+        //     title: '¿Estás seguro?',
+        //     text: "Estás editando este perro!",
+        //     icon: 'info',
+        //     showCancelButton: true,
+        //     confirmButtonColor: '#3085d6',
+        //     cancelButtonColor: '#d33',
+        //     confirmButtonText: 'Si, editar!'
+        //     }).then((result) => {
+            history.push(`/searchdog/${id}`);
+    }
 
     function handleDelete(id) {
         Swal.fire({
@@ -53,7 +69,10 @@ export const Dogs = () => {
             }
           })
     }
-        
+    const handleEditarClick = (name) => {
+        // Navega a la página de edición y pasa la información como estado
+        navigate('/searchdog', { state: { parametro: name } });
+      };
 
 
 
@@ -92,10 +111,13 @@ export const Dogs = () => {
                 <img className="avatar-dog" src={dog.image ? dog.image : fotoPerroSinFoto} height={100} alt={dog.image ? dog.image : fotoPerroSinFoto} />
                 <h3>{dog.name}</h3>
                 <p>{dog.owner}</p>
-                <button><Link to={"/searchdog"}>✏️ Editar</Link></button>
-                <button onClick={() => {
-                    handleDelete(dog._id);
-                }}>🗑️ Borrar</button>
+                {/* <button className="link-searchDelete" onClick={() => handleEdit(dog.name)}> */}
+                <button className="link-searchDelete" onClick={() => handleEditarClick(dog.name)}>
+                    <i className="fa-solid fa-pencil"></i> Editar
+                </button>
+                <button className="link-searchDelete" onClick={() => handleDelete(dog._id)}>
+                    <i className="fa-regular fa-trash-can"></i> Borrar
+                </button>
             </div>
             ))}
         </div>
