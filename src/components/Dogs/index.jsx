@@ -5,16 +5,14 @@ import "./dogs.css";
 import { BtnHome } from "../BtnHome";
 import perroSinFoto from '../../assets/images/perroSinFoto.png'
 import { useNavigate, Link } from "react-router-dom";
-import { EditDog } from '../EditDog/index'
 import Swal from "sweetalert2";
-import { useEffect } from "react";
-import { SearchDog } from "..";
+
 
 
 export const Dogs = () => {
     
     const navigate = useNavigate();
-    const [nombrePerro, setNombrePerro] = useState("")
+    //const [nombrePerro, setNombrePerro] = useState("")
     const fotoPerroSinFoto = perroSinFoto
     const queryClient = useQueryClient()
     const {
@@ -30,15 +28,31 @@ export const Dogs = () => {
     
     const deleteDogMutation = useMutation({
         mutationFn: deleteDog,
-        onSuccess: () => {
-            queryClient.invalidateQueries(["dogs"]);
-            Swal.fire(
-                'Borrado!',
-                'El perro ha sido borrado.',
-                'success'
-            )
+        onSuccess: async () => {
+            Toast.fire({
+                title: 'Perro borrado!',
+                icon: 'success',
+            });
+            await queryClient.invalidateQueries(["dogs"]);
+        await queryClient.refetchQueries(["dogs"]);
+        },
+        onError: (error) => {
+            console.error("Error deleting dog:", error);
         },
     })
+
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        zIndex: 11,
+        showConfirmButton: false,
+        timer: 2500,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+        }
+    });
 
     function handleDelete(id) {
         Swal.fire({
@@ -98,11 +112,11 @@ export const Dogs = () => {
                 <h3>{dog.name}</h3>
                 <p>{dog.owner}</p>
                 {/* <button className="link-searchDelete" onClick={() => handleEdit(dog.name)}> */}
-                <button className="link-searchDelete" onClick={() => handleEditarClick(dog.name)}>
-                    <i className="fa-solid fa-pencil"></i> Editar
+                <button className="link-searchEdit" onClick={() => handleEditarClick(dog.name)}>
+                    <i className="fa-solid fa-pencil"></i><span>Editar</span>
                 </button>
                 <button className="link-searchDelete" onClick={() => handleDelete(dog._id)}>
-                    <i className="fa-regular fa-trash-can"></i> Borrar
+                    <i className="fa-regular fa-trash-can"></i><span>Borrar</span>
                 </button>
             </div>
             ))}

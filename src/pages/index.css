@@ -39,7 +39,11 @@
     }
 }
 .peluPrevLink , .tiendaPrevLink {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    > h3 {
+        margin: 0 0 10px 0;
+        animation: clickMoveH3 2.5s linear infinite;
+    }
 }
 .peluPrevLink{
     display: flex;
@@ -167,40 +171,68 @@
 
 
 .spanAnimated{
+    display: grid;
+    place-content: center;
+    margin: 0 !important;
     animation: clickMove 2.5s linear infinite;
+    height: 70px;
+    width: 70px;
+    transform: rotate(20deg);
 }
 
 @keyframes clickMove {
     0% {
-        color: rgb(202, 198, 198);
-        transform: translateX(0) translateY(0);
-        scale: 1;
-    }
-    20% {
-        transform: translateX(-70%) translateY(30%);
+        transform: translateX(0) translateY(0) rotate(20deg);
         scale: 1;
     }
     40% {
-        transform: translateX(0%) translateY(0);
+        transform: translateX(-100%) translateY(30%) rotate(20deg);
         scale: 1;
     }
-    60% {
-        transform: translateX(70%) translateY(-30%);
+    50% {
+        transform: translateX(0%) translateY(0) rotate(20deg);
+        scale: 1;
+    }
+    70% {
+        transform: translateX(100%) translateY(-30%) rotate(20deg);
         scale: 1;
     }
     80% {
-        transform: translateX(0) translateY(0);
+        transform: translateX(0) translateY(0) rotate(20deg);
+        scale: 1;
+        color: black;
+    }
+    90%{
+        scale: 1;
+        border: 0px solid black;
+        color: rgb(220, 220, 220);
+    }
+    92%{
+        border: 1px dashed black;
+        border-radius: 50%;
+        scale: 0.5;
+    }
+    95%{
+        scale: 1.5;
+    }
+    100%{
+        scale: 1;
+    }
+}
+
+
+@keyframes clickMoveH3 {
+    0% {
         scale: 1;
     }
     90%{
-        color: rgb(202, 198, 198);
         scale: 1;
     }
     92%{
         scale: 0.5;
     }
     95%{
-        scale: 1.5;
+        scale: 1.1;
     }
     100%{
         scale: 1;

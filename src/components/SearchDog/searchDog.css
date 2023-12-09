@@ -108,3 +108,8 @@
 .btn-foundedDelete{
     background-color: rgb(144, 34, 34);
 }
+
+.spanFoundedDog{
+    font-weight: bold;
+    color: rgb(164, 164, 160);
+}

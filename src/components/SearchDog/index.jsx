@@ -91,10 +91,10 @@ const updateDogMutation = useMutation({
             title: 'Perro editado!',
             icon: 'success',
         })
-         setTimeout(() => {
+        setTimeout(() => {
             handleClose()
             window.location.reload(true)
-           }, 1500);
+        }, 1500);
         
     },
     onError: (error) => {
@@ -381,13 +381,13 @@ function updateCompleteDog(e, _id) {
         let newParam = parametro
         setParametro(false)
         handleSearch(newParam)
-        scrollToTop()
+        //scrollToTop()
     }
 
     // Funcion para mostrar mas datos del perro
     const handleSeeMore = () => {
         setSeeMore(!seeMore)
-        scrollToTop()
+        //scrollToTop()
     }
 
     // Funcion para mostrar el formulario de edicion
@@ -424,21 +424,22 @@ function updateCompleteDog(e, _id) {
                         Resultados: {filteredDogs?.length} de {dogs?.length}
                     </p>
                 )}
-                {showFilter && !seeMore && <>{filteredDogs?.map((dog, i) => {
+                {/* {showFilter && !seeMore && <>{filteredDogs?.map((dog, i) => {
                     return (
                         <div key={i} className="dog-filter">
                             <img src={dog.image? dog.image : perroSinFoto} alt={`imagen de ${dog.name}`} height={100} className="imagen-dog-search"></img>
                             <h2>🐶 {dog.name}</h2>
-                            <p>Raza: {dog.race}</p>
-                            <p>Dueño: {dog.owner}</p>
-                            <p>Teléfono: {dog.phone}</p>
-                            <p>Alergias: {dog.allergy}</p>
-                            <p>Tipo de corte: {dog.typeOfCut}</p>
-                            <p>Tipo de shampoo: {dog.typeOfShampoo}</p>
-                            <p>Hacer fotos? {typeof dog.photo === 'boolean' ? dog.photo ? "Si":"No" : ''}</p>
-                            <p>Hacer videos? {typeof dog.video === 'boolean' ? dog.video ? "Si":"No" : ''}</p>
-                            <p>Saldo: $ {dog.balance}</p>
-                            <p>Descripción: {dog.description}</p>
+                            <p><span className="spanFoundedDog">Raza: </span>{dog.race}</p>
+                            <p><span className="spanFoundedDog">Dueño: </span>{dog.owner}</p>
+                            <p><span className="spanFoundedDog">Teléfono: </span>{dog.phone}</p>
+                            <p><span className="spanFoundedDog">Alergias: </span>{dog.allergy}</p>
+                            <p><span className="spanFoundedDog">Tipo de corte: </span>{dog.typeOfCut}</p>
+                            <p><span className="spanFoundedDog">Tipo de shampoo: </span>{dog.typeOfShampoo}</p>
+                            <p><span className="spanFoundedDog">Hacer fotos? </span>{typeof dog.photo === 'boolean' ? dog.photo ? "Si":"No" : ''}</p>
+                            <p><span className="spanFoundedDog">Hacer videos? </span>{typeof dog.video === 'boolean' ? dog.video ? "Si":"No" : ''}</p>
+                            <p><span className="spanFoundedDog">Saldo: $ </span>{dog.balance}</p>
+                            <p><span className="spanFoundedDog">Descripción: </span>{dog.description}</p>
+                            
                             <div className="btn-dogFounded">
                                 <button className="btn-foundedSeeMore" onClick={() => handleSeeMore()}>Ver más</button>
                                 <button className="btn-foundedEdit" onClick={() => handleEditOption(dog._id)}>Editar</button>
@@ -446,38 +447,39 @@ function updateCompleteDog(e, _id) {
                             </div>
                         </div>
                     );
-                })}</>}
+                })}</>} */}
 
-                {showFilter && seeMore && <>{filteredDogs?.map((dog, i) => {
+                {showFilter && <>{filteredDogs?.map((dog, i) => {
                     return (
                         <div key={i} className="dog-filter">
                             <img src={dog.image? dog.image : perroSinFoto} alt={`imagen de ${dog.name}`} height={100} className="imagen-dog-search"></img>
                             <h2>🐶 {dog.name}</h2>
-                            <p>Raza: {dog.race}</p>
-                            <p>Edad: {dog.age}</p>
-                            <p>Dueño: {dog.owner}</p>
-                            <p>Teléfono: {dog.phone}</p>
-                            <p>Email: {dog.email}</p>
-                            <p>Vuelve cada: {dog.rotation} días</p>
-                            <p>Enfermedad: {dog.disease}</p>
-                            <p>Discapacidad: {dog.disability}</p>
-                            <p>Alergias: {dog.allergy}</p>
-                            <p>Temperamento: {dog.temper}</p>
-                            <p>Castrado: {typeof dog.castrated === 'boolean' ? dog.castrated? "Si":"No" : ""}</p>
-                            <p>Tipo de corte: {dog.typeOfCut}</p>
-                            <p>Tipo de shampoo: {dog.typeOfShampoo}</p>
-                            <p>Amigos: {mostrar(dog._id)}</p>
-                            <p>Pelea con: {mostrarPelea(dog._id)}</p>
-                            <p>Hacer fotos? {typeof dog.photo === 'boolean' ? dog.photo ? "Si":"No" : ''}</p>
-                            <p>Hacer videos? {typeof dog.video === 'boolean' ? dog.video ? "Si":"No" : ''}</p>
-                            <p>Medio de pago? {dog.paymentMode}</p>
-                            <p>Salta de la mesa? {typeof dog.jumper === 'boolean' ? dog.jumper ? "Si":"No" : ''}</p>
-                            <p>El dueño se queda? {typeof dog.ownerStay === 'boolean' ? dog.ownerStay ? "Si":"No" : ''}</p>
-                            <p>Ultima visita: {lastVisitDate(dog.lastVisit)}</p>
-                            <p>Saldo: $ {dog.balance}</p>
-                            <p>Descripción: {dog.description}</p>
+                            <p><span className="spanFoundedDog">Raza: </span>{dog.race}</p>
+                            {seeMore && <p><span className="spanFoundedDog">Edad: </span>{dog.age}</p>}
+                            <p><span className="spanFoundedDog">Dueño: </span>{dog.owner}</p>
+                            <p><span className="spanFoundedDog">Teléfono: </span>{dog.phone}</p>
+                            {seeMore && <p><span className="spanFoundedDog">Email: </span>{dog.email}</p>}
+                            {seeMore && <p><span className="spanFoundedDog">Vuelve cada: </span>{dog.rotation} días</p>}
+                            {seeMore && <p><span className="spanFoundedDog">Enfermedad: </span>{dog.disease}</p>}
+                            {seeMore && <p><span className="spanFoundedDog">Discapacidad: </span>{dog.disability}</p>}
+                            <p><span className="spanFoundedDog">Alergias: </span>{dog.allergy}</p>
+                            {seeMore && <p><span className="spanFoundedDog">Temperamento: </span>{dog.temper}</p>}
+                            {seeMore && <p><span className="spanFoundedDog">Castrado: </span>{typeof dog.castrated === 'boolean' ? dog.castrated? "Si":"No" : ""}</p>}
+                            <p><span className="spanFoundedDog">Tipo de corte: </span>{dog.typeOfCut}</p>
+                            <p><span className="spanFoundedDog">Tipo de shampoo: </span>{dog.typeOfShampoo}</p>
+                            {seeMore && <p><span className="spanFoundedDog">Amigos: </span>{mostrar(dog._id)}</p>}
+                            {seeMore && <p><span className="spanFoundedDog">Pelea con: </span>{mostrarPelea(dog._id)}</p>}
+                            <p><span className="spanFoundedDog">Hacer fotos? </span>{typeof dog.photo === 'boolean' ? dog.photo ? "Si":"No" : ''}</p>
+                            <p><span className="spanFoundedDog">Hacer videos? </span>{typeof dog.video === 'boolean' ? dog.video ? "Si":"No" : ''}</p>
+                            {seeMore && <p><span className="spanFoundedDog">Medio de pago? </span>{dog.paymentMode}</p>}
+                            <p><span className="spanFoundedDog">Salta de la mesa? </span>{typeof dog.jumper === 'boolean' ? dog.jumper ? "Si":"No" : ''}</p>
+                            {seeMore && <p><span className="spanFoundedDog">El dueño se queda? </span>{typeof dog.ownerStay === 'boolean' ? dog.ownerStay ? "Si":"No" : ''}</p>}
+                            {seeMore && <p><span className="spanFoundedDog">Ultima visita: </span>{lastVisitDate(dog.lastVisit)}</p>}
+                            <p><span className="spanFoundedDog">Saldo: </span>${dog.balance}</p>
+                            <p><span className="spanFoundedDog">Descripción: </span>{dog.description}</p>
                             <div className="btn-dogFounded">
-                                <button className="btn-foundedSeeLess" onClick={() => handleSeeMore()}>Ver menos</button>
+                                {!seeMore && <button className="btn-foundedSeeMore" onClick={() => handleSeeMore()}>Ver más</button>}
+                                {seeMore && <button className="btn-foundedSeeLess" onClick={() => handleSeeMore()}>Ver menos</button>}
                                 <button className="btn-foundedEdit" onClick={() => handleEditOption(dog._id)}>Editar</button>
                                 <button className="btn-foundedDelete" onClick={() => handleDelete(dog._id)}>Borrar</button>
                             </div>
