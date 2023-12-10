@@ -331,7 +331,7 @@ const handleSelectEnemiesChange = (selectedOptions) => {
                 </label>
                 <label>
                     <span className='focus'>Salta de la mesa?</span>
-                    <select name="jumper"  defaultValue={-1}>
+                    <select name="jumper" defaultValue={-1}>
                         <option value={-1} disabled>--- Seleccionar ---</option>
                         <option value="true">Si</option>
                         <option value="false">No</option>
@@ -360,7 +360,7 @@ const handleSelectEnemiesChange = (selectedOptions) => {
                 </label>
                 <label>
                 <span className='focus'>Descripción</span>
-                <textarea placeholder="" name="description" rows={4} className='descriptionUpDog'/>
+                <textarea placeholder="Descripción adicional" name="description" rows={4} className='descriptionUpDog'/>
                 </label>
                 {!addDogMutation.isPending && showBtnEdit && <button type="submit" className='btn-up-dog'>Crear</button>}
             </form>}
