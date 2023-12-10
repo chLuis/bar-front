@@ -324,7 +324,7 @@ const handleSelectEnemiesChange = (selectedOptions) => {
                 <label>
                     <span className='focus'>Modo de pago</span>
                     <select name="paymentMode"  defaultValue={-1}>
-                        <option value={-1} disabled>Seleccionar</option>
+                        <option value={-1} disabled>--- Seleccionar ---</option>
                         <option value="Efectivo">Efectivo</option>
                         <option value="Transferencia">Transferencia</option>
                     </select>
