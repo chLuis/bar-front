@@ -194,6 +194,22 @@ const handleSelectEnemiesChange = (selectedOptions) => {
     const optionsDogs = dogs?.map(dog => ({ value: dog._id, label: dog.name }));
     optionsDogs?.unshift({ value: 'Todos', label: 'Todos' })
 
+    const inputs = document.querySelectorAll('input');
+    inputs.forEach(input => {
+        input.onfocus = () => {
+            input.previousElementSibling.classList.add('top');
+            input.previousElementSibling.classList.add('focus');
+            input.parentNode.classList.add('focus');
+        }
+        input.onblur = () => {
+            input.value = input.value.trim( );
+            if (input.value.trim( ).length == 0){
+                input.previousElementSibling.classList.remove('focus');
+            }
+            input.previousElementSibling.classList.remove('top');
+            input.parentNode.classList.remove('focus');
+        }
+    })
 
     return (
         <div className='pageAltaDog'>
@@ -207,34 +223,78 @@ const handleSelectEnemiesChange = (selectedOptions) => {
             <h2 className='title-alta-dog'>Dar de alta un perro</h2>
             <p className='subtitle-alta-dog'>(*) campos obligatorios</p>
             {formEmpty && <form className="form-alta-dog" onSubmit={handleSubmit}>
-                <input type="text" placeholder="*Nombre" name="name"/>
-                <input type="text" placeholder="*Raza" name="race"/>
-                <input type="number" placeholder="*Edad" name="age"/>
-                <input type="text" placeholder="*Dueño" name="owner"/>
-                <input type="number" placeholder="*Teléfono" name="phone"/>
-                <input type="number" placeholder="*Rotación" name="rotation"/>
-                <input type="email" placeholder="Email" name="email"/>
-                <input type="text" placeholder="Enfermedad" name="disease"/>
-                <input type="text" placeholder="Discapacidad" name="disability"/>
-                <input type="text" placeholder="Alergia" name="allergy"/>
-                <select name="castrated" placeholder='Castra3do?' defaultValue={-1}>
-                    <option value={-1} disabled>Castrado?</option>
-                    <option value="true">Si</option>
-                    <option value="false">No</option>
-                </select>
-                <input type="text" placeholder="Tipo de Corte" name="typeOfCut"/>
-                <input type="text" placeholder="Tipo de Shampoo" name="typeOfShampoo"/>
-                <input type="text" placeholder="Temperamento" name="temper"/>
-                <Select name="friends"
-                    options={optionsDogs}
-                    closeMenuOnSelect={false}
-                    components={animatedComponents}
-                    isMulti
-                    className='select-option'
-                    placeholder="Amigos"
-                    onChange={handleSelectFriendsChange}
-                    >
-                </Select>
+                <label>
+                    <span>Nombre*</span>
+                    <input type="text" name="name"/>
+                </label>
+                <label>
+                    <span>Raza*</span>
+                    <input type="text" name="race"/>
+                </label>
+                <label>
+                    <span>Edad*</span>
+                    <input type="number" name="age"/>
+                </label>
+                <label>
+                    <span>Dueño*</span>
+                    <input type="text" name="owner"/>
+                </label>
+                <label>
+                    <span>Teléfono*</span>
+                    <input type="number" name="phone"/>
+                </label>
+                <label>
+                    <span>Rotación*</span>
+                    <input type="number" name="rotation"/>
+                </label>
+                <label>
+                    <span>Email</span>
+                    <input type="email" name="email"/>
+                </label>
+                <label>
+                    <span>Enfermedad</span>
+                    <input type="text" name="disease"/>
+                </label>
+                <label>
+                    <span>Discapacidad</span>
+                    <input type="text" name="disability"/>
+                </label>
+                <label>
+                    <span>Alergia</span>
+                    <input type="text" name="allergy"/>
+                </label>
+                <label>
+                    <span className='focus'>Castrado?</span>
+                    <select name="castrated" placeholder='Castra3do?' defaultValue={-1}>
+                        <option value={-1} disabled>--- Seleccionar ---</option>
+                        <option value="true">Si</option>
+                        <option value="false">No</option>
+                    </select>
+                </label>
+                <label>
+                    <span>Tipo de Corte</span>
+                    <input type="text" name="typeOfCut"/>
+                </label>
+                <label>
+                    <span>Tipo de Shampoo</span>
+                    <input type="text" name="typeOfShampoo"/>
+                </label>
+                <label>
+                    <span>Temperamento</span>
+                    <input type="text" name="temper"/>
+                </label>
+                    
+                    <Select name="friends"
+                        options={optionsDogs}
+                        closeMenuOnSelect={false}
+                        components={animatedComponents}
+                        isMulti
+                        className='select-option'
+                        placeholder="Amigos"
+                        onChange={handleSelectFriendsChange}
+                        >
+                    </Select>
+                
                 <Select name="enemies"
                     options={optionsDogs}
                     closeMenuOnSelect={false}
@@ -245,38 +305,63 @@ const handleSelectEnemiesChange = (selectedOptions) => {
                     onChange={handleSelectEnemiesChange}
                     >
                 </Select>
-                <select name="photo"  defaultValue={-1}>
-                    <option value={-1} disabled>Sacar fotos?</option>
-                    <option value="true">Si</option>
-                    <option value="false">No</option>
-                </select>
-                <select name="video"  defaultValue={-1}>
-                    <option value={-1} disabled>Hacer videos?</option>
-                    <option value="true">Si</option>
-                    <option value="false">No</option>
-                </select>
-                <select name="paymentMode"  defaultValue={-1}>
-                    <option value={-1} disabled>Modo de pago?</option>
-                    <option value="Efectivo">Efectivo</option>
-                    <option value="Transferencia">Transferencia</option>
-                </select>
-                <select name="jumper"  defaultValue={-1}>
-                    <option value={-1} disabled>Salta de la mesa?</option>
-                    <option value="true">Si</option>
-                    <option value="false">No</option>
-                </select>
-                <select name="ownerStay"  defaultValue={-1}>
-                    <option value={-1} disabled>El dueño se queda?</option>
-                    <option value="true">Si</option>
-                    <option value="false">No</option>
-                </select>
-                <input type="number" placeholder="Saldo" name="balance"/>
-                <label name="lastVisit">Ultima visita?</label>
+                <label>
+                    <span className='focus'>Sacar fotos?</span>
+                    <select name="photo"  defaultValue={-1}>
+                        <option value={-1} disabled>--- Seleccionar ---</option>
+                        <option value="true">Si</option>
+                        <option value="false">No</option>
+                    </select>
+                </label>
+                <label>
+                    <span className='focus'>Hacer videos?</span>
+                    <select name="video"  defaultValue={-1}>
+                        <option value={-1} disabled>--- Seleccionar ---</option>
+                        <option value="true">Si</option>
+                        <option value="false">No</option>
+                    </select>
+                </label>
+                <label>
+                    <span className='focus'>Modo de pago</span>
+                    <select name="paymentMode"  defaultValue={-1}>
+                        <option value={-1} disabled>Seleccionar</option>
+                        <option value="Efectivo">Efectivo</option>
+                        <option value="Transferencia">Transferencia</option>
+                    </select>
+                </label>
+                <label>
+                    <span className='focus'>Salta de la mesa?</span>
+                    <select name="jumper"  defaultValue={-1}>
+                        <option value={-1} disabled>--- Seleccionar ---</option>
+                        <option value="true">Si</option>
+                        <option value="false">No</option>
+                    </select>
+                </label>
+                <label>
+                    <span className='focus'>El dueño se queda?</span>
+                    <select name="ownerStay"  defaultValue={-1}>
+                        <option value={-1} disabled>--- Seleccionar ---</option>
+                        <option value="true">Si</option>
+                        <option value="false">No</option>
+                    </select>
+                </label>
+                <label>
+                    <span>Saldo</span>
+                    <input type="number" name="balance"/>
+                </label>
+                <label name="lastVisit">
+                <span className='focus'>Ultima visita?</span>
                 <input type="date" placeholder="Última visita" name="lastVisit" onChange={(e) => handleLastVisit(e)}/>
+                </label>
+                <label>
+                <span className='focus'>Foto de perfil</span>
                 <input accept='image/*' type='file' onChange={convertToBase64} className='imageUp'></input>
                 {image ==="" || image ===null ? "" : <img width={100} height={100} src={image} alt="Imagen Perro" />}
-                
-                <textarea placeholder="Descripción" name="description" rows={4} className='descriptionUpDog'/>
+                </label>
+                <label>
+                <span className='focus'>Descripción</span>
+                <textarea placeholder="" name="description" rows={4} className='descriptionUpDog'/>
+                </label>
                 {!addDogMutation.isPending && showBtnEdit && <button type="submit" className='btn-up-dog'>Crear</button>}
             </form>}
         </div>

@@ -8,27 +8,70 @@
     background-color: rgb(86,37,25);
     padding: 6px 18px;
     border-radius: 10px;
-    margin-inline: 20px;
+    margin: auto;
 }
 .form-alta-dog{
     display: grid;
+    width: 400px;
     grid-template-columns: 100%;
     gap: 6px;
-    width: 95%;
     margin: auto;
-    font-size: 1.2rem !important;
-    > input[type="number"]::-webkit-inner-spin-button,
+
+    transition: 0.3s;
+    /*
+    font-size: 1.2rem !important; */
+    /* > input[type="number"]::-webkit-inner-spin-button,
     input[type="number"]::-webkit-outer-spin-button {
         -webkit-appearance: none;
         margin: 0;
-    }
-    > input, textarea {
+    } */
+    /* > input, textarea {
         font-size: 1.2rem;
-        background-color: rgb(186, 80, 53);
+        background-color: transparent;
         border-radius: 6px;
         padding-inline: 8px;
+    } */
+    > label {
+        display: block;
+        position: relative;
+        width: 400px;
+        border: 2px solid silver;
+        outline: none;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+        border-radius: 6px;
+        
+        > input, textarea, select {
+            display: block;
+            width: 96%;
+            font-size: 1.2rem;
+            background-color: transparent;
+            border: none;
+            line-height: 30px;
+            outline: none;
+            padding-left: 16px;
+            transition: 0.3s;
+            resize: none;
+        }
+        > span {
+            color: rgb(94, 94, 94);
+            position: absolute;
+            top: 3px;
+            left: 15px;
+            transition: 0.3s;
+        }
+        > select {
+            width: 100%;
+            padding-inline: 7px;
+            border-radius: 6px;
+            height: 36px;
+            color: rgb(244,232,208);
+            font-size: 1rem;
+            text-align: center;
+        }
+        
     }
-    > input:focus, textarea:focus {
+    /* > input:focus, textarea:focus {
         background-color: rgb(215, 133, 133);
     }
     > input::placeholder {
@@ -40,38 +83,50 @@
     > input:hover, textarea:hover {
         background-color: rgb(147, 81, 81) !important;
         cursor: pointer;
-    }
+    } */
     > button {
         line-height: 16px;
     }
-    > select {
-        padding-inline: 7px;
-        border-radius: 6px;
-        height: 32px;
-        background-color: rgb(186, 80, 53);
-        color: rgb(244,232,208);
-        font-size: 1.1rem;
-    }
+    
     > h2 {
         margin-bottom: 0px !important;
         background-color: red !important;
     }
 }
 
+label span.focus {
+    left: 2px !important;
+    top: -12px;
+    font-size: 0.8rem;
+    padding: 0 5px;
+    background-color: rgb(86,37,25);
+    color: silver;
+}
+label span.focus {
+    border-color: #17163e !important;
+}
+
+
+
 .select-option{
-    line-height: 16px !important;
-    background-color: rgb(186, 80, 53);
-    color: rgb(244,232,208);
-    text-align: start;
+            height: 36px;
+            background-color: rgb(86,37,25);
+            color: rgb(113, 103, 81);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
     > :not(hover) {
-        color: rgb(41, 41, 40) !important;
-        background-color: rgb(186, 80, 53);
+        color: rgb(38, 34, 34) !important;
+        background-color: rgb(86,37,25);
     }
 }
+.select-option:hover{
+    background-color: red !important;
+}
 #react-select-3-placeholder, #react-select-5-placeholder{
-    color: rgb(244,232,208);
+    color: rgb(220, 218, 216);
 }
 .imageUp{
+    width: 100% !important;
     padding: 0 !important;
     background-color: black !important;
     color: white;
