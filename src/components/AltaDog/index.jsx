@@ -160,7 +160,7 @@ const handleSelectEnemiesChange = (selectedOptions) => {
                         return Swal.fire({
                             title: 'Hubo un error!',
                             icon: 'error',
-                            text: "Dueño es requerido"})
+                            text: "Tutor es requerido"})
                     }
                     if(!dog.phone){
                         handleClose()
@@ -236,7 +236,7 @@ const handleSelectEnemiesChange = (selectedOptions) => {
                     <input type="number" name="age"/>
                 </label>
                 <label>
-                    <span>Dueño*</span>
+                    <span>Tutor*</span>
                     <input type="text" name="owner"/>
                 </label>
                 <label>
@@ -338,7 +338,7 @@ const handleSelectEnemiesChange = (selectedOptions) => {
                     </select>
                 </label>
                 <label>
-                    <span className='focus'>El dueño se queda?</span>
+                    <span className='focus'>El tutor se queda?</span>
                     <select name="ownerStay"  defaultValue={-1}>
                         <option value={-1} disabled>--- Seleccionar ---</option>
                         <option value="true">Si</option>

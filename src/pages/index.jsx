@@ -34,11 +34,6 @@ export const Home = () => {
         <>
             <LogoLengua />
             <section className="home-public">
-                <p>
-                    En estos links podrás conocer los servicios que brindamos,
-                    además ver equipamientos y accesorios en nuestra tienda para
-                    tu compañero de 4 patas.
-                </p>
                 <article>
                 <div className="home-link-pelu">
                 <i className="fondo-linkPelu"></i>

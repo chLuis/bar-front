@@ -133,7 +133,7 @@ export const AlertDogTime = () => {
         <div className="alertContainer">
             <div className="alertDogTimeTitle">
                 <p>🐶 Perro</p>
-                <p>Dueño</p>
+                <p>Tutor</p>
                 <p>Vuelve en</p>
             </div>
             <div className="cuadroAlert">

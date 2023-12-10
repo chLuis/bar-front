@@ -139,7 +139,7 @@ function updateCompleteDog(e, _id) {
         return Swal.fire({
             title: 'Hubo un error!',
             icon: 'error',
-            text: "Dueño es requerido"})
+            text: "Tutor es requerido"})
     }
     if(!dog.phone){
         return Swal.fire({
@@ -430,7 +430,7 @@ function updateCompleteDog(e, _id) {
                             <img src={dog.image? dog.image : perroSinFoto} alt={`imagen de ${dog.name}`} height={100} className="imagen-dog-search"></img>
                             <h2>🐶 {dog.name}</h2>
                             <p><span className="spanFoundedDog">Raza: </span>{dog.race}</p>
-                            <p><span className="spanFoundedDog">Dueño: </span>{dog.owner}</p>
+                            <p><span className="spanFoundedDog">Tutor: </span>{dog.owner}</p>
                             <p><span className="spanFoundedDog">Teléfono: </span>{dog.phone}</p>
                             <p><span className="spanFoundedDog">Alergias: </span>{dog.allergy}</p>
                             <p><span className="spanFoundedDog">Tipo de corte: </span>{dog.typeOfCut}</p>
@@ -456,7 +456,7 @@ function updateCompleteDog(e, _id) {
                             <h2>🐶 {dog.name}</h2>
                             <p><span className="spanFoundedDog">Raza: </span>{dog.race}</p>
                             {seeMore && <p><span className="spanFoundedDog">Edad: </span>{dog.age}</p>}
-                            <p><span className="spanFoundedDog">Dueño: </span>{dog.owner}</p>
+                            <p><span className="spanFoundedDog">Tutor: </span>{dog.owner}</p>
                             <p><span className="spanFoundedDog">Teléfono: </span>{dog.phone}</p>
                             {seeMore && <p><span className="spanFoundedDog">Email: </span>{dog.email}</p>}
                             {seeMore && <p><span className="spanFoundedDog">Vuelve cada: </span>{dog.rotation} días</p>}
@@ -473,7 +473,7 @@ function updateCompleteDog(e, _id) {
                             <p><span className="spanFoundedDog">Hacer videos? </span>{typeof dog.video === 'boolean' ? dog.video ? "Si":"No" : ''}</p>
                             {seeMore && <p><span className="spanFoundedDog">Medio de pago? </span>{dog.paymentMode}</p>}
                             <p><span className="spanFoundedDog">Salta de la mesa? </span>{typeof dog.jumper === 'boolean' ? dog.jumper ? "Si":"No" : ''}</p>
-                            {seeMore && <p><span className="spanFoundedDog">El dueño se queda? </span>{typeof dog.ownerStay === 'boolean' ? dog.ownerStay ? "Si":"No" : ''}</p>}
+                            {seeMore && <p><span className="spanFoundedDog">El tutor se queda? </span>{typeof dog.ownerStay === 'boolean' ? dog.ownerStay ? "Si":"No" : ''}</p>}
                             {seeMore && <p><span className="spanFoundedDog">Ultima visita: </span>{lastVisitDate(dog.lastVisit)}</p>}
                             <p><span className="spanFoundedDog">Saldo: </span>${dog.balance}</p>
                             <p><span className="spanFoundedDog">Descripción: </span>{dog.description}</p>
@@ -501,7 +501,7 @@ function updateCompleteDog(e, _id) {
                                 <input type="text" placeholder="Nombre*" name="name" defaultValue={dog.name}/>
                                 <input type="text" placeholder="Raza*" name="race" defaultValue={dog.race}/>
                                 <input type="number" placeholder="Edad*" name="age" defaultValue={dog.age}/>
-                                <input type="text" placeholder="Dueño*" name="owner" defaultValue={dog.owner}/>
+                                <input type="text" placeholder="Tutor*" name="owner" defaultValue={dog.owner}/>
                                 <input type="number" placeholder="Celular*" name="phone" defaultValue={dog.phone}/>
                                 <input type="email" placeholder="Email" name="email" defaultValue={dog.email}/>
                                 <input type="number" placeholder="Rotación*" name="rotation" defaultValue={dog.rotation}/>
@@ -556,7 +556,7 @@ function updateCompleteDog(e, _id) {
                                     <option value="false">No</option>
                                 </select>
                                 <select name="ownerStay" defaultValue={typeof dog.ownerStay === 'boolean' ? dog.ownerStay : -1}>
-                                    <option value={-1} disabled>El dueño se queda?</option>
+                                    <option value={-1} disabled>El tutor se queda?</option>
                                     <option value="true">Si</option>
                                     <option value="false">No</option>
                                 </select>

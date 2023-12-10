@@ -157,7 +157,7 @@ export const EditDog = () => {
             return Swal.fire({
                 title: 'Hubo un error!',
                 icon: 'error',
-                text: "Dueño es requerido"})
+                text: "Tutor es requerido"})
         }
         if(!dog.phone){
             return Swal.fire({
@@ -207,7 +207,7 @@ export const EditDog = () => {
                                 <input type="text" placeholder="Nombre*" name="name" defaultValue={dog.name}/>
                                 <input type="text" placeholder="Raza*" name="race" defaultValue={dog.race}/>
                                 <input type="number" placeholder="Edad*" name="age" defaultValue={dog.age}/>
-                                <input type="text" placeholder="Dueño*" name="owner" defaultValue={dog.owner}/>
+                                <input type="text" placeholder="Tutor*" name="owner" defaultValue={dog.owner}/>
                                 <input type="number" placeholder="Celular*" name="phone" defaultValue={dog.phone}/>
                                 <input type="email" placeholder="Email" name="email" defaultValue={dog.email}/>
                                 <input type="number" placeholder="Rotación*" name="rotation" defaultValue={dog.rotation}/>
