@@ -12,7 +12,7 @@
 }
 .form-alta-dog{
     display: grid;
-    width: 400px;
+    max-width: 400px;
     grid-template-columns: 100%;
     gap: 6px;
     margin: auto;
@@ -34,7 +34,7 @@
     > label {
         display: block;
         position: relative;
-        width: 400px;
+        width: 100%;
         border: 2px solid silver;
         outline: none;
         margin-bottom: 10px;
@@ -43,7 +43,7 @@
         
         > input, textarea, select {
             display: block;
-            width: 96%;
+            width: 94%;
             font-size: 1.2rem;
             background-color: transparent;
             border: none;
