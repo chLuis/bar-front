@@ -1,7 +1,7 @@
 .navbar-container{
     position: fixed !important;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     z-index: 5;
     padding-right: 50px;
     width: 100%;
@@ -168,10 +168,42 @@ nav{
     display: none;
   }
 
+  .logoLengaLogin {
+    border-radius: 50%;
+    padding: 20px 0px;
+  }
+  
+  .navbar-toggle2 {
+    display: none;
+    flex-direction: column;
+    margin: auto;
+    position: absolute;
+    top: 7px;
+    left: 2px;
+  }
+  .navbar-toggle2 span {
+    width: 26px;
+    height: 3px;
+    background-color: white;
+    margin-bottom: 5px;
+    border-radius: 2px;
+    transform-origin: 5px 0px;
+    transition: all 0.2s linear;
+    z-index: 9;
+  }
+  
+  .navbar-toggle2.open > span {
+    transform: rotate(45deg) translate(1px, 0px);
+  }
+  .navbar-toggle2.open > span:nth-child(2) {
+    display: none;
+  }
+  .navbar-toggle2.open > span:nth-child(3) {
+    transform: rotate(-45deg) translate(-4px, 2px);
+  }
+
   /* Media query para mostrar u ocultar elementos según el tamaño de la pantalla */
   @media (max-width: 1200px) {
-    
-  
     .navbar-left {
         > a{
             display: none;
@@ -182,11 +214,9 @@ nav{
       display: none;
       align-items: center;
     }
-  
     .navbar-toggle {
       display: block;
     }
-  
     .mobile-menu {
       display: flex;
       flex-direction: column;
@@ -216,17 +246,13 @@ nav{
             color: white;
           }
       }
-
     .navbar.active .mobile-menu.active a {
         display: flex;
         padding: 0px 10px;
         width: 100%;
         transform: translateX(0%);
     }
+    .navbar-toggle2 {
+      display: flex; 
+    }
   }
-
-
-.logoLengaLogin {
-  border-radius: 50%;
-  padding: 20px 0px;
-}

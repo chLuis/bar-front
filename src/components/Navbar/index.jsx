@@ -46,6 +46,7 @@ export const Navbar = () => {
   }
     const toggleMenu = () => {
       setShowMenu(!showMenu);
+      setIsOpen(!isOpen)
     };
     const  handleSubmit = async (e) => {
       e.preventDefault();
@@ -54,6 +55,8 @@ export const Navbar = () => {
       //const data = await getUser(user)
      
       }
+
+      const [isOpen, setIsOpen] = useState(false);
 
     return (
 
@@ -81,13 +84,14 @@ export const Navbar = () => {
             </Box>
         </div>}
         <div className="navbar-container">
-          
-          <div className="navbar-toggle" onClick={toggleMenu}>
-            ☰
+          <div className={`navbar-toggle2 ${isOpen && "open"}`} onClick={toggleMenu}>
+            <span></span>
+            <span></span>
+            <span></span>
           </div>
           <div className="navbar-btn-home">
             <Link onClick={showModalLogin}>Inicia sesion</Link>
-        </div>
+          </div>
         </div>
         <div onClick={toggleMenu} className={`mobile-menu ${showMenu ? 'active' : ''}`}>
           <div className="navbar-pelu-div"><Link to={"/"} className="navbarToHome">Inicio</Link></div>

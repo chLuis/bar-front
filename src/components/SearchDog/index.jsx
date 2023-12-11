@@ -400,6 +400,22 @@ function updateCompleteDog(e, _id) {
         scrollToTop()
     }
     
+    // const inputs = document.querySelectorAll('input');
+    // inputs.forEach(input => {
+    //     input.onfocus = () => {
+    //         input.previousElementSibling.classList.add('top');
+    //         input.previousElementSibling.classList.add('focus');
+    //         input.parentNode.classList.add('focus');
+    //     }
+    //     input.onblur = () => {
+    //         input.value = input.value.trim( );
+    //         if (input.value.trim( ).length == 0){
+    //             input.previousElementSibling.classList.remove('focus');
+    //         }
+    //         input.previousElementSibling.classList.remove('top');
+    //         input.parentNode.classList.remove('focus');
+    //     }
+    // })
 
     return (
         <>
@@ -497,24 +513,68 @@ function updateCompleteDog(e, _id) {
                         <h3>Editar información de: {dog.name}</h3>
                         <img src={dog.image? dog.image : perroSinFoto} height={100} width={100}></img>
                         <form onSubmit={(e) => updateCompleteDog(e, dog._id)}>
-                            <div  className="formEditDog">
-                                <input type="text" placeholder="Nombre*" name="name" defaultValue={dog.name}/>
-                                <input type="text" placeholder="Raza*" name="race" defaultValue={dog.race}/>
-                                <input type="number" placeholder="Edad*" name="age" defaultValue={dog.age}/>
-                                <input type="text" placeholder="Tutor*" name="owner" defaultValue={dog.owner}/>
-                                <input type="number" placeholder="Celular*" name="phone" defaultValue={dog.phone}/>
-                                <input type="email" placeholder="Email" name="email" defaultValue={dog.email}/>
-                                <input type="number" placeholder="Rotación*" name="rotation" defaultValue={dog.rotation}/>
-                                <input type="text" placeholder="Enfermedad" name="disease" defaultValue={dog.disease}/>
-                                <input type="text" placeholder="Discapacidad" name="disability" defaultValue={dog.disability}/>
-                                <input type="text" placeholder="Alergia" name="allergy" defaultValue={dog.allergy}/>
-                                <input type="text" placeholder="Temperamento" name="temper" defaultValue={dog.temper}/>
-                                <select name="castrated" placeholder='Castra3do?' defaultValue={typeof dog.castrated === 'boolean' ? dog.castrated : -1}>
-                                    <option value="true">Si</option>
-                                    <option value="false">No</option>
+                            <div className="formEditDog">
+                                <label>
+                                    <span className="focus">Nombre*</span>
+                                    <input type="text" name="name" defaultValue={dog.name}/>
+                                </label>
+                                <label>
+                                    <span className="focus">Raza*</span>
+                                    <input type="text" name="race" defaultValue={dog.race}/>
+                                </label>
+                                <label>
+                                    <span className="focus">Edad*</span>
+                                    <input type="number" name="age" defaultValue={dog.age}/>
+                                </label>
+                                <label>
+                                    <span className="focus">Tutor*</span>
+                                    <input type="text" name="owner" defaultValue={dog.owner}/>
+                                </label>
+                                <label>
+                                    <span className="focus">Teléfono*</span>
+                                    <input type="number" name="phone" defaultValue={dog.phone}/>
+                                </label>
+                                <label>
+                                    <span className="focus">Email</span>
+                                    <input type="email" name="email" defaultValue={dog.email}/>
+                                </label>
+                                <label>
+                                    <span className="focus">Rotación*</span>
+                                    <input type="number" name="rotation" defaultValue={dog.rotation}/>
+                                </label>
+                                <label>
+                                    <span className="focus">Enfermedad</span>
+                                    <input type="text" name="disease" defaultValue={dog.disease}/>
+                                </label>
+                                <label>
+                                    <span className="focus">Discapacidad</span>
+                                    <input type="text" name="disability" defaultValue={dog.disability}/>
+                                </label>
+                                <label>
+                                    <span className="focus">Alergia</span>
+                                    <input type="text" name="allergy" defaultValue={dog.allergy}/>
+                                </label>
+                                <label>
+                                    <span className="focus">Temperamento</span>
+                                    <input type="text" name="temper" defaultValue={dog.temper}/>
+                                </label>
+                                <label>
+                                    <span className="focus">Castrado?</span>
+                                    <select name="castrated" defaultValue={typeof dog.castrated === 'boolean' ? dog.castrated : -1}>
+                                        <option value="true">Si</option>
+                                        <option value="false">No</option>
                                 </select>
-                                <input type="text" placeholder="Tipo de Corte" name="typeOfCut" defaultValue={dog.typeOfCut}/>
-                                <input type="text" placeholder="Tipo de Shampoo" name="typeOfShampoo" defaultValue={dog.typeOfShampoo}/>
+                                </label>
+                                <label>
+                                    <span className="focus">Tipo de corte</span>
+                                    <input type="text" name="typeOfCut" defaultValue={dog.typeOfCut}/>
+                                </label>
+                                <label>
+                                    <span className="focus">Tipo de shampoo</span>
+                                <input type="text" name="typeOfShampoo" defaultValue={dog.typeOfShampoo}/>
+                                </label>
+                                <label>
+                                    <span className="focus">Amigos</span>
                                 <Select name="friends"
                                     options={optionsDogs}
                                     closeMenuOnSelect={false}
@@ -522,9 +582,11 @@ function updateCompleteDog(e, _id) {
                                     isMulti
                                     defaultValue={friendsGet}
                                     className='select-option'
-                                    placeholder="Amigos"
                                     onChange={handleSelectFriendsChange}>
                                 </Select>
+                                </label>
+                                <label>
+                                    <span className="focus">Pelea con</span>
                                 <Select name="enemies"
                                     options={optionsDogs}
                                     closeMenuOnSelect={false}
@@ -532,41 +594,72 @@ function updateCompleteDog(e, _id) {
                                     isMulti
                                     defaultValue={enemiesGet}
                                     className='select-option'
-                                    placeholder="Pelea con..."
                                     onChange={handleSelectEnemiesChange}>
                                 </Select>
-                                <select name="photo" placeholder='Hacer fotos?' defaultValue={typeof dog.photo === 'boolean' ? dog.photo : -1}>
-                                    <option value={-1} disabled>Hacer fotos?</option>
-                                    <option value="true">Si</option>
-                                    <option value="false">No</option>
-                                </select>
-                                <select name="video" placeholder='Hacer videos?' defaultValue={typeof dog.video === 'boolean' ? dog.video : -1}>
-                                    <option value={-1} disabled>Hacer videos?</option>
-                                    <option value="true">Si</option>
-                                    <option value="false">No</option>
-                                </select>
-                                <select name="paymentMode" defaultValue={dog.paymentMode ? dog.paymentMode : -1}>
-                                    <option value={-1} disabled>Medios de pago</option>
-                                    <option value="Efectivo">Efectivo</option>
-                                    <option value="Transferencia">Transferencia</option>
-                                </select>
-                                <select name="jumper" defaultValue={typeof dog.jumper === 'boolean' ? dog.jumper : -1}>
-                                    <option value={-1} disabled>Salta de la mesa?</option>
-                                    <option value="true">Si</option>
-                                    <option value="false">No</option>
-                                </select>
-                                <select name="ownerStay" defaultValue={typeof dog.ownerStay === 'boolean' ? dog.ownerStay : -1}>
-                                    <option value={-1} disabled>El tutor se queda?</option>
-                                    <option value="true">Si</option>
-                                    <option value="false">No</option>
-                                </select>
-                                <input type="number" placeholder="Saldo" name="balance" defaultValue={dog.balance} onChange={handleSaldo}/>
-                                <label name="lastVisit">Ultima visita {lastVisitDate(dog.lastVisit)}</label>
+                                </label>
+                                <label>
+                                    <span className="focus">Hacer fotos?</span>
+                                    <select name="photo" defaultValue={typeof dog.photo === 'boolean' ? dog.photo : -1}>
+                                        <option value={-1} disabled>Hacer fotos?</option>
+                                        <option value="true">Si</option>
+                                        <option value="false">No</option>
+                                    </select>
+                                </label>
+                                <label>
+                                    <span className="focus">Hacer videos?</span>
+                                    <select name="video" defaultValue={typeof dog.video === 'boolean' ? dog.video : -1}>
+                                        <option value={-1} disabled>--- Seleccionar ---</option>
+                                        <option value="true">Si</option>
+                                        <option value="false">No</option>
+                                    </select>
+                                </label>
+                                <label>
+                                    <span className="focus">Medio de pago</span>
+                                    <select name="paymentMode" defaultValue={dog.paymentMode ? dog.paymentMode : -1}>
+                                        <option value={-1} disabled>--- Seleccionar ---</option>
+                                        <option value="Efectivo">Efectivo</option>
+                                        <option value="Transferencia">Transferencia</option>
+                                    </select>
+                                </label>
+                                <label>
+                                    <span className="focus">Salta de la mesa?</span>
+                                    <select name="jumper" defaultValue={typeof dog.jumper === 'boolean' ? dog.jumper : -1}>
+                                        <option value={-1} disabled>--- Seleccionar ---</option>
+                                        <option value="true">Si</option>
+                                        <option value="false">No</option>
+                                    </select>
+                                </label>
+                                <label>
+                                    <span className="focus">El tutor se queda?</span>
+                                    <select name="ownerStay" defaultValue={typeof dog.ownerStay === 'boolean' ? dog.ownerStay : -1}>
+                                        <option value={-1} disabled>--- Seleccionar ---</option>
+                                        <option value="true">Si</option>
+                                        <option value="false">No</option>
+                                    </select>
+                                </label>
+                                <label>
+                                    <span className="focus">Saldo</span>
+                                    <input type="number" name="balance" defaultValue={dog.balance} onChange={handleSaldo}/>
+                                </label>
+                                <label>
+                                    {/* <label name="lastVisit"></label> */}
+                                    <span className="focus">Ultima visita {lastVisitDate(dog.lastVisit)}</span>
                                     <input type="date" name="balance" defaultValue={dog.lastVisit} onChange={handleDate}/>
-                                <label>Imagen</label>
-                                <input accept='image/*' type='file' onChange={convertToBase64}></input>
-                                {image ==="" || image ===null ? <img width={100} height={100} src={dog.image} alt="Imagen Perro" /> : <img width={100} height={100} src={image} alt="Imagen Perro" />}
-                                <textarea placeholder="Descripción" name="description" rows={4} defaultValue={dog.description}/>
+                                </label>
+                                <label>
+                                    <span className="focus">Imagen actual</span>
+                                    {image ==="" || image ===null ? <img width={100} height={100} src={dog.image} alt="Imagen Perro" /> : <img width={100} height={100} src={image} alt="Imagen Perro" />}
+                                </label>
+                                <label>
+                                    <span className="focus">Foto de Perfil</span>
+                                    <input accept='image/*' type='file' onChange={convertToBase64}></input>
+                                </label>
+                                <label>
+                                    <span className="focus">Descripción</span>
+                                    <textarea name="description" rows={4} defaultValue={dog.description}/>
+                                </label>
+                                
+                                
                                 {!updateDogMutation.isPending && showBtnEdit && 
                                     <button type="submit" className="sendEditForm">
                                         Editar
