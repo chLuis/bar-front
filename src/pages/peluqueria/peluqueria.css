@@ -22,9 +22,33 @@
 }
 
 .container-peluqueria{
+    margin-top: 40px;
+    margin-bottom: 40px;
     > section {
+        > h5 {
+            margin: 16px 16px 0px 16px;
+            width: 100%;
+            text-align: left;
+            font-size: 1.5rem;
+        }
         > p {
-            margin: 20px auto;
+            margin: 42px 16px 30px 16px;
+            font-size: 0.8rem;
+            text-align: left;
+        }
+        > ul {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: start;
+            width: fit-content;
+            margin: auto;
+            gap: 6px;
+            font-size: 0.8rem;
+            > li {
+                list-style: "+";
+                padding-left: 5px;
+            }
         }
     }
 }
