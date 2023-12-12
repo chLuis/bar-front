@@ -37,7 +37,7 @@ export const Home = () => {
                 <article>
                 <Link to="peluqueria"><div className="home-link-pelu">
                 {/* <i className="fondo-linkPelu"></i> */}
-                    <video autoPlay loop muted height={280} className="videoPelu" src="./videos/peluhome_.mp4"></video>
+                    <video autoPlay loop muted playsInline height={280} className="videoPelu" src="./videos/peluhome_.mp4"></video>
                     <div onClick={linksToPelu} className="peluPrevLink">
                         <h3>PELUQUERÍA</h3>
                     </div>
@@ -52,7 +52,7 @@ export const Home = () => {
                 </article>
                 <article>
                 <div className="home-link-tienda">
-                <video autoPlay loop muted height={280} className="videoPelu" src="./videos/tiendahome_.mp4"></video>
+                <video autoPlay loop muted controls height={280} className="videoPelu" src="./videos/tiendahome_.mp4"></video>
                     {!tiendaLink &&
                     <div onClick={linksToTienda} className="tiendaPrevLink">
                         <h3>TIENDA</h3>
