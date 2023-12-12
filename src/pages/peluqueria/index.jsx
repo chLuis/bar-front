@@ -107,6 +107,11 @@ export const PeluqueriaPage = () => {
                         </p>}
                     </ul>
                 </section>
+                <section className="sectionPeluPie">
+                    <h6>Hasta aquí tenes toda la información para sumar a tu cachorro pequeño o gigante al team Lengua Afuera. Espero haberte sacado las dudas y animarte a contratarnos!.</h6>
+                    <h5>Gracias 🐶</h5>
+                    <h4>Gabriela</h4>
+                </section>
             </div>
             <BtnHome />
         </>
