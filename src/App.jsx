@@ -12,6 +12,7 @@ import { EquipamientoPaseoPage } from './pages/equipamientoPaseo'
 import { CosmeticaNaturalPage } from './pages/cosmeticaNatural'
 import { AccesoriosPage } from './pages/accesorios'
 import { KitslimpiezaPage } from './pages/kitsLimpieza'
+import { PeluqueriaPage } from './pages/peluqueria'
 import { Home } from "./pages/index";
 import { EditDogPage } from './pages/editDog'
 import { Routes, Route } from "react-router-dom";
@@ -32,6 +33,7 @@ function App() {
             <Route path="/agendadogs" element={<AgendaDogsPage />} />
             <Route path="/edit" element={<EditDogPage />} />
             <Route path="/alertdogtime" element={<AlertDogTimePage />} />
+            <Route path="/peluqueria" element={<PeluqueriaPage />} />
             <Route path="/peluqueria/nuestrosalon" element={<NuestroSalonPage />} />
             <Route path="/peluqueria/nuestrosservicios" element={<NuestrosServiciosPage />} />
             <Route path="/peluqueria/nuestraformacion" element={<NuestraFormacionPage />} />

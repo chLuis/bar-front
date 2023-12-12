@@ -1,0 +1,30 @@
+.peluqueriaPicture{
+    position: relative;
+    background-image: url('../../assets/images/peluqueriaMain.jpeg');
+    border-image: fill 0 linear-gradient(rgba(0, 0, 0, 0.069), #000000ca);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 240px;
+    width: 100dvw;
+    > h2 {
+        font-family: Lemon;
+        color: white;
+        letter-spacing: 2px;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: end;
+    }
+}
+
+.container-peluqueria{
+    > section {
+        > p {
+            margin: 20px auto;
+        }
+    }
+}
