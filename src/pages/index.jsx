@@ -52,7 +52,9 @@ export const Home = () => {
                 </article>
                 <article>
                 <div className="home-link-tienda">
-                    <video autoPlay loop muted height={280} className="videoTienda" src="../assets/videos/tiendahome_.mp4"></video>
+                    <video autoPlay loop muted height={280} className="videoTienda">
+                        <source src="../../public/videos/tiendahome_.mp4" type="video/mp4"/>
+                    </video>
                     {!tiendaLink &&
                     <div onClick={linksToTienda} className="tiendaPrevLink">
                         <h3>TIENDA</h3>

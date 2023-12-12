@@ -61,7 +61,7 @@ export const AltaDog = () => {
             })
             setTimeout(() => {
                 handleClose()
-                window.location.href = 'https://main--eloquent-conkies-02e62a.netlify.app/#/'; // Reemplaza '/otra-pagina' con la ruta a la que deseas redirigir
+                location.reload(); // Reemplaza '/otra-pagina' con la ruta a la que deseas redirigir
               }, 1200);
 
         },
