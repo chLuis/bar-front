@@ -1,4 +1,4 @@
-import { AlertDogTime } from '../../components'
+import { AlertDogTime, Navbar } from '../../components'
 
 
 export const AlertDogTimePage = () => {
@@ -6,6 +6,7 @@ export const AlertDogTimePage = () => {
 
     return (
         <>
+            <Navbar route={"Alerta"}/>
             <AlertDogTime />
         </>
         

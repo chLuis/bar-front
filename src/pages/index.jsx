@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getDogs } from '../api/dogsAPI.js';
 import { Link } from "react-router-dom";
 import "./index.css";
-import { LogoLengua } from "../components";
+import { LogoLengua, Navbar } from "../components";
 import { useState } from "react";
 
 export const Home = () => {
@@ -32,6 +32,7 @@ export const Home = () => {
 
     return (
         <>
+            <Navbar />
             <LogoLengua />
             <section className="home-public">
                 <article>

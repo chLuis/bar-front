@@ -9,7 +9,9 @@ import { getUser } from '../../api/userAPI.js'
 import Swal from 'sweetalert2'
 
 
-export const Navbar = () => {
+export const Navbar = (props) => {
+
+  const route = props.route;
 
   //const queryClient = useQueryClient();
   // const Toast = Swal.mixin({
@@ -89,9 +91,14 @@ export const Navbar = () => {
             <span></span>
             <span></span>
           </div>
-          <div className="navbar-btn-home">
-            <Link onClick={showModalLogin}>Inicia sesion</Link>
+          <div className="navbar-btn-log">
+            <Link onClick={showModalLogin}><i className="fa-solid fa-user"></i></Link>
           </div>
+            <div className="navbarRoute">
+              <Link to="/" className="navbar-LinkRoute">Home</Link>
+              <span>|</span>
+              <Link className="navbar-LinkRoute">{route}</Link>
+            </div>
         </div>
         <div onClick={toggleMenu} className={`mobile-menu ${showMenu ? 'active' : ''}`}>
           <div className="navbar-pelu-div"><Link to={"/"} className="navbarToHome">Inicio</Link></div>
@@ -116,11 +123,11 @@ export const Navbar = () => {
           </div>
           <div className="navbar-pelu-div">Contacto</div>
           <div className="navbar-redes">
-          <a href="https://www.instagram.com/lengua_afuera/">
-                <i className="fa-brands fa-instagram iconsFooter-insta"></i>
+            <a href="https://www.instagram.com/lengua_afuera/">
+              <i className="fa-brands fa-instagram iconsFooter-insta"></i>
             </a>
             <a href="https://w.app/5fgq7w" className="link-to-insta">
-                <i className="fa-brands fa-whatsapp iconsFooter-wsp"></i>
+              <i className="fa-brands fa-whatsapp iconsFooter-wsp"></i>
             </a>
           </div>
         </div>

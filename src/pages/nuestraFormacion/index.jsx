@@ -1,11 +1,12 @@
-import { LogoLengua, BtnHome, NuestraFormacion } from '../../components'
+import { LogoLengua, BtnHome, NuestraFormacion, Navbar } from '../../components'
 
 export const NuestraFormacionPage = () => {
     return (
     <>
-        <LogoLengua />
-        <NuestraFormacion />
-        <BtnHome />
+      <Navbar route={"Formación"} />
+      <LogoLengua />
+      <NuestraFormacion />
+      <BtnHome />
     </>
   )
 }

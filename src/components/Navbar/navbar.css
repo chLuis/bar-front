@@ -1,14 +1,14 @@
 .navbar-container{
     position: fixed !important;
     display: flex;
-    justify-content: flex-end;
+    flex-direction: row;
+    justify-content: flex-start;
     z-index: 5;
-    padding-right: 50px;
-    width: 100%;
+    width: 100dvw;
 }
-.navbar-btn-home{
-    padding-right: 10px;
+.navbar-btn-log{
     font-size: 1.3rem;
+    margin: 0 10px;
 }
 .modal-login{
   display: flex;
@@ -100,7 +100,7 @@ nav{
 .navbar {
     background-color: #8f4242;
     color: #fff;
-    padding: 10px 20px 10px 12px;
+    padding: 10px 0px 10px 0px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -119,6 +119,15 @@ nav{
     margin-right: 20px;
   }
   
+  .navbarRoute{
+    font-size: 1.2rem;
+    align-self: center;
+    > span, .navbar-LinkRoute {
+      padding: 0;
+      margin: 0 2px;
+    }
+  }
+
   .navbar-toggle {
     font-size: 1.3rem;
     cursor: pointer;
@@ -163,6 +172,9 @@ nav{
     display: flex;
     width: fit-content;
     margin: 5px 0px 0px 16px;
+    > a {
+      margin: 0;
+    }
   }
   .mobile-menu {
     display: none;
@@ -178,8 +190,8 @@ nav{
     flex-direction: column;
     margin: auto;
     position: absolute;
-    top: 7px;
-    left: 2px;
+    top: 6px;
+    right: 12px;
   }
   .navbar-toggle2 span {
     width: 26px;

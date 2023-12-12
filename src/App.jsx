@@ -22,7 +22,7 @@ import { Footer, BtnTop, Navbar, Carrito } from './components';
 function App() {
     return (
         <div className="allHtml">
-        <Navbar />
+        {/* <Navbar /> */}
         <div className="blur-overlay"></div>
         <div className="bodyApp">
         <Routes>

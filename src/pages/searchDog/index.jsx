@@ -1,8 +1,9 @@
-import { SearchDog, LogoLengua } from '../../components'
+import { SearchDog, LogoLengua, Navbar } from '../../components'
 
 export const SearchDogPage = () => {
     return (
-        <>
+        <>  
+            <Navbar route="Buscar"/>
             <LogoLengua />
             <SearchDog />
         </>

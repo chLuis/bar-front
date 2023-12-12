@@ -1,5 +1,5 @@
 import "./peluqueria.css";
-import { BtnHome } from "../../components";
+import { BtnHome, Navbar } from "../../components";
 //import { peluqueriaMain } from "../../assets/images/peluqueriaMain.jpeg"
 
 export const PeluqueriaPage = () => {
@@ -7,8 +7,6 @@ export const PeluqueriaPage = () => {
 
     function showMore(i) {
         const paragraph = document.querySelectorAll('p')
-       // console.log(i)
-        //console.log(paragraph[i]?.innerText)
         for(let j = 0; j < paragraph.length; j++) {
             if(j !== i) {
                 paragraph[j]?.classList.remove('p-show')
@@ -17,13 +15,11 @@ export const PeluqueriaPage = () => {
         }
         paragraph[i]?.classList.add('p-show')
         paragraph[i]?.classList.remove('p-hidden')
-        }
-        //paragraph[i]?.children?.classList.add('p-show')
-        //paragraph[i]?.nextElementSibling?.classList.remove('p-hidden')
-        //console.log("Tocando")
+    }
     
     return (
         <>
+        <Navbar route={"Peluqueria"}/>
             <div className="container-peluqueria">
                 <section>
                     <div className="peluqueriaPicture">
