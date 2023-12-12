@@ -24,10 +24,10 @@ export const Home = () => {
     //const logo = require('../assets/images/LenguaLogo.png');
 
     function linksToPelu() {
-        setPeluLink(!peluLink);
+        setPeluLink(false);
     }
     function linksToTienda() {
-        setTiendaLink(!tiendaLink);
+        setTiendaLink(false);
     }
 
     return (
@@ -35,34 +35,45 @@ export const Home = () => {
             <LogoLengua />
             <section className="home-public">
                 <article>
-                <div className="home-link-pelu">
-                <i className="fondo-linkPelu"></i>
-                    {!peluLink &&<div onClick={linksToPelu} className="peluPrevLink">
-                        <h3>PELUQUERÍA CANINA</h3>
-                        <span className="spanAnimated"><i className="fa-regular fa-hand-pointer"></i></span>
-                    </div>}
-                    {peluLink &&<div onClick={linksToPelu} className="peluRealLink">
+                <Link to="peluqueria"><div className="home-link-pelu">
+                {/* <i className="fondo-linkPelu"></i> */}
+                    <video autoPlay loop muted height={280} className="videoPelu">
+                        <source src="../../src/assets/videos/peluhome_.mp4" type="video/mp4" />
+                    </video>
+                    
+                    <div onClick={linksToPelu} className="peluPrevLink">
+                        <h3>PELUQUERÍA</h3>
+                    </div>
+                    {/* {peluLink &&<div onClick={linksToPelu} className="peluRealLink">
                     <Link to="peluqueria/nuestrosalon" className="aToPelu">- Conoce nuestro salón y más</Link> <br></br>
                     <Link to="peluqueria/nuestrosservicios" className="aToPelu">- Qué servicios ofrecemos.</Link><br></br>
                     <Link to="peluqueria/nuestraformacion" className="aToPelu">- Nuestra formación.</Link><br></br>
                     <Link to="peluqueria/trabajosytestimonios" className="aToPelu">- Nuestros trabajos y testimonios.</Link><br></br>
                     <Link to="agendadogs" className="aToPelu">Agenda tu turno</Link>
-                    </div>}
-                </div>
+                    </div>} */}
+                </div></Link>
                 </article>
                 <article>
                 <div className="home-link-tienda">
-                <i className="fondo-linktienda"></i>
-                    {!tiendaLink &&<div onClick={linksToTienda} className="tiendaPrevLink">
-                    <h3>TIENDA</h3>
-                    <span className="spanAnimated"><i className="fa-regular fa-hand-pointer"></i></span>
+                    <video autoPlay loop muted height={280} className="videoTienda">
+                        <source src="../../src/assets/videos/tiendahome_.mp4" type="video/mp4" />
+                    </video>
+                    {!tiendaLink &&
+                    <div onClick={linksToTienda} className="tiendaPrevLink">
+                        <h3>TIENDA</h3>
                     </div>}
-                    {tiendaLink &&<div onClick={linksToTienda} className="tiendaRealLink">
+
+                
+                   
+                    
+                        
+                    
+                    {/* {tiendaLink &&<div onClick={linksToTienda} className="tiendaRealLink">
                     <Link to="tienda/equipamiento" className="aTotienda">- Equipamiento de paso</Link> <br></br>
                     <Link to="tienda/cosmetica" className="aTotienda">- Cosmética natural</Link><br></br>
                     <Link to="tienda/accesorios" className="aTotienda">- Accesorios</Link><br></br>
                     <Link to="tienda/kitslimpieza" className="aTotienda">- Quiero mis kits de limpieza "Lengua Afuera"</Link><br></br>
-                    </div>}
+                    </div>} */}
                 </div>
                 </article>
             </section>

@@ -2,6 +2,10 @@
 .btn-momentaneo{
     margin: 10px;
 }
+@font-face {
+    font-family: Lemon;
+    src: url('../assets/font/LEMONMILK-Bold.otf');
+}
 /* ---------------- Public ---------------- */
 .home-public{
     display: flex;
@@ -20,7 +24,8 @@
         align-items: center;
         font-size: 1.2rem;
         flex-shrink: 2;
-        margin-block: 20px;
+        margin-block: 30px;
+        box-shadow: 2px 0px 2px 2px rgb(72, 8, 8);
         > h4 {
             margin: 0;
             padding-inline: 5px;
@@ -39,11 +44,26 @@
     }
 }
 .peluPrevLink , .tiendaPrevLink {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    position: relative;
+    background-color: rgb(39, 39, 39);
+    height: 280px;
+    width: 100dvw;
+    font-family: Lemon;
     > h3 {
-        margin: 0 0 10px 0;
+        color: white;
+        letter-spacing: 12px;
+        z-index: 3;
+        display: grid;
+        place-content: center;
+        height: 100%;
         animation: clickMoveH3 2.5s linear infinite;
     }
+}
+.videoPelu, .videoTienda {
+    position: absolute;
+    top: 0;
+    place-self: center;
+    z-index: 2;
 }
 .peluPrevLink{
     display: flex;
@@ -57,9 +77,10 @@
     transition: 0.3s;
 }
 .peluPrevLink:hover{
-    scale: 1.2;
+
 }
 .peluRealLink{
+    position: relative;
     > .aToPelu {
         color:rgb(43, 43, 42) !important;
         font-weight: 600;
@@ -71,7 +92,6 @@
 }
 .fondo-linkPelu{
     position: absolute;
-    background-image: url('../assets/images/peluPrev.jpeg');
     background-position: center;
     background-size: cover;
     width: 100dvw;
@@ -84,8 +104,8 @@
     position: relative;
     top: 0;
     bottom: 0;
+    height: 280px;
     width: 100dvw;
-    height: 240px;
     display: grid;
     place-content: center;
     transition: 0.4s;
@@ -107,7 +127,7 @@
 }
 
 .tiendaPrevLink:hover{
-    scale: 1.2;
+ 
 }
 .tiendaRealLink{
     > .aTotienda {
@@ -135,7 +155,7 @@
     top: 0;
     bottom: 0;
     width: 100dvw;
-    height: 240px;
+    height: 280px;
     display: grid;
     place-content: center;
     transition: 0.4s;
@@ -225,14 +245,14 @@
     0% {
         scale: 1;
     }
-    90%{
+    25%{
+        scale: 0.95;
+    }
+    50%{
         scale: 1;
     }
-    92%{
-        scale: 0.5;
-    }
-    95%{
-        scale: 1.1;
+    75%{
+        scale: 1.05;
     }
     100%{
         scale: 1;
