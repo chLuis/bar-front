@@ -105,20 +105,20 @@ export const Navbar = (props) => {
           <div>
           <div className="navbar-pelu-div">Peluqueria</div>
             <div className="navbar-pelu-div-links">
-              <Link to="peluqueria/nuestrosalon" className="navbarToPelu">- Conoce nuestro salón y más</Link> <br></br>
-              <Link to="peluqueria/nuestrosservicios" className="navbarToPelu">- Qué servicios ofrecemos</Link><br></br>
-              <Link to="peluqueria/nuestraformacion" className="navbarToPelu">- Nuestra formación</Link><br></br>
-              <Link to="peluqueria/trabajosytestimonios" className="navbarToPelu">- Nuestros trabajos y testimonios</Link><br></br>
-              <Link to="agendadogs" className="navbarToPelu">- Agenda tu turno</Link>
+              <Link to="/peluqueria/nuestrosalon" className="navbarToPelu">- Conoce nuestro salón y más</Link> <br></br>
+              <Link to="/peluqueria/nuestrosservicios" className="navbarToPelu">- Qué servicios ofrecemos</Link><br></br>
+              <Link to="/peluqueria/nuestraformacion" className="navbarToPelu">- Nuestra formación</Link><br></br>
+              <Link to="/peluqueria/trabajosytestimonios" className="navbarToPelu">- Nuestros trabajos y testimonios</Link><br></br>
+              <Link to="/agendadogs" className="navbarToPelu">- Agenda tu turno</Link>
             </div>
           </div>
           <div>
             <div className="navbar-pelu-div">Tienda</div>
             <div className="navbar-pelu-div-links">
-              <Link to="tienda/equipamiento" className="navbarToPelu">- Equipamiento de paseo</Link> <br></br>
-              <Link to="tienda/cosmetica" className="navbarToPelu">- Cosmética natural</Link><br></br>
-              <Link to="tienda/accesorios" className="navbarToPelu">- Accesorios</Link><br></br>
-              <Link to="tienda/kitslimpieza" className="navbarToPelu">- ¡Quiero mis kits de limpieza "Lengua Afuera"</Link><br></br>
+              <Link to="/tienda/equipamiento" className="navbarToPelu">- Equipamiento de paseo</Link> <br></br>
+              <Link to="/tienda/cosmetica" className="navbarToPelu">- Cosmética natural</Link><br></br>
+              <Link to="/tienda/accesorios" className="navbarToPelu">- Accesorios</Link><br></br>
+              <Link to="/tienda/kitslimpieza" className="navbarToPelu">- ¡Quiero mis kits de limpieza "Lengua Afuera"</Link><br></br>
             </div>
           </div>
           <div className="navbar-pelu-div">Contacto</div>
