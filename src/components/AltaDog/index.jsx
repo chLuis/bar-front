@@ -1,5 +1,5 @@
 import './AltaDog.css'
-import { useEffect, useState, useContext } from 'react'
+import { useEffect, useState, useContext, useRef } from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { getDogs,createDog } from '../../api/dogsAPI'
 import Select from 'react-select'
@@ -11,6 +11,8 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 
 export const AltaDog = () => {
+
+    const imagePicker = useRef()
     
     const queryClient = useQueryClient()
     const {
@@ -211,6 +213,10 @@ const handleSelectEnemiesChange = (selectedOptions) => {
         }
     })
 
+    function handleImage() {
+        imagePicker.current.click()
+    }
+
     return (
         <div className='pageAltaDog'>
             <Backdrop
@@ -353,9 +359,10 @@ const handleSelectEnemiesChange = (selectedOptions) => {
                 <span className='focus'>Ultima visita?</span>
                 <input type="date" placeholder="Última visita" name="lastVisit" onChange={(e) => handleLastVisit(e)}/>
                 </label>
-                <label>
+                <label className='labelInputImage'>
                 <span className='focus'>Foto de perfil</span>
-                <input accept='image/*' type='file' onChange={convertToBase64} className='imageUp'></input>
+                <input accept='image/*' type='file' onChange={convertToBase64} className='imageUp' ref={imagePicker}></input>
+                <button onClick={handleImage} type='button' className='buttonImage'>Subir imagen</button>
                 {image ==="" || image ===null ? "" : <img width={100} height={100} src={image} alt="Imagen Perro" />}
                 </label>
                 <label>

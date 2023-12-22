@@ -54,6 +54,9 @@
             color: rgb(244,232,208);
             font-size: 1rem;
             text-align: center;
+            > option {
+                background-color: rgb(120, 53, 53);
+            }
         }
         
     }
@@ -72,7 +75,7 @@ label span.focus {
     top: -12px;
     font-size: 0.8rem;
     padding: 0 5px;
-    background-color: rgb(86,37,25);
+    background-color: rgb(86,37,25) !important;
     color: silver;
 }
 label.focus {
@@ -88,6 +91,7 @@ label.focus {
     font-size: 1.1rem;
     margin-bottom: 8px;
     > :not(hover) {
+        z-index: 4;
         color: rgb(194, 193, 193) !important;
         background-color: rgb(86,37,25);
     }
@@ -103,10 +107,20 @@ label.focus {
     color: rgb(220, 218, 216);
 }
 .imageUp{
-    width: 100% !important;
-    padding: 0 !important;
-    background-color: black !important;
-    color: white;
+ display: none !important;
+}
+.labelInputImage{
+    display: grid !important;
+    place-content: center;
+    > button {
+        height: fit-content;
+    }
+    > img {
+        margin: auto;
+    }
+}
+.buttonImage{
+    
 }
 /* input[type="file"]{
     background-color: red;

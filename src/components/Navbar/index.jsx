@@ -9,9 +9,14 @@ import { getUser } from '../../api/userAPI.js'
 import Swal from 'sweetalert2'
 
 
+
 export const Navbar = (props) => {
 
   const route = props.route;
+  //const {loginWithRedirect, logout, user, isAuthenticated, isLoading } = useAuth0()
+
+  const queryClient = useQueryClient();
+
 
   //const queryClient = useQueryClient();
   // const Toast = Swal.mixin({
@@ -32,34 +37,48 @@ export const Navbar = (props) => {
       //     icon: 'success',
       // })
 
-
+      const {
+        isLoading,
+        data: user,
+        isError,
+        error,
+    } = useQuery({
+        queryKey: ["user"],
+        queryFn: getUser
+    });
 
 //user? console.log(user):console.log("No hay usuario")
 
     const [showMenu, setShowMenu] = useState(false);
     const [modalLoginShow, setModalLoginShow] = useState(false)
+    const [isOpen, setIsOpen] = useState(false);
 
 
   function cambiarvalor() {
     setModalLoginShow(!modalLoginShow)
   }
   function showModalLogin() {
-    setModalLoginShow(!modalLoginShow);
+    // setModalLoginShow(!modalLoginShow);
   }
     const toggleMenu = () => {
       setShowMenu(!showMenu);
       setIsOpen(!isOpen)
     };
     const  handleSubmit = async (e) => {
-      e.preventDefault();
+       e.preventDefault();
       const formData = new FormData(e.target);
-      const user = Object.fromEntries(formData);
-      //const data = await getUser(user)
-     
-      }
+       const user = Object.fromEntries(formData);
+       const data = await getUser(user)
+      console.log(data)
+      queryClient.setQueryData(["user"], data)
+}
+      
+    // if(isLoading){
+    //   return <div>Loading...</div>
+    // }
 
-      const [isOpen, setIsOpen] = useState(false);
-
+    //console.log(isAuthenticated)
+    //console.log(isLoading)
     return (
 
       <nav className={`navbar ${showMenu ? 'active' : ''}`}>
@@ -93,12 +112,15 @@ export const Navbar = (props) => {
           </div>
           <div className="navbar-btn-log">
             <Link onClick={showModalLogin}><i className="fa-solid fa-user"></i></Link>
+            {/* <Link onClick={() => loginWithRedirect()}><i className="fa-solid fa-user"></i></Link>
+            <Link onClick={() => logout({ returnTo: window.location.origin})}>Logout</Link> */}
           </div>
-            <div className="navbarRoute">
+            {route && <div className="navbarRoute">
+            
               <Link to="/" className="navbar-LinkRoute">Home</Link>
               <span>|</span>
               <Link className="navbar-LinkRoute">{route}</Link>
-            </div>
+            </div>}
         </div>
         <div onClick={toggleMenu} className={`mobile-menu ${showMenu ? 'active' : ''}`}>
           <div className="navbar-pelu-div"><Link to={"/"} className="navbarToHome">Inicio</Link></div>
